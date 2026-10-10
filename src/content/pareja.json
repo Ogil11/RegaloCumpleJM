@@ -28,12 +28,42 @@
       "titulo": "Juegos"
     },
     "historia": {
-      "titulo": "Nuestra historia"
+      "titulo": "Nuestra historia",
+      "subtitulo": "REEMPLAZAR - Los momentos que nos trajeron hasta aquí.",
+      "tituloLineaTiempo": "Paso a paso",
+      "tituloCollage": "Nuestro collage",
+      "subtituloCollage": "REEMPLAZAR - Toca una foto para verla en grande."
     }
   },
   "textosInterfaz": {
     "volverInicio": "Volver al inicio",
     "activarMusica": "Activar música",
-    "silenciarMusica": "Silenciar música"
+    "silenciarMusica": "Silenciar música",
+    "historia": {
+      "idiomaFechas": "es-CO",
+      "navegacion": "Secciones de la historia",
+      "chipLineaTiempo": "Línea de tiempo",
+      "chipCollage": "Collage",
+      "contador": "Llevamos {anios}, {meses} y {dias}",
+      "contadorDesde": "desde el {fecha}",
+      "unidades": {
+        "anios": ["año", "años"],
+        "meses": ["mes", "meses"],
+        "dias": ["día", "días"]
+      },
+      "verFoto": "Ver foto en grande",
+      "fotoAnterior": "Foto anterior",
+      "fotoSiguiente": "Foto siguiente",
+      "irAFoto": "Ir a la foto {numero}",
+      "cerrar": "Cerrar",
+      "fotoDeTotal": "{actual} de {total}",
+      "visor": "Visor de fotos",
+      "reemplazar": "REEMPLAZAR",
+      "faltaFoto": "Falta la foto",
+      "fotoNoEncontrada": "Foto no encontrada",
+      "videoNoEncontrado": "Video no encontrado",
+      "sinMomentos": "Todavía no hay momentos en timeline.json.",
+      "sinFotos": "Todavía no hay fotos en collage.json."
+    }
   }
 }

@@ -6,7 +6,8 @@ Estado actual:
 
 - **Inicio (`/`)** — las 3 tarjetas, funcionando.
 - **Libro (`/libro`)** — terminado: libro digital con tapa dura, curvatura al pasar la hoja, arrastre de esquina, sonido de papel e índice. Ver el **[capítulo 5](#5-el-libro-página-por-página)**.
-- **Juegos (`/juegos`)** y **Nuestra historia (`/historia`)** — todavía solo muestran su título y el botón **Volver al inicio**.
+- **Nuestra historia (`/historia`)** — terminada: contador de tiempo juntos, línea de tiempo animada y collage de fotos con visor a pantalla completa. Ver `timeline.json` y `collage.json` en el **[capítulo 4](#4-los-archivos-de-contenido-uno-por-uno)**.
+- **Juegos (`/juegos`)** — todavía solo muestra su título y el botón **Volver al inicio**.
 - **Música de fondo** — opcional, suena en todas las pantallas y tiene su botón de silencio arriba a la derecha.
 
 Todo lo que se ve en pantalla se lee de `src/content/*.json`: los textos (incluidos los de botones y avisos) y las rutas de fotos, videos y música. Los colores y tipografías salen de `src/styles/tema.js`.
@@ -38,7 +39,7 @@ un archivo en `public/fotos/ana.jpg` se escribe en el JSON como `/fotos/ana.jpg`
 
 | Carpeta | Qué guardas ahí | Cómo lo escribes en el JSON |
 |---|---|---|
-| `public/fotos/` | Fotos del collage, del timeline y de los juegos. También videos cortos. | `/fotos/nombre.jpg`, `/fotos/nombre.mp4` |
+| `public/fotos/` | Fotos del collage, de la línea de tiempo y de los juegos. También los videos de la línea de tiempo y sus portadas. | `/fotos/nombre.jpg`, `/fotos/nombre.mp4` |
 | `public/libro/` | Las imágenes **y los videos** que van **dentro del libro** (fotos, dibujos, portada, videos y sus imágenes de portada). | `/libro/nombre.jpg`, `/libro/nombre.mp4` |
 | `public/audio/` | Música de fondo, notas de voz y el sonido de pasar página (`pagina.mp3`). | `/audio/nombre.mp3` |
 
@@ -51,7 +52,7 @@ Consejos:
 
 ## 4. Los archivos de contenido, uno por uno
 
-Todos están en `src/content/`. Cada uno trae **2-3 entradas de EJEMPLO** marcadas con la palabra `EJEMPLO`.
+Todos están en `src/content/`. Cada uno trae **entradas de ejemplo** marcadas con la palabra `EJEMPLO` o `REEMPLAZAR`.
 Borra las de ejemplo y pon las tuyas, respetando el formato. La clave `_ejemplo` es solo una nota para ti: puedes borrarla.
 
 ### `src/content/pareja.json` — datos generales
@@ -72,15 +73,30 @@ Lo usan el **Inicio**, los títulos de **Juegos** e **Historia**, el botón **Vo
       { "titulo": "Libro", "descripcion": "Para hojear despacio.", "ruta": "/libro" }
     ],
     "juegos": { "titulo": "Juegos" },
-    "historia": { "titulo": "Nuestra historia" }
+    "historia": {
+      "titulo": "Nuestra historia",
+      "subtitulo": "Los momentos que nos trajeron hasta aquí.",
+      "tituloLineaTiempo": "Paso a paso",
+      "tituloCollage": "Nuestro collage",
+      "subtituloCollage": "Toca una foto para verla en grande."
+    }
   },
   "textosInterfaz": {
     "volverInicio": "Volver al inicio",
     "activarMusica": "Activar música",
-    "silenciarMusica": "Silenciar música"
+    "silenciarMusica": "Silenciar música",
+    "historia": {
+      "idiomaFechas": "es-CO",
+      "chipLineaTiempo": "Línea de tiempo",
+      "chipCollage": "Collage",
+      "contador": "Llevamos {anios}, {meses} y {dias}",
+      "contadorDesde": "desde el {fecha}",
+      "unidades": { "anios": ["año", "años"], "meses": ["mes", "meses"], "dias": ["día", "días"] }
+    }
   }
 }
 ```
+(El bloque `textosInterfaz.historia` real tiene más claves; están todas en la tabla de abajo.)
 
 | Campo | Qué es |
 |---|---|
@@ -92,12 +108,30 @@ Lo usan el **Inicio**, los títulos de **Juegos** e **Historia**, el botón **Vo
 | `musicaFondo` | Canción de fondo, en bucle, en todas las pantallas. Archivo en `public/audio/`. Si la dejas como `""` o el archivo no existe, no suena nada y el botón de música no aparece. |
 | `secciones.tarjetas` | Las 3 tarjetas del Inicio: `titulo`, `descripcion` (línea pequeña, opcional) y `ruta` (no la cambies). |
 | `secciones.juegos.titulo`, `secciones.historia.titulo` | Título grande de cada una de esas pantallas. |
+| `secciones.historia.subtitulo` | Frase bajo el título de Nuestra historia (opcional). |
+| `secciones.historia.tituloLineaTiempo`, `tituloCollage`, `subtituloCollage` | Títulos de las dos partes de Nuestra historia. |
 | `textosInterfaz` | Textos del botón **Volver al inicio** y del botón de música (lo que lee un lector de pantalla y sale al pasar el mouse). |
+| `textosInterfaz.historia` | Textos de botones y avisos de **Nuestra historia** (tabla de abajo). |
+
+Las claves de `textosInterfaz.historia`. Cámbialas si quieres otras palabras, pero no borres claves ni las palabras entre llaves (`{anios}`, `{fecha}`, `{actual}`...), que se rellenan solas:
+
+| Clave | Dónde sale |
+|---|---|
+| `idiomaFechas` | Idioma de las fechas (`"es-CO"` → "1 de enero de 2023"). |
+| `chipLineaTiempo`, `chipCollage`, `navegacion` | Los chips de arriba para saltar de sección (y su nombre para lectores de pantalla). |
+| `contador` | La frase del contador. `{anios}`, `{meses}` y `{dias}` se cambian por el número y su palabra. |
+| `unidades` | La palabra en singular y en plural de cada número: `["año", "años"]`. |
+| `contadorDesde` | Línea pequeña bajo el contador. `{fecha}` es `fechaInicio`. |
+| `verFoto`, `fotoAnterior`, `fotoSiguiente`, `irAFoto`, `cerrar`, `visor`, `fotoDeTotal` | Botones del carrusel y del visor de fotos. `fotoDeTotal` es el "2 de 12" del visor. |
+| `reemplazar`, `faltaFoto`, `fotoNoEncontrada`, `videoNoEncontrado` | El recuadro que sale cuando falta una foto o un video. |
+| `sinMomentos`, `sinFotos` | Aviso si `timeline.json` o `collage.json` quedan vacíos. |
 
 Sobre la música: los navegadores no dejan que una página suene sola antes de que la toques. Si no arranca al entrar, empezará con el primer clic o tecla. El botón de la nota musical la silencia o la reanuda, y recuerda tu elección.
 
 ### `src/content/timeline.json` — la línea de tiempo
-Una entrada por momento importante. Van en la página **Nuestra historia**.
+Una entrada por momento importante. Salen en **Nuestra historia** (`/historia`), sobre una línea vertical que se dibuja mientras bajas: en escritorio alternan izquierda y derecha; en celular van todas a un lado. Se **ordenan solas por `fecha`**, así que no importa en qué orden las escribas.
+
+Trae **8 momentos de ejemplo** marcados `REEMPLAZAR`: con una foto, sin foto, con varias fotos (carrusel) y con video.
 
 ```json
 {
@@ -107,44 +141,86 @@ Una entrada por momento importante. Van en la página **Nuestra historia**.
       "fecha": "2023-01-01",
       "titulo": "El día que nos conocimos",
       "texto": "Lo que pasó ese día.",
+      "icono": "estrella",
       "foto": "/fotos/conocernos.jpg",
-      "video": ""
+      "alt": "Nosotros en el café",
+      "marco": "polaroid",
+      "pie": "lo que escribirías al reverso"
+    },
+    {
+      "id": 2,
+      "fecha": "2023-04-08",
+      "titulo": "El primer paseo",
+      "texto": "Varias fotos: salen en un carrusel.",
+      "icono": "camara",
+      "marco": "cinta",
+      "fotos": [
+        { "src": "/fotos/paseo-1.jpg", "alt": "En el parque", "pie": "la primera" },
+        { "src": "/fotos/paseo-2.jpg", "alt": "El atardecer", "pie": "la segunda" }
+      ]
+    },
+    {
+      "id": 3,
+      "fecha": "2023-06-15",
+      "titulo": "Nuestro primer viaje",
+      "texto": "Con video.",
+      "icono": "avion",
+      "video": "/fotos/viaje.mp4",
+      "poster": "/fotos/viaje-portada.jpg"
     }
   ]
 }
 ```
 
-| Campo | Qué es |
-|---|---|
-| `id` | Número único. No repitas ninguno. |
-| `fecha` | `AAAA-MM-DD`. Sirve para ordenar los momentos. |
-| `titulo` | Título corto del momento. |
-| `texto` | El relato. Puede ser largo. |
-| `foto` | Imagen del momento, de `public/fotos/`. |
-| `video` | Opcional. Un `.mp4` de `public/fotos/`. Déjalo como `""` si no hay video. |
+| Campo | ¿Obligatorio? | Qué es |
+|---|---|---|
+| `id` | sí | Número único. No repitas ninguno. |
+| `fecha` | sí | `AAAA-MM-DD`. Sirve para ordenar y se muestra como "1 de enero de 2023". |
+| `fechaTexto` | no | Si lo pones, se muestra **en lugar** de la fecha (por ejemplo `"Navidad 2023"`). El orden sigue saliendo de `fecha`. |
+| `titulo` | sí | Título corto del momento. |
+| `texto` | no | Relato corto (2 o 3 líneas quedan mejor). |
+| `icono` | no | Icono del círculo sobre la línea: `corazon` (por defecto), `estrella`, `anillo`, `avion`, `casa`, `regalo`, `camara`, `musica`. |
+| `foto` | no | **Una** foto, de `public/fotos/`. Con `alt` (descripción) y `pie` (texto bajo la foto) opcionales. |
+| `fotos` | no | **Varias** fotos: lista de `{ "src", "alt", "pie" }`. Salen en un carrusel pequeño (flechas, puntos y deslizar con el dedo). Si pones `fotos`, se ignora `foto`. |
+| `marco` | no | Marco de las fotos: `"polaroid"` (por defecto, borde blanco ancho abajo) o `"cinta"` (borde fino con cinta washi). |
+| `video` | no | Un `.mp4` de `public/fotos/`. Sale con controles y solo se carga cuando llegas a él. Puede ir junto con fotos. |
+| `poster` | no | Imagen que se ve antes de darle play al video. |
+| `animacion` | no | Cómo aparece al bajar: `"desliza"`, `"inclina"` o `"rebota"`. Si no lo pones, se van alternando solos. |
+
+- **Sin foto ni video**: el momento sale solo con su texto.
+- **Tocar una foto** la abre a pantalla completa. Si el momento tiene varias, en el visor puedes pasar de una a otra.
+- **El contador** de arriba ("Llevamos 3 años, 9 meses y 9 días") se calcula solo con `fechaInicio` de `pareja.json`. Si esa fecha está vacía o es futura, no se muestra.
 
 ### `src/content/collage.json` — las fotos del collage
-Una entrada por foto. Va en la página **Nuestra historia**.
+Una entrada por foto. Va al final de **Nuestra historia**. Trae **12 fotos de ejemplo** marcadas `REEMPLAZAR`.
 
 ```json
 {
+  "formaCorazon": false,
+  "textoCentro": "Te amo",
   "fotos": [
-    {
-      "id": 1,
-      "src": "/fotos/playa.jpg",
-      "alt": "Nosotros en la playa",
-      "pie": "Ese atardecer."
-    }
+    { "id": 1, "src": "/fotos/playa.jpg", "alt": "Nosotros en la playa", "pie": "Ese atardecer.", "tamano": "grande", "marco": "polaroid" },
+    { "id": 2, "src": "/fotos/cena.jpg", "alt": "La cena", "pie": "", "marco": "cinta", "rotacion": -3 }
   ]
 }
 ```
 
-| Campo | Qué es |
-|---|---|
-| `id` | Número único. |
-| `src` | Ruta de la foto en `public/fotos/`. |
-| `alt` | Descripción corta (accesibilidad y si la foto no carga). |
-| `pie` | Texto que se muestra con la foto. Puede ir vacío: `""`. |
+| Campo | ¿Obligatorio? | Qué es |
+|---|---|---|
+| `formaCorazon` | no | `true` coloca las fotos formando un **corazón**. `false` (o sin poner) las muestra en mosaico. Con forma de corazón los pies no salen en el collage, solo en el visor. Queda mejor con 8 a 14 fotos; con más, las que sobran forman un segundo corazón por dentro. |
+| `textoCentro` | no | Texto corto en el hueco del medio del corazón (solo con `formaCorazon: true` y hasta 14 fotos). |
+| `fotos[].id` | sí | Número único. |
+| `fotos[].src` | sí | Ruta de la foto en `public/fotos/`. |
+| `fotos[].alt` | no | Descripción corta (accesibilidad). |
+| `fotos[].pie` | no | Texto bajo la foto (en el marco polaroid) y en el visor. Puede ir vacío: `""`. |
+| `fotos[].tamano` | no | Celdas que ocupa en el mosaico: `"normal"` (por defecto), `"ancha"` (2 de ancho), `"alta"` (2 de alto) o `"grande"` (2×2). |
+| `fotos[].marco` | no | `"polaroid"`, `"cinta"` o `"recorte"` (bordes irregulares, como recortada a mano). Si no lo pones, se van alternando. |
+| `fotos[].rotacion` | no | Inclinación en grados (entre `-4` y `4` queda natural). Si no lo pones, cada foto lleva una leve distinta. |
+
+Al pasar el mouse (o tocar) una foto, se **levanta y se endereza**. Al tocarla se abre el **visor**: flechas o ← → del teclado para la anterior y la siguiente, deslizar con el dedo en el celular, y **ESC** o la **X** para cerrar.
+
+### Si falta una foto o un video
+No pasa nada: en su lugar sale un **recuadro rosa a rayas con un corazón**, la palabra `REEMPLAZAR` y la ruta del archivo que falta, para que sepas qué archivo poner y con qué nombre. Todas las fotos cargan de forma perezosa (solo cuando te acercas a ellas).
 
 ### `src/content/libro.json` — el libro que se hojea
 Es el archivo más grande y tiene su propio capítulo: **[5. El libro, página por página](#5-el-libro-página-por-página)**.
@@ -430,12 +506,17 @@ src/
   pages/      ← una pantalla por ruta
     Inicio.jsx      → /          (las 3 tarjetas, ya funciona)
     Juegos.jsx      → /juegos    (placeholder con título y botón volver)
-    Historia.jsx    → /historia  (placeholder con título y botón volver)
+    Historia.jsx    → /historia  (contador, línea de tiempo y collage)
     Libro.jsx       → /libro     (terminado)
   components/
     comun/      ← piezas de toda la app
       MusicaFondo.jsx     ← música de fondo y su botón de silencio
       VolverInicio.jsx    ← botón "Volver al inicio"
+      BarraSecciones.jsx  ← chips para saltar entre secciones de una página
+      Lightbox.jsx        ← visor de fotos a pantalla completa
+      FotoSegura.jsx      ← foto perezosa con recuadro REEMPLAZAR si falta
+      textosHistoria.js   ← lee textosInterfaz.historia de pareja.json
+      usePantallaAncha.js ← ¿celular o escritorio?
     libro/      ← el libro digital, terminado
       Libro.jsx           ← arma el libro y lo navega
       Pagina.jsx          ← una hoja; reparte según el "tipo"
@@ -460,12 +541,22 @@ src/
       textos.js           ← lee textosInterfaz de libro.json
       useSonidoPagina.js  ← sonido de papel
       util.js
-    timeline/   ← vacías, para las siguientes secciones
-    collage/
-    juegos/
+    timeline/   ← línea de tiempo de Nuestra historia
+      LineaTiempo.jsx     ← ordena los momentos y dibuja la línea al bajar
+      Hito.jsx            ← un momento: nodo, fecha, tarjeta y animación
+      MediaHito.jsx       ← foto con marco, carrusel y video
+      ContadorPareja.jsx  ← "Llevamos X años, X meses y X días"
+      IconoHito.jsx       ← iconos del nodo
+      fechas.js
+    collage/    ← collage de Nuestra historia
+      Collage.jsx         ← mosaico o forma de corazón
+      FotoCollage.jsx     ← una foto con su marco
+      posicionesCorazon.js
+    juegos/     ← vacía, para la siguiente sección
   styles/
     tema.js     ← COLORES Y TIPOGRAFÍAS. Edita aquí.
     libro.css   ← papel, pliegue, tapa, washi tape
+    historia.css ← marcos del collage, recorte y visor de fotos
     index.css   ← Tailwind, font-romantica y estilos globales
   App.jsx       ← las 4 rutas, el comodín y la música de fondo
   main.jsx      ← arranque de la app (aplica el tema a todo)
@@ -480,7 +571,7 @@ index.html
 |---|---|
 | `/` | Inicio — 3 tarjetas con animación de entrada |
 | `/juegos` | Juegos |
-| `/historia` | Nuestra historia |
+| `/historia` | Nuestra historia — contador, línea de tiempo y collage |
 | `/libro` | Libro digital con efecto de pasar páginas |
 | cualquier otra | Vuelve al Inicio |
 

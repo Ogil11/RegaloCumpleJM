@@ -1,23 +1,19 @@
 {
-  "_ejemplo": "EJEMPLO - REEMPLAZAR: una entrada por cada foto del collage.",
+  "_ejemplo": "REEMPLAZAR: estas 12 fotos son de ejemplo. Una entrada por foto, con el mismo formato. Pon \"formaCorazon\": true para que el collage forme un corazón. El formato completo está en el README.",
+  "formaCorazon": false,
+  "textoCentro": "REEMPLAZAR - Te amo",
   "fotos": [
-    {
-      "id": 1,
-      "src": "/fotos/ejemplo-collage-1.jpg",
-      "alt": "EJEMPLO - Descripción corta de la foto",
-      "pie": "EJEMPLO - Texto que aparece debajo de la foto"
-    },
-    {
-      "id": 2,
-      "src": "/fotos/ejemplo-collage-2.jpg",
-      "alt": "EJEMPLO - Descripción corta de la foto",
-      "pie": "EJEMPLO - Texto que aparece debajo de la foto"
-    },
-    {
-      "id": 3,
-      "src": "/fotos/ejemplo-collage-3.jpg",
-      "alt": "EJEMPLO - Descripción corta de la foto",
-      "pie": "EJEMPLO - Texto que aparece debajo de la foto"
-    }
+    { "id": 1, "src": "/fotos/ejemplo-collage-1.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 1", "tamano": "grande", "marco": "polaroid" },
+    { "id": 2, "src": "/fotos/ejemplo-collage-2.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 2", "marco": "cinta" },
+    { "id": 3, "src": "/fotos/ejemplo-collage-3.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 3", "tamano": "alta", "marco": "recorte" },
+    { "id": 4, "src": "/fotos/ejemplo-collage-4.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 4", "marco": "polaroid" },
+    { "id": 5, "src": "/fotos/ejemplo-collage-5.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 5", "tamano": "ancha", "marco": "cinta" },
+    { "id": 6, "src": "/fotos/ejemplo-collage-6.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 6", "marco": "recorte", "rotacion": 4 },
+    { "id": 7, "src": "/fotos/ejemplo-collage-7.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 7", "marco": "polaroid" },
+    { "id": 8, "src": "/fotos/ejemplo-collage-8.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 8", "tamano": "alta", "marco": "cinta" },
+    { "id": 9, "src": "/fotos/ejemplo-collage-9.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 9", "marco": "recorte" },
+    { "id": 10, "src": "/fotos/ejemplo-collage-10.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 10", "tamano": "grande", "marco": "cinta" },
+    { "id": 11, "src": "/fotos/ejemplo-collage-11.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 11", "marco": "polaroid", "rotacion": -4 },
+    { "id": 12, "src": "/fotos/ejemplo-collage-12.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 12", "tamano": "ancha", "marco": "recorte" }
   ]
 }

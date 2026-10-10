@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./libro.css";
+@import "./historia.css";
 
 /* font-romantica = la fuente de titulos de tema.js. La variable
    --lib-fuente-titulos la pone aplicarTemaGlobal() en main.jsx. */

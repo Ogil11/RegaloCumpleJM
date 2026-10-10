@@ -1,29 +1,87 @@
 {
-  "_ejemplo": "EJEMPLO - REEMPLAZAR: borra estas 3 entradas y pon las reales. Mantén el mismo formato.",
+  "_ejemplo": "REEMPLAZAR: estos 8 momentos son de ejemplo. Borra los que no quieras y pon los reales con el mismo formato. Se ordenan solos por fecha. El formato completo está en el README.",
   "momentos": [
     {
       "id": 1,
       "fecha": "2023-01-01",
-      "titulo": "EJEMPLO - El día que nos conocimos",
-      "texto": "EJEMPLO - Describe aquí qué pasó ese día y qué sentiste.",
-      "foto": "/fotos/ejemplo-1.jpg",
-      "video": ""
+      "titulo": "REEMPLAZAR - El día que nos conocimos",
+      "texto": "REEMPLAZAR - Cuenta en dos o tres líneas qué pasó ese día y qué sentiste.",
+      "icono": "estrella",
+      "foto": "/fotos/ejemplo-timeline-1.jpg",
+      "alt": "REEMPLAZAR - Descripción de la foto",
+      "marco": "polaroid",
+      "pie": "REEMPLAZAR - lo que escribirías al reverso"
     },
     {
       "id": 2,
-      "fecha": "2023-06-15",
-      "titulo": "EJEMPLO - Nuestro primer viaje",
-      "texto": "EJEMPLO - Cuenta la anécdota de ese viaje.",
-      "foto": "/fotos/ejemplo-2.jpg",
-      "video": ""
+      "fecha": "2023-02-14",
+      "titulo": "REEMPLAZAR - Nuestra primera cita",
+      "texto": "REEMPLAZAR - Este momento no tiene foto: así se ve un hito solo con texto.",
+      "icono": "corazon"
     },
     {
       "id": 3,
-      "fecha": "2024-02-14",
-      "titulo": "EJEMPLO - Un momento que no olvido",
-      "texto": "EJEMPLO - Puedes dejar 'video' vacío o poner /fotos/mi-video.mp4",
-      "foto": "/fotos/ejemplo-3.jpg",
-      "video": "/fotos/ejemplo-video.mp4"
+      "fecha": "2023-04-08",
+      "titulo": "REEMPLAZAR - El primer paseo juntos",
+      "texto": "REEMPLAZAR - Este momento tiene varias fotos: salen en un carrusel pequeño.",
+      "icono": "camara",
+      "marco": "cinta",
+      "fotos": [
+        { "src": "/fotos/ejemplo-timeline-3a.jpg", "alt": "REEMPLAZAR - Primera foto", "pie": "REEMPLAZAR - pie de la primera foto" },
+        { "src": "/fotos/ejemplo-timeline-3b.jpg", "alt": "REEMPLAZAR - Segunda foto", "pie": "REEMPLAZAR - pie de la segunda foto" },
+        { "src": "/fotos/ejemplo-timeline-3c.jpg", "alt": "REEMPLAZAR - Tercera foto", "pie": "REEMPLAZAR - pie de la tercera foto" }
+      ]
+    },
+    {
+      "id": 4,
+      "fecha": "2023-06-15",
+      "titulo": "REEMPLAZAR - Nuestro primer viaje",
+      "texto": "REEMPLAZAR - Este momento tiene un video. Pon el .mp4 en public/fotos/.",
+      "icono": "avion",
+      "video": "/fotos/ejemplo-timeline-4.mp4",
+      "poster": "/fotos/ejemplo-timeline-4-portada.jpg"
+    },
+    {
+      "id": 5,
+      "fecha": "2023-12-24",
+      "fechaTexto": "REEMPLAZAR - Navidad 2023",
+      "titulo": "REEMPLAZAR - La primera Navidad",
+      "texto": "REEMPLAZAR - Con \"fechaTexto\" puedes mostrar la fecha como quieras sin perder el orden.",
+      "icono": "regalo",
+      "foto": "/fotos/ejemplo-timeline-5.jpg",
+      "alt": "REEMPLAZAR - Descripción de la foto",
+      "marco": "cinta"
+    },
+    {
+      "id": 6,
+      "fecha": "2024-03-10",
+      "titulo": "REEMPLAZAR - Nuestra canción",
+      "texto": "REEMPLAZAR - Otro momento sin foto, con un icono distinto en la línea.",
+      "icono": "musica",
+      "animacion": "rebota"
+    },
+    {
+      "id": 7,
+      "fecha": "2024-09-01",
+      "titulo": "REEMPLAZAR - Un fin de semana inolvidable",
+      "texto": "REEMPLAZAR - Dos fotos en carrusel con marco polaroid.",
+      "icono": "casa",
+      "marco": "polaroid",
+      "fotos": [
+        { "src": "/fotos/ejemplo-timeline-7a.jpg", "alt": "REEMPLAZAR - Primera foto", "pie": "REEMPLAZAR - pie de la primera foto" },
+        { "src": "/fotos/ejemplo-timeline-7b.jpg", "alt": "REEMPLAZAR - Segunda foto", "pie": "REEMPLAZAR - pie de la segunda foto" }
+      ]
+    },
+    {
+      "id": 8,
+      "fecha": "2025-01-01",
+      "titulo": "REEMPLAZAR - Dos años juntos",
+      "texto": "REEMPLAZAR - El último momento de la línea. Puedes añadir todos los que quieras.",
+      "icono": "anillo",
+      "foto": "/fotos/ejemplo-timeline-8.jpg",
+      "alt": "REEMPLAZAR - Descripción de la foto",
+      "marco": "polaroid",
+      "pie": "REEMPLAZAR - y lo que falta"
     }
   ]
 }

@@ -1,0 +1,59 @@
+/*
+ * Estilos de la pagina Nuestra historia (linea de tiempo y collage).
+ * Todos los colores vienen de las variables --lib-* de src/styles/tema.js.
+ * No pongas colores fijos aquí: edita tema.js.
+ */
+
+/* Fondo del recuadro REEMPLAZAR (las rayas van encima, en .lib-marcador). */
+.hist-reemplazo {
+  background-color: var(--lib-papel-alterno);
+}
+
+/* Marco blanco fino con cinta washi */
+.hist-marco-cinta {
+  background: var(--lib-marco-polaroid);
+  box-shadow:
+    0 2px 3px color-mix(in srgb, var(--lib-sombra-base) 18%, transparent),
+    0 8px 18px color-mix(in srgb, var(--lib-sombra-base) 20%, transparent);
+}
+
+/* La sombra crece cuando la foto se levanta */
+.hist-levanta {
+  transition: box-shadow 0.3s ease;
+}
+.group:hover .hist-levanta,
+.group:focus-visible .hist-levanta {
+  box-shadow:
+    0 4px 6px color-mix(in srgb, var(--lib-sombra-base) 18%, transparent),
+    0 22px 40px color-mix(in srgb, var(--lib-sombra-base) 32%, transparent);
+}
+
+/* Foto "recortada" a mano: bordes irregulares.
+   La sombra va en el padre porque clip-path recorta las sombras. */
+.hist-recorte {
+  clip-path: polygon(
+    0% 2%, 6% 0%, 13% 1.6%, 20% 0.4%, 28% 2%, 35% 0%, 43% 1.4%, 51% 0.2%, 58% 1.8%, 66% 0.3%, 74% 1.7%, 81% 0%, 89% 1.5%, 95% 0.2%, 100% 1.8%,
+    98.4% 8%, 100% 15%, 98.6% 23%, 99.8% 31%, 98.2% 39%, 100% 47%, 98.5% 55%, 99.7% 63%, 98.3% 71%, 100% 79%, 98.6% 87%, 99.8% 94%, 98.5% 100%,
+    92% 98.3%, 85% 100%, 77% 98.5%, 69% 99.8%, 61% 98.2%, 53% 100%, 45% 98.4%, 37% 99.7%, 29% 98.3%, 21% 100%, 13% 98.5%, 6% 99.8%, 0% 98.4%,
+    1.6% 92%, 0% 84%, 1.4% 76%, 0.2% 68%, 1.8% 60%, 0% 52%, 1.5% 44%, 0.3% 36%, 1.7% 28%, 0% 20%, 1.4% 12%, 0.2% 6%
+  );
+}
+.hist-recorte-sombra {
+  filter: drop-shadow(0 6px 10px color-mix(in srgb, var(--lib-sombra-base) 28%, transparent));
+  transition: filter 0.3s ease;
+}
+.group:hover .hist-recorte-sombra,
+.group:focus-visible .hist-recorte-sombra {
+  filter: drop-shadow(0 18px 22px color-mix(in srgb, var(--lib-sombra-base) 36%, transparent));
+}
+
+/* Fondo oscuro del visor de fotos */
+.hist-visor {
+  background: color-mix(in srgb, var(--lib-tapa-oscura) 92%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+/* Las secciones dejan sitio a la barra de chips al saltar. */
+.hist-seccion {
+  scroll-margin-top: 7rem;
+}
