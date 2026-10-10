@@ -1,0 +1,23 @@
+{
+  "_ejemplo": "EJEMPLO - REEMPLAZAR: una entrada por cada foto del collage.",
+  "fotos": [
+    {
+      "id": 1,
+      "src": "/fotos/ejemplo-collage-1.jpg",
+      "alt": "EJEMPLO - Descripción corta de la foto",
+      "pie": "EJEMPLO - Texto que aparece debajo de la foto"
+    },
+    {
+      "id": 2,
+      "src": "/fotos/ejemplo-collage-2.jpg",
+      "alt": "EJEMPLO - Descripción corta de la foto",
+      "pie": "EJEMPLO - Texto que aparece debajo de la foto"
+    },
+    {
+      "id": 3,
+      "src": "/fotos/ejemplo-collage-3.jpg",
+      "alt": "EJEMPLO - Descripción corta de la foto",
+      "pie": "EJEMPLO - Texto que aparece debajo de la foto"
+    }
+  ]
+}

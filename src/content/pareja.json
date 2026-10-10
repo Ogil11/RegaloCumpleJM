@@ -1,0 +1,39 @@
+{
+  "_ejemplo": "EJEMPLO - REEMPLAZAR: todos los valores de este archivo son de ejemplo.",
+  "nombre": "EJEMPLO - Nombre de ella",
+  "frase": "EJEMPLO - Aquí va la frase que resume lo que sienten. Reemplázala.",
+  "fechaInicio": "2023-01-01",
+  "fotoPortada": "/fotos/ejemplo-portada.jpg",
+  "fotoPortadaAlt": "EJEMPLO - Descripción corta de la foto principal",
+  "musicaFondo": "/audio/ejemplo-cancion.mp3",
+  "secciones": {
+    "tarjetas": [
+      {
+        "titulo": "Juegos",
+        "descripcion": "EJEMPLO - Trivia, memoria y cartas sorpresa.",
+        "ruta": "/juegos"
+      },
+      {
+        "titulo": "Nuestra historia",
+        "descripcion": "EJEMPLO - Los momentos que nos trajeron hasta aquí.",
+        "ruta": "/historia"
+      },
+      {
+        "titulo": "Libro",
+        "descripcion": "EJEMPLO - Un libro para hojear despacio.",
+        "ruta": "/libro"
+      }
+    ],
+    "juegos": {
+      "titulo": "Juegos"
+    },
+    "historia": {
+      "titulo": "Nuestra historia"
+    }
+  },
+  "textosInterfaz": {
+    "volverInicio": "Volver al inicio",
+    "activarMusica": "Activar música",
+    "silenciarMusica": "Silenciar música"
+  }
+}

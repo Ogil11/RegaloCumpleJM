@@ -1,0 +1,230 @@
+/*
+ * Estilos del libro. Todos los colores y fuentes vienen de las
+ * variables --lib-* que genera src/styles/tema.js.
+ * No pongas colores fijos aquí: edita tema.js.
+ */
+
+/* ---------- Escena ---------- */
+.lib-escena {
+  background:
+    radial-gradient(130% 100% at 50% 0%, var(--lib-fondo) 0%, var(--lib-fondo-profundo) 100%);
+}
+
+/* ---------- Papel ---------- */
+.lib-papel {
+  background-color: var(--lib-papel);
+  background-image:
+    repeating-linear-gradient(0deg, color-mix(in srgb, var(--lib-sombra-base) 1.6%, transparent) 0 1px, transparent 1px 4px),
+    radial-gradient(120% 90% at 18% 8%, color-mix(in srgb, var(--lib-brillo) 60%, transparent), transparent 62%),
+    radial-gradient(95% 75% at 88% 94%, color-mix(in srgb, var(--lib-sombra-base) 7%, transparent), transparent 60%);
+}
+
+.lib-papel-alterno {
+  background-color: var(--lib-papel-alterno);
+}
+
+/* Fibra del papel: ruido muy sutil generado con SVG.
+   Va en un div propio (no en ::after) para no chocar con el pliegue. */
+.lib-textura {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.09'/%3E%3C/svg%3E");
+}
+
+/* ---------- Hoja y pliegue central ---------- */
+.lib-hoja {
+  background-color: var(--lib-papel);
+  overflow: hidden;
+}
+
+/* container-type permite que los textos escalen con el ancho de la
+   pagina (unidades cqw), asi el libro se lee igual en celular. */
+.lib-hoja-interior {
+  container-type: inline-size;
+  overflow: hidden;
+}
+
+/* Sombra del pliegue: para una página derecha el lomo queda a su izquierda. */
+.lib-pliegue-der::before,
+.lib-pliegue-izq::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 13%;
+  max-width: 64px;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.lib-pliegue-der::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--lib-sombra-pliegue) 0%,
+    color-mix(in srgb, var(--lib-sombra-base) 8%, transparent) 42%,
+    transparent 100%
+  );
+}
+
+.lib-pliegue-izq::before {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--lib-sombra-pliegue) 0%,
+    color-mix(in srgb, var(--lib-sombra-base) 8%, transparent) 42%,
+    transparent 100%
+  );
+}
+
+/* En celular (una sola página) el pliegue es simétrico y más suave. */
+.lib-pliegue-unica::before,
+.lib-pliegue-unica::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 7%;
+  pointer-events: none;
+  z-index: 20;
+}
+.lib-pliegue-unica::before {
+  left: 0;
+  background: linear-gradient(to right, color-mix(in srgb, var(--lib-sombra-base) 14%, transparent), transparent);
+}
+.lib-pliegue-unica::after {
+  right: 0;
+  background: linear-gradient(to left, color-mix(in srgb, var(--lib-sombra-base) 10%, transparent), transparent);
+}
+
+/* ---------- Tapa dura ---------- */
+.lib-tapa {
+  background-color: var(--lib-tapa);
+  background-image:
+    linear-gradient(135deg, var(--lib-tapa-clara) 0%, var(--lib-tapa) 45%, var(--lib-tapa-oscura) 100%),
+    repeating-linear-gradient(42deg, color-mix(in srgb, var(--lib-sombra-tapa) 5%, transparent) 0 2px, transparent 2px 5px);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--lib-sombra-tapa) 25%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--lib-brillo) 16%, transparent);
+}
+
+/* Filete dorado de la tapa. */
+.lib-filete {
+  border: 1px solid color-mix(in srgb, var(--lib-tapa-filete) 70%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--lib-sombra-tapa) 12%, transparent),
+    inset 0 0 18px color-mix(in srgb, var(--lib-sombra-tapa) 18%, transparent);
+}
+
+/* Lomo: franja oscura pegada al canto interior de la tapa. */
+.lib-lomo-der {
+  background: linear-gradient(
+    to right,
+    var(--lib-lomo) 0%,
+    color-mix(in srgb, var(--lib-lomo) 70%, var(--lib-sombra-tapa)) 55%,
+    color-mix(in srgb, var(--lib-sombra-tapa) 50%, transparent) 100%
+  );
+}
+.lib-lomo-izq {
+  background: linear-gradient(
+    to left,
+    var(--lib-lomo) 0%,
+    color-mix(in srgb, var(--lib-lomo) 70%, var(--lib-sombra-tapa)) 55%,
+    color-mix(in srgb, var(--lib-sombra-tapa) 50%, transparent) 100%
+  );
+}
+
+/* ---------- Canto del bloque de hojas ---------- */
+.lib-canto-izq,
+.lib-canto-der {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--lib-papel) 0 1px,
+    var(--lib-papel-borde) 1px 2px,
+    color-mix(in srgb, var(--lib-sombra-base) 14%, transparent) 2px 3px
+  );
+}
+.lib-canto-izq {
+  box-shadow: inset -3px 0 6px color-mix(in srgb, var(--lib-sombra-base) 30%, transparent);
+}
+.lib-canto-der {
+  box-shadow: inset 3px 0 6px color-mix(in srgb, var(--lib-sombra-base) 30%, transparent);
+}
+
+/* Sombra del libro sobre la mesa. */
+.lib-sombra-suelo {
+  background: radial-gradient(
+    60% 50% at 50% 50%,
+    color-mix(in srgb, var(--lib-sombra-base) 42%, transparent) 0%,
+    color-mix(in srgb, var(--lib-sombra-base) 16%, transparent) 45%,
+    transparent 75%
+  );
+  filter: blur(6px);
+}
+
+/* ---------- Washi tape ---------- */
+.lib-washi {
+  background-image:
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--lib-brillo) 35%, transparent) 0 4px, transparent 4px 9px);
+  box-shadow: 0 1px 3px color-mix(in srgb, var(--lib-sombra-base) 22%, transparent);
+  opacity: 0.88;
+}
+
+/* ---------- Polaroid ---------- */
+.lib-polaroid {
+  background: var(--lib-marco-polaroid);
+  box-shadow:
+    0 2px 3px color-mix(in srgb, var(--lib-sombra-base) 20%, transparent),
+    0 10px 20px color-mix(in srgb, var(--lib-sombra-base) 22%, transparent);
+}
+
+/* ---------- Hoja de carta ---------- */
+.lib-carta {
+  background-color: var(--lib-papel-carta);
+  box-shadow:
+    0 2px 4px color-mix(in srgb, var(--lib-sombra-base) 14%, transparent),
+    0 10px 22px color-mix(in srgb, var(--lib-sombra-base) 16%, transparent);
+}
+
+/* ---------- Marcador de archivo que falta ---------- */
+.lib-marcador {
+  background-image: repeating-linear-gradient(
+    45deg,
+    color-mix(in srgb, var(--lib-rosa) 10%, transparent) 0 10px,
+    color-mix(in srgb, var(--lib-rosa) 2%, transparent) 10px 20px
+  );
+  border: 2px dashed color-mix(in srgb, var(--lib-rosa) 65%, transparent);
+}
+
+/* ---------- Tipografía ---------- */
+.lib-titulo {
+  font-family: var(--lib-fuente-titulos);
+}
+.lib-mano {
+  font-family: var(--lib-fuente-manuscrita);
+}
+.lib-cuerpo {
+  font-family: var(--lib-fuente-texto);
+}
+
+/* Cortes de línea bonitos en textos largos. */
+.lib-cuerpo p {
+  text-wrap: pretty;
+  hyphens: auto;
+}
+
+/* ---------- Varios ---------- */
+/* La barra de herramientas no debe iniciar un paso de página. */
+.lib-sin-flip {
+  touch-action: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lib-escena * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

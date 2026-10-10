@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@import "./libro.css";
+
+/* font-romantica = la fuente de titulos de tema.js. La variable
+   --lib-fuente-titulos la pone aplicarTemaGlobal() en main.jsx. */
+@theme inline {
+  --font-romantica: var(--lib-fuente-titulos);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+/* Fondo y tinta salen de tema.colores (fondo y tinta). */
+body {
+  margin: 0;
+  background-color: var(--lib-fondo);
+  color: var(--lib-tinta);
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}

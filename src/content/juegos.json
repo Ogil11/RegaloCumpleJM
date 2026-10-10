@@ -1,0 +1,34 @@
+{
+  "_ejemplo": "EJEMPLO - REEMPLAZAR: cada objeto de 'juegos' es una tarjeta de juego.",
+  "juegos": [
+    {
+      "id": 1,
+      "tipo": "trivia",
+      "titulo": "EJEMPLO - ¿Cuánto me conoces?",
+      "descripcion": "EJEMPLO - Preguntas sobre nosotros.",
+      "preguntas": [
+        {
+          "pregunta": "EJEMPLO - ¿Dónde fue nuestra primera cita?",
+          "opciones": ["EJEMPLO - Opción A", "EJEMPLO - Opción B", "EJEMPLO - Opción C"],
+          "respuestaCorrecta": 0
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "tipo": "memoria",
+      "titulo": "EJEMPLO - Memoria de fotos",
+      "descripcion": "EJEMPLO - Encuentra las parejas de fotos.",
+      "fotos": ["/fotos/ejemplo-1.jpg", "/fotos/ejemplo-2.jpg"]
+    },
+    {
+      "id": 3,
+      "tipo": "cartas",
+      "titulo": "EJEMPLO - Cartas sorpresa",
+      "descripcion": "EJEMPLO - Abre una carta al azar.",
+      "cartas": [
+        { "titulo": "EJEMPLO - Para cuando estés triste", "texto": "EJEMPLO - Mensaje dentro de la carta." }
+      ]
+    }
+  ]
+}
