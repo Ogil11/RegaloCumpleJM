@@ -7,7 +7,7 @@ Estado actual:
 - **Inicio (`/`)** — las 3 tarjetas, funcionando.
 - **Libro (`/libro`)** — terminado: libro digital con tapa dura, curvatura al pasar la hoja, arrastre de esquina, sonido de papel e índice. Ver el **[capítulo 5](#5-el-libro-página-por-página)**.
 - **Nuestra historia (`/historia`)** — terminada: contador de tiempo juntos, línea de tiempo animada y collage de fotos con visor a pantalla completa. Ver `timeline.json` y `collage.json` en el **[capítulo 4](#4-los-archivos-de-contenido-uno-por-uno)**.
-- **Juegos (`/juegos`)** — todavía solo muestra su título y el botón **Volver al inicio**.
+- **Juegos (`/juegos`)** — terminado: menú con 6 minijuegos (memorama, ¿cuánto me conoces?, rompecabezas, ruleta de citas y retos, cartas para abrir y frases del amor), celebración al ganar y sonidos opcionales. Ver `juegos.json` en el **[capítulo 4](#4-los-archivos-de-contenido-uno-por-uno)**.
 - **Música de fondo** — opcional, suena en todas las pantallas y tiene su botón de silencio arriba a la derecha.
 
 Todo lo que se ve en pantalla se lee de `src/content/*.json`: los textos (incluidos los de botones y avisos) y las rutas de fotos, videos y música. Los colores y tipografías salen de `src/styles/tema.js`.
@@ -41,7 +41,7 @@ un archivo en `public/fotos/ana.jpg` se escribe en el JSON como `/fotos/ana.jpg`
 |---|---|---|
 | `public/fotos/` | Fotos del collage, de la línea de tiempo y de los juegos. También los videos de la línea de tiempo y sus portadas. | `/fotos/nombre.jpg`, `/fotos/nombre.mp4` |
 | `public/libro/` | Las imágenes **y los videos** que van **dentro del libro** (fotos, dibujos, portada, videos y sus imágenes de portada). | `/libro/nombre.jpg`, `/libro/nombre.mp4` |
-| `public/audio/` | Música de fondo, notas de voz y el sonido de pasar página (`pagina.mp3`). | `/audio/nombre.mp3` |
+| `public/audio/` | Música de fondo, notas de voz, el sonido de pasar página (`pagina.mp3`) y los sonidos de los juegos (en `public/audio/juegos/`). | `/audio/nombre.mp3` |
 
 Consejos:
 - Usa nombres **sin espacios ni tildes**: `primer-viaje.jpg`, no `Primer Viaje ñ.jpg`.
@@ -108,10 +108,11 @@ Lo usan el **Inicio**, los títulos de **Juegos** e **Historia**, el botón **Vo
 | `musicaFondo` | Canción de fondo, en bucle, en todas las pantallas. Archivo en `public/audio/`. Si la dejas como `""` o el archivo no existe, no suena nada y el botón de música no aparece. |
 | `secciones.tarjetas` | Las 3 tarjetas del Inicio: `titulo`, `descripcion` (línea pequeña, opcional) y `ruta` (no la cambies). |
 | `secciones.juegos.titulo`, `secciones.historia.titulo` | Título grande de cada una de esas pantallas. |
-| `secciones.historia.subtitulo` | Frase bajo el título de Nuestra historia (opcional). |
+| `secciones.historia.subtitulo`, `secciones.juegos.subtitulo` | Frase bajo el título de Nuestra historia y de Juegos (opcional). |
 | `secciones.historia.tituloLineaTiempo`, `tituloCollage`, `subtituloCollage` | Títulos de las dos partes de Nuestra historia. |
 | `textosInterfaz` | Textos del botón **Volver al inicio** y del botón de música (lo que lee un lector de pantalla y sale al pasar el mouse). |
 | `textosInterfaz.historia` | Textos de botones y avisos de **Nuestra historia** (tabla de abajo). |
+| `textosInterfaz.juegos` | Textos de botones, marcadores y avisos de **Juegos**: uno general (`volverMenu`, `jugarOtraVez`, sonidos...) y un bloque por juego (`memorama`, `quiz`, `rompecabezas`, `ruleta`, `cartas`, `frases`). Igual que arriba: no borres las palabras entre llaves (`{n}`, `{total}`, `{actual}`...). |
 
 Las claves de `textosInterfaz.historia`. Cámbialas si quieres otras palabras, pero no borres claves ni las palabras entre llaves (`{anios}`, `{fecha}`, `{actual}`...), que se rellenan solas:
 
@@ -226,44 +227,133 @@ No pasa nada: en su lugar sale un **recuadro rosa a rayas con un corazón**, la 
 Es el archivo más grande y tiene su propio capítulo: **[5. El libro, página por página](#5-el-libro-página-por-página)**.
 
 ### `src/content/juegos.json` — los juegos
-Cada objeto de `juegos` es un juego. El campo `tipo` define cómo se juega.
+La página **Juegos (`/juegos`)** muestra un menú con una tarjeta por juego. Cada juego se abre en la misma página (sin recargar) y tiene su botón **Volver a los juegos**; el botón **Atrás** del celular también vuelve al menú.
+El archivo trae **un ejemplo de cada juego** marcado `REEMPLAZAR`. Los textos de botones y avisos de los juegos ("Girar", "Intentos: {n}"...) están en `pareja.json` → `textosInterfaz.juegos`, y el título y subtítulo de la página en `pareja.json` → `secciones.juegos`.
 
 ```json
 {
+  "sonidos": { "voltear": "/audio/juegos/voltear.mp3", "acierto": "...", "error": "...", "victoria": "...", "ruleta": "...", "abrir": "..." },
   "juegos": [
-    {
-      "id": 1,
-      "tipo": "trivia",
-      "titulo": "¿Cuánto me conoces?",
-      "descripcion": "Preguntas sobre nosotros.",
-      "preguntas": [
-        {
-          "pregunta": "¿Dónde fue nuestra primera cita?",
-          "opciones": ["En el cine", "En el parque", "En tu casa"],
-          "respuestaCorrecta": 1
-        }
-      ]
-    }
+    { "id": "memorama", "tipo": "memorama", "icono": "cartas", "titulo": "Memorama", "descripcion": "Encuentra las parejas." }
   ]
 }
 ```
 
-Campos comunes a todos los juegos:
+**Campos comunes a todos los juegos:**
 
-| Campo | Qué es |
-|---|---|
-| `id` | Número único. |
-| `tipo` | `"trivia"`, `"memoria"` o `"cartas"`. |
-| `titulo` | Nombre del juego en la tarjeta. |
-| `descripcion` | Línea corta que explica el juego. |
+| Campo | ¿Obligatorio? | Qué es |
+|---|---|---|
+| `id` | sí | Texto o número **único**. Sale en la dirección: `/juegos?juego=memorama`. |
+| `tipo` | sí | Cómo se juega: `memorama`, `quiz`, `rompecabezas`, `ruleta`, `cartas` o `frases`. |
+| `titulo` | sí | Nombre en la tarjeta del menú y arriba del juego. |
+| `descripcion` | no | Línea corta bajo el nombre en el menú. |
+| `icono` | no | `cartas`, `pregunta`, `rompecabezas`, `ruleta`, `sobre`, `pluma`, `corazon` o `estrella`. Si no lo pones, se usa el del tipo. |
 
-Campos según el `tipo`:
+El **orden** de la lista `juegos` es el orden del menú. Para quitar un juego, borra su objeto.
 
-- **`trivia`** → `preguntas`: lista de `{ pregunta, opciones, respuestaCorrecta }`.
-  `respuestaCorrecta` es la **posición** de la opción correcta empezando en **0**
-  (`0` = la primera, `1` = la segunda, `2` = la tercera).
-- **`memoria`** → `fotos`: lista de rutas de `public/fotos/`. Cada foto se duplica para formar la pareja.
-- **`cartas`** → `cartas`: lista de `{ titulo, texto }`. Cada una es una carta que se abre.
+#### Dónde van las fotos y los sonidos de los juegos
+- **Fotos** → `public/fotos/`, y en el JSON como `/fotos/nombre.jpg` (memorama y rompecabezas).
+  Si una foto falta, sale el recuadro rosa de **REEMPLAZAR**; en el memorama lleva un **número** grande y en el rompecabezas cada pieza muestra su número, así los juegos se pueden probar sin fotos.
+- **Sonidos** (opcionales) → `public/audio/juegos/` y sus rutas en `sonidos`. Hay un botón para silenciarlos arriba a la derecha. Si un archivo no existe, ese sonido simplemente no suena; nada falla.
+
+#### `memorama` — parejas de fotos
+```json
+{
+  "id": "memorama", "tipo": "memorama", "titulo": "Memorama",
+  "instrucciones": "Voltea dos cartas...",
+  "fotos": [ { "src": "/fotos/memorama-1.jpg", "alt": "Nuestra primera foto" }, "/fotos/memorama-2.jpg" ],
+  "victoria": { "titulo": "¡Las encontraste todas!", "texto": "Mensaje romántico al ganar." }
+}
+```
+- `fotos`: cada foto sale **dos veces**. Con 6 fotos hay 12 cartas (queda muy bien en celular); de 4 a 10 fotos funciona bien. Puede ser solo la ruta o `{ "src", "alt" }`.
+- `victoria`: título y texto del mensaje final. Al ganar hay lluvia de corazones y se muestran los intentos.
+
+#### `quiz` — ¿Cuánto me conoces?
+```json
+{
+  "id": "quiz", "tipo": "quiz", "titulo": "¿Cuánto me conoces?",
+  "preguntas": [
+    {
+      "pregunta": "¿Dónde fue nuestra primera cita?",
+      "opciones": ["En el cine", "En un café", "En el parque"],
+      "respuestaCorrecta": 1,
+      "siAcierta": "¡Exacto!",
+      "siFalla": "Nooo, fue en el café."
+    }
+  ],
+  "frasesAcierto": ["¡Bien!", "¡Me conoces demasiado!"],
+  "frasesFallo": ["Uy, casi…"],
+  "resultados": [
+    { "desde": 0,   "titulo": "Hay que estudiar más", "texto": "..." },
+    { "desde": 50,  "titulo": "¡Nada mal!",           "texto": "..." },
+    { "desde": 100, "titulo": "¡Perfecto!",           "texto": "..." }
+  ]
+}
+```
+- `opciones`: 3 o 4. `respuestaCorrecta` es la **posición** empezando en **0** (`0` = la primera).
+- `siAcierta` / `siFalla` (opcionales): comentario de esa pregunta. Si no los pones, sale uno al azar de `frasesAcierto` / `frasesFallo`.
+- `resultados`: mensaje final según el **porcentaje** de aciertos. Sale el de `desde` más alto que no pase del puntaje (con 3 de 4 = 75 % sale el de `50`). Desde 50 % hay lluvia de corazones.
+
+#### `rompecabezas` — arma la foto
+```json
+{
+  "id": "rompecabezas", "tipo": "rompecabezas", "titulo": "Rompecabezas",
+  "foto": { "src": "/fotos/rompecabezas.jpg", "alt": "Nosotros dos" },
+  "tamanos": [3, 4],
+  "dedicatoria": { "titulo": "¡Completo!", "texto": "Contigo todas las piezas encajan." }
+}
+```
+- `tamanos`: tamaños para elegir (`3` = 3×3, `4` = 4×4). Con uno solo, por ejemplo `[3]`, empieza directo.
+- Sirve cualquier proporción de foto (vertical u horizontal); queda mejor una foto nítida.
+- Se juega **arrastrando** una pieza sobre otra (dedo o mouse) o **tocando dos piezas** seguidas. Al terminar sale la foto completa con la `dedicatoria`.
+
+#### `ruleta` — citas, retos y preguntas
+```json
+{
+  "id": "ruleta", "tipo": "ruleta", "titulo": "Ruleta de citas y retos",
+  "categorias": { "cita": "Cita", "reto": "Reto", "pregunta": "Pregunta" },
+  "opciones": [
+    { "tipo": "cita", "texto": "Picnic en el parque." },
+    { "tipo": "reto", "texto": "Bailar nuestra canción." },
+    { "tipo": "pregunta", "texto": "¿Cuál es tu recuerdo favorito?" }
+  ]
+}
+```
+- Cada opción es un gajo de la ruleta. En el gajo se lee la **categoría**; el `texto` aparece al terminar de girar.
+- `categorias`: el nombre que se ve de cada tipo. Los colores salen de `tema.js` (cita = rosa, reto = dorado, pregunta = verde salvia).
+- Se ve mejor con 6 a 12 opciones. Nunca sale la misma dos veces seguidas.
+
+#### `cartas` — sobres para abrir
+```json
+{
+  "id": "cartas", "tipo": "cartas", "titulo": "Cartas para abrir",
+  "cartas": [
+    { "sobre": "Ábrela cuando estés triste", "tipo": "mensaje", "titulo": "Para ti", "texto": "...", "firma": "Con amor, yo" },
+    { "sobre": "Un poema", "tipo": "poema", "titulo": "Tu nombre", "texto": "Verso 1\nVerso 2" },
+    { "sobre": "Vale", "tipo": "vale", "titulo": "Vale por un masaje", "texto": "Sin fecha de vencimiento." }
+  ]
+}
+```
+- `sobre`: lo que está escrito en el sobre cerrado.
+- `tipo`: `mensaje` (hoja con renglones), `poema` (letra a mano, centrado) o `vale` (cupón con borde punteado).
+- `\n` dentro del `texto` es un salto de línea (útil en los poemas). `firma` es opcional.
+- Los sobres ya abiertos quedan marcados como **Abierta** en ese navegador.
+
+#### `frases` — completar u ordenar
+```json
+{
+  "id": "frases", "tipo": "frases", "titulo": "Frases del amor",
+  "frases": [
+    { "modo": "ordenar", "frase": "Eres mi lugar favorito en el mundo", "pista": "...", "mensaje": "Y lo sigues siendo." },
+    { "modo": "completar", "frase": "Contigo hasta el fin del mundo", "huecos": ["Contigo", "mundo"], "distractores": ["cielo", "mar"] }
+  ],
+  "victoria": { "titulo": "¡Todas completas!", "texto": "Cada palabra es verdad." }
+}
+```
+- `ordenar`: las palabras de `frase` salen desordenadas y hay que tocarlas en orden.
+- `completar`: las palabras de `huecos` quedan en blanco y se eligen entre ellas y los `distractores` (palabras de más para despistar). Las de `huecos` deben estar escritas **igual** que en la frase (no importan mayúsculas ni tildes).
+- `pista` y `mensaje` son opcionales. `victoria` sale al terminar todas las frases.
+- No pongas `REEMPLAZAR` dentro de `frase`: se volvería una palabra más del juego.
 
 ---
 
@@ -505,7 +595,7 @@ src/
     juegos.json
   pages/      ← una pantalla por ruta
     Inicio.jsx      → /          (las 3 tarjetas, ya funciona)
-    Juegos.jsx      → /juegos    (placeholder con título y botón volver)
+    Juegos.jsx      → /juegos    (menú de juegos y el juego abierto)
     Historia.jsx    → /historia  (contador, línea de tiempo y collage)
     Libro.jsx       → /libro     (terminado)
   components/
@@ -552,11 +642,23 @@ src/
       Collage.jsx         ← mosaico o forma de corazón
       FotoCollage.jsx     ← una foto con su marco
       posicionesCorazon.js
-    juegos/     ← vacía, para la siguiente sección
+    juegos/     ← los minijuegos de /juegos
+      Memorama.jsx        ← parejas de fotos con volteo
+      Quiz.jsx            ← ¿Cuánto me conoces?
+      Rompecabezas.jsx    ← piezas para arrastrar (3x3 / 4x4)
+      Ruleta.jsx          ← ruleta de citas, retos y preguntas
+      Cartas.jsx          ← sobres que se abren
+      Frases.jsx          ← ordenar y completar frases
+      PiezasJuego.jsx     ← mensaje final, marcadores y foto con REEMPLAZAR
+      Celebracion.jsx     ← lluvia de corazones y confeti
+      IconoJuego.jsx      ← iconos de las tarjetas del menú
+      sonidos.js          ← efectos de sonido y botón de silencio
+      datosJuegos.js      ← lee juegos.json y textosInterfaz.juegos
   styles/
     tema.js     ← COLORES Y TIPOGRAFÍAS. Edita aquí.
     libro.css   ← papel, pliegue, tapa, washi tape
     historia.css ← marcos del collage, recorte y visor de fotos
+    juegos.css  ← cartas, sobres, piezas, fichas y botones de los juegos
     index.css   ← Tailwind, font-romantica y estilos globales
   App.jsx       ← las 4 rutas, el comodín y la música de fondo
   main.jsx      ← arranque de la app (aplica el tema a todo)
@@ -570,7 +672,7 @@ index.html
 | URL | Pantalla |
 |---|---|
 | `/` | Inicio — 3 tarjetas con animación de entrada |
-| `/juegos` | Juegos |
+| `/juegos` | Juegos — menú con los 6 minijuegos (`/juegos?juego=<id>` abre uno directo) |
 | `/historia` | Nuestra historia — contador, línea de tiempo y collage |
 | `/libro` | Libro digital con efecto de pasar páginas |
 | cualquier otra | Vuelve al Inicio |

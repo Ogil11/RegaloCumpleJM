@@ -1,34 +1,189 @@
 {
-  "_ejemplo": "EJEMPLO - REEMPLAZAR: cada objeto de 'juegos' es una tarjeta de juego.",
+  "_ejemplo": "EJEMPLO - REEMPLAZAR: todo lo marcado REEMPLAZAR es de ejemplo. El formato de cada juego está en el README (capítulo 4, juegos.json).",
+  "sonidos": {
+    "voltear": "/audio/juegos/voltear.mp3",
+    "acierto": "/audio/juegos/acierto.mp3",
+    "error": "/audio/juegos/error.mp3",
+    "victoria": "/audio/juegos/victoria.mp3",
+    "ruleta": "/audio/juegos/ruleta.mp3",
+    "abrir": "/audio/juegos/abrir.mp3"
+  },
   "juegos": [
     {
-      "id": 1,
-      "tipo": "trivia",
-      "titulo": "EJEMPLO - ¿Cuánto me conoces?",
-      "descripcion": "EJEMPLO - Preguntas sobre nosotros.",
+      "id": "memorama",
+      "tipo": "memorama",
+      "icono": "cartas",
+      "titulo": "Memorama",
+      "descripcion": "REEMPLAZAR - Encuentra las parejas de nuestras fotos.",
+      "instrucciones": "REEMPLAZAR - Voltea dos cartas. Si son la misma foto, se quedan boca arriba.",
+      "fotos": [
+        { "src": "/fotos/memorama-1.jpg", "alt": "REEMPLAZAR - Nuestra primera foto" },
+        { "src": "/fotos/memorama-2.jpg", "alt": "REEMPLAZAR - En la playa" },
+        { "src": "/fotos/memorama-3.jpg", "alt": "REEMPLAZAR - Tu cumpleaños" },
+        { "src": "/fotos/memorama-4.jpg", "alt": "REEMPLAZAR - Ese viaje" },
+        { "src": "/fotos/memorama-5.jpg", "alt": "REEMPLAZAR - Cocinando juntos" },
+        { "src": "/fotos/memorama-6.jpg", "alt": "REEMPLAZAR - Una selfie cualquiera" }
+      ],
+      "victoria": {
+        "titulo": "REEMPLAZAR - ¡Las encontraste todas!",
+        "texto": "REEMPLAZAR - Así como encontraste cada pareja, yo te encontré a ti, y no pienso soltarte."
+      }
+    },
+    {
+      "id": "quiz",
+      "tipo": "quiz",
+      "icono": "pregunta",
+      "titulo": "¿Cuánto me conoces?",
+      "descripcion": "REEMPLAZAR - Preguntas sobre mí y sobre nosotros.",
       "preguntas": [
         {
-          "pregunta": "EJEMPLO - ¿Dónde fue nuestra primera cita?",
-          "opciones": ["EJEMPLO - Opción A", "EJEMPLO - Opción B", "EJEMPLO - Opción C"],
-          "respuestaCorrecta": 0
+          "pregunta": "REEMPLAZAR - ¿Dónde fue nuestra primera cita?",
+          "opciones": ["REEMPLAZAR - En el cine", "REEMPLAZAR - En un café", "REEMPLAZAR - En el parque"],
+          "respuestaCorrecta": 1,
+          "siAcierta": "REEMPLAZAR - ¡Exacto! Y pediste dos postres.",
+          "siFalla": "REEMPLAZAR - Nooo, fue en el café. Yo estaba nerviosísimo."
+        },
+        {
+          "pregunta": "REEMPLAZAR - ¿Cuál es mi comida favorita?",
+          "opciones": ["REEMPLAZAR - Pizza", "REEMPLAZAR - Sushi", "REEMPLAZAR - Arepas", "REEMPLAZAR - Pasta"],
+          "respuestaCorrecta": 2
+        },
+        {
+          "pregunta": "REEMPLAZAR - ¿Qué canción es 'nuestra canción'?",
+          "opciones": ["REEMPLAZAR - Canción A", "REEMPLAZAR - Canción B", "REEMPLAZAR - Canción C"],
+          "respuestaCorrecta": 0,
+          "siAcierta": "REEMPLAZAR - Sabía que no la ibas a olvidar.",
+          "siFalla": "REEMPLAZAR - ¡Te la voy a cantar hasta que te la aprendas!"
+        },
+        {
+          "pregunta": "REEMPLAZAR - ¿Qué es lo que más me gusta de ti?",
+          "opciones": ["REEMPLAZAR - Tu risa", "REEMPLAZAR - Tus ojos", "REEMPLAZAR - Cómo me cuidas", "REEMPLAZAR - Todo"],
+          "respuestaCorrecta": 3,
+          "siAcierta": "REEMPLAZAR - Era pregunta con trampa: la respuesta siempre es todo.",
+          "siFalla": "REEMPLAZAR - Casi, pero la respuesta correcta es TODO."
+        }
+      ],
+      "frasesAcierto": ["REEMPLAZAR - ¡Bien!", "REEMPLAZAR - ¡Me conoces demasiado!", "REEMPLAZAR - ¡Correctísimo!"],
+      "frasesFallo": ["REEMPLAZAR - Uy, casi…", "REEMPLAZAR - ¡Te voy a poner tarea!", "REEMPLAZAR - Esa no era, pero te perdono."],
+      "resultados": [
+        { "desde": 0, "titulo": "REEMPLAZAR - Hay que estudiar más", "texto": "REEMPLAZAR - Tendremos que tener muchas más citas para que me conozcas mejor. Qué castigo tan bonito." },
+        { "desde": 50, "titulo": "REEMPLAZAR - ¡Nada mal!", "texto": "REEMPLAZAR - Me conoces bastante bien. Lo que falta lo aprendemos juntos." },
+        { "desde": 100, "titulo": "REEMPLAZAR - ¡Perfecto!", "texto": "REEMPLAZAR - Me conoces mejor que yo mismo. Te amo." }
+      ]
+    },
+    {
+      "id": "rompecabezas",
+      "tipo": "rompecabezas",
+      "icono": "rompecabezas",
+      "titulo": "Rompecabezas",
+      "descripcion": "REEMPLAZAR - Arma nuestra foto pieza por pieza.",
+      "foto": { "src": "/fotos/rompecabezas.jpg", "alt": "REEMPLAZAR - Nosotros dos" },
+      "tamanos": [3, 4],
+      "dedicatoria": {
+        "titulo": "REEMPLAZAR - ¡Completo!",
+        "texto": "REEMPLAZAR - Contigo todas las piezas encajan."
+      }
+    },
+    {
+      "id": "ruleta",
+      "tipo": "ruleta",
+      "icono": "ruleta",
+      "titulo": "Ruleta de citas y retos",
+      "descripcion": "REEMPLAZAR - Gira y deja que la suerte decida.",
+      "categorias": {
+        "cita": "Cita",
+        "reto": "Reto",
+        "pregunta": "Pregunta"
+      },
+      "opciones": [
+        { "tipo": "cita", "texto": "REEMPLAZAR - Picnic en el parque con lo que haya en la nevera." },
+        { "tipo": "reto", "texto": "REEMPLAZAR - Bailar nuestra canción en la sala, ahora mismo." },
+        { "tipo": "pregunta", "texto": "REEMPLAZAR - ¿Cuál es tu recuerdo favorito de nosotros?" },
+        { "tipo": "cita", "texto": "REEMPLAZAR - Noche de películas con palomitas caseras." },
+        { "tipo": "reto", "texto": "REEMPLAZAR - Escribirme un poema de cuatro líneas." },
+        { "tipo": "pregunta", "texto": "REEMPLAZAR - ¿A qué lugar del mundo te gustaría ir conmigo?" },
+        { "tipo": "cita", "texto": "REEMPLAZAR - Cocinar juntos una receta que nunca hayamos probado." },
+        { "tipo": "reto", "texto": "REEMPLAZAR - Darme tres besos en lugares distintos." }
+      ]
+    },
+    {
+      "id": "cartas",
+      "tipo": "cartas",
+      "icono": "sobre",
+      "titulo": "Cartas para abrir",
+      "descripcion": "REEMPLAZAR - Sobres con mensajes, poemas y vales.",
+      "cartas": [
+        {
+          "sobre": "REEMPLAZAR - Ábrela cuando estés triste",
+          "tipo": "mensaje",
+          "titulo": "REEMPLAZAR - Para ti",
+          "texto": "REEMPLAZAR - Si estás leyendo esto, quiero que sepas que todo va a estar bien. Estoy aquí.",
+          "firma": "REEMPLAZAR - Con amor, yo"
+        },
+        {
+          "sobre": "REEMPLAZAR - Un poema",
+          "tipo": "poema",
+          "titulo": "REEMPLAZAR - Tu nombre",
+          "texto": "REEMPLAZAR - Escribí tu nombre en el aire,\nen la arena y en el mar;\npero donde mejor se queda\nes en mi forma de amar."
+        },
+        {
+          "sobre": "REEMPLAZAR - Vale",
+          "tipo": "vale",
+          "titulo": "REEMPLAZAR - Vale por un masaje",
+          "texto": "REEMPLAZAR - Canjeable cualquier día, sin fecha de vencimiento.",
+          "firma": "REEMPLAZAR - Firmado: tu masajista personal"
+        },
+        {
+          "sobre": "REEMPLAZAR - Vale",
+          "tipo": "vale",
+          "titulo": "REEMPLAZAR - Vale por una cena",
+          "texto": "REEMPLAZAR - Tú eliges el lugar, yo invito."
+        },
+        {
+          "sobre": "REEMPLAZAR - Para cuando me extrañes",
+          "tipo": "mensaje",
+          "titulo": "REEMPLAZAR - Hola, mi amor",
+          "texto": "REEMPLAZAR - Cierra los ojos un momento. ¿Sientes eso? Es un abrazo que te mandé desde donde esté."
+        },
+        {
+          "sobre": "REEMPLAZAR - Vale",
+          "tipo": "vale",
+          "titulo": "REEMPLAZAR - Vale por un día sin quejas",
+          "texto": "REEMPLAZAR - Todo lo que quieras hacer, lo hacemos con una sonrisa."
         }
       ]
     },
     {
-      "id": 2,
-      "tipo": "memoria",
-      "titulo": "EJEMPLO - Memoria de fotos",
-      "descripcion": "EJEMPLO - Encuentra las parejas de fotos.",
-      "fotos": ["/fotos/ejemplo-1.jpg", "/fotos/ejemplo-2.jpg"]
-    },
-    {
-      "id": 3,
-      "tipo": "cartas",
-      "titulo": "EJEMPLO - Cartas sorpresa",
-      "descripcion": "EJEMPLO - Abre una carta al azar.",
-      "cartas": [
-        { "titulo": "EJEMPLO - Para cuando estés triste", "texto": "EJEMPLO - Mensaje dentro de la carta." }
-      ]
+      "id": "frases",
+      "tipo": "frases",
+      "icono": "pluma",
+      "titulo": "Frases del amor",
+      "descripcion": "REEMPLAZAR - Ordena y completa nuestras frases.",
+      "frases": [
+        {
+          "modo": "ordenar",
+          "frase": "Eres mi lugar favorito en el mundo",
+          "pista": "REEMPLAZAR - Te lo dije en nuestro primer viaje.",
+          "mensaje": "REEMPLAZAR - Y lo sigues siendo."
+        },
+        {
+          "modo": "completar",
+          "frase": "Contigo hasta el fin del mundo",
+          "huecos": ["Contigo", "mundo"],
+          "distractores": ["Siempre", "cielo", "mar"],
+          "pista": "REEMPLAZAR - Lo escribimos en la arena.",
+          "mensaje": "REEMPLAZAR - Y un poquito más allá."
+        },
+        {
+          "modo": "ordenar",
+          "frase": "Te elegiría otra vez en cada vida",
+          "mensaje": "REEMPLAZAR - Sin dudarlo ni un segundo."
+        }
+      ],
+      "victoria": {
+        "titulo": "REEMPLAZAR - ¡Todas completas!",
+        "texto": "REEMPLAZAR - Cada palabra es verdad. Te amo."
+      }
     }
   ]
 }

@@ -1,0 +1,332 @@
+/*
+ * Estilos de la pagina Juegos.
+ * Todos los colores vienen de las variables --lib-* de src/styles/tema.js.
+ * No pongas colores fijos aquí: edita tema.js.
+ */
+
+/* ---------- Tarjetas, botones y chips ---------- */
+.jue-tarjeta {
+  background-color: var(--lib-papel);
+  border: 1px solid var(--lib-papel-borde);
+  border-radius: 1.25rem;
+  box-shadow:
+    0 1px 2px color-mix(in srgb, var(--lib-sombra-base) 10%, transparent),
+    0 8px 22px color-mix(in srgb, var(--lib-sombra-base) 12%, transparent);
+}
+.jue-tarjeta-menu {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.jue-tarjeta-menu:hover,
+.jue-tarjeta-menu:focus-visible {
+  border-color: color-mix(in srgb, var(--lib-rosa) 55%, var(--lib-papel-borde));
+  box-shadow:
+    0 2px 4px color-mix(in srgb, var(--lib-sombra-base) 12%, transparent),
+    0 16px 32px color-mix(in srgb, var(--lib-sombra-base) 20%, transparent);
+}
+
+.jue-icono {
+  background-color: var(--lib-rosa-claro);
+  color: var(--lib-tapa);
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--lib-dorado) 35%, transparent);
+}
+
+.jue-boton,
+.jue-boton-sec {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  font-family: var(--lib-fuente-titulos);
+  font-weight: 600;
+  transition: transform 0.15s ease, filter 0.2s ease, background-color 0.2s ease;
+}
+.jue-boton {
+  background-color: var(--lib-tapa);
+  color: var(--lib-texto-tapa);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--lib-tapa) 35%, transparent);
+}
+.jue-boton:hover:not(:disabled) {
+  background-color: var(--lib-tapa-clara);
+}
+.jue-boton:disabled {
+  filter: saturate(0.6);
+  opacity: 0.75;
+  cursor: default;
+}
+.jue-boton-sec {
+  background-color: transparent;
+  color: var(--lib-tapa);
+  border: 1.5px solid color-mix(in srgb, var(--lib-tapa) 55%, transparent);
+}
+.jue-boton-sec:hover {
+  background-color: var(--lib-rosa-claro);
+}
+
+.jue-chip {
+  border-radius: 999px;
+  background-color: color-mix(in srgb, var(--lib-papel) 85%, transparent);
+  border: 1px solid color-mix(in srgb, var(--lib-dorado) 40%, transparent);
+  color: var(--lib-tinta);
+}
+button.jue-chip:hover {
+  background-color: var(--lib-papel);
+}
+
+.jue-boton:focus-visible,
+.jue-boton-sec:focus-visible,
+.jue-chip:focus-visible,
+.jue-tarjeta-menu:focus-visible,
+.jue-opcion:focus-visible,
+.jue-ficha:focus-visible,
+.jue-carta:focus-visible,
+.jue-pieza:focus-visible {
+  outline: 3px solid var(--lib-dorado);
+  outline-offset: 2px;
+}
+
+/* ---------- Memorama: carta con volteo 3D ---------- */
+.jue-carta {
+  perspective: 900px;
+  -webkit-tap-highlight-color: transparent;
+}
+.jue-carta-giro {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.3, 0.7, 0.3, 1.1);
+}
+.jue-carta-boca .jue-carta-giro {
+  transform: rotateY(180deg);
+}
+.jue-carta-cara {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 0.6rem;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 3px 8px color-mix(in srgb, var(--lib-sombra-base) 22%, transparent);
+}
+.jue-carta-dorso {
+  border: 3px solid var(--lib-tapa-filete);
+  background-color: var(--lib-tapa);
+  background-image:
+    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--lib-rosa) 70%, transparent) 0 18%, transparent 19%),
+    repeating-linear-gradient(45deg, color-mix(in srgb, var(--lib-texto-tapa) 10%, transparent) 0 6px, transparent 6px 12px);
+}
+.jue-carta:not(:disabled):hover .jue-carta-dorso {
+  filter: brightness(1.08);
+}
+.jue-carta-frente {
+  transform: rotateY(180deg);
+  background-color: var(--lib-marco-polaroid);
+  border: 3px solid var(--lib-marco-polaroid);
+}
+.jue-carta-hallada .jue-carta-frente {
+  border-color: var(--lib-dorado);
+  box-shadow: 0 0 0 2px var(--lib-dorado-claro), 0 4px 12px color-mix(in srgb, var(--lib-dorado) 40%, transparent);
+}
+
+/* ---------- Quiz ---------- */
+.jue-barra {
+  height: 0.5rem;
+  border-radius: 999px;
+  overflow: hidden;
+  background-color: var(--lib-papel-alterno);
+  border: 1px solid var(--lib-papel-borde);
+}
+.jue-barra-relleno {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--lib-rosa), var(--lib-dorado));
+}
+
+.jue-opcion {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.9rem;
+  text-align: left;
+  font-family: var(--lib-fuente-texto);
+  color: var(--lib-tinta);
+  background-color: var(--lib-papel-alterno);
+  border: 1.5px solid var(--lib-papel-borde);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.jue-opcion:not(:disabled):hover {
+  border-color: var(--lib-rosa);
+  background-color: var(--lib-rosa-claro);
+}
+.jue-opcion:disabled {
+  cursor: default;
+}
+.jue-opcion-bien {
+  background-color: color-mix(in srgb, var(--lib-salvia) 45%, var(--lib-papel));
+  border-color: var(--lib-salvia);
+  font-weight: 600;
+}
+.jue-opcion-mal {
+  background-color: var(--lib-rosa-claro);
+  border-color: var(--lib-rosa);
+  text-decoration: line-through;
+  text-decoration-color: color-mix(in srgb, var(--lib-tapa) 50%, transparent);
+}
+
+/* ---------- Rompecabezas ---------- */
+.jue-puzzle {
+  position: relative;
+  gap: 2px;
+  padding: 2px;
+  border-radius: 0.5rem;
+  background-color: var(--lib-papel-borde);
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--lib-sombra-base) 25%, transparent);
+}
+.jue-pieza {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-color: var(--lib-papel-alterno);
+  border-radius: 2px;
+  cursor: grab;
+  touch-action: none;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.jue-pieza-elegida {
+  z-index: 5;
+  box-shadow: 0 0 0 3px var(--lib-rosa);
+  filter: brightness(1.08);
+}
+.jue-pieza-destino {
+  box-shadow: inset 0 0 0 3px var(--lib-dorado);
+}
+.jue-pieza-arrastrada {
+  z-index: 20;
+  cursor: grabbing;
+  transition: none;
+  box-shadow: 0 12px 26px color-mix(in srgb, var(--lib-sombra-base) 40%, transparent);
+}
+
+/* ---------- Ruleta ---------- */
+.jue-ruleta {
+  filter: drop-shadow(0 10px 20px color-mix(in srgb, var(--lib-sombra-base) 30%, transparent));
+}
+
+/* ---------- Cartas para abrir ---------- */
+.jue-sobre {
+  --sobre: var(--lib-papel-alterno);
+  --sobre-solapa: var(--lib-rosa-claro);
+}
+.jue-sobre-poema {
+  --sobre-solapa: var(--lib-dorado-claro);
+}
+.jue-sobre-vale {
+  --sobre: var(--lib-rosa-claro);
+  --sobre-solapa: var(--lib-rosa);
+}
+.jue-sobre svg {
+  filter: drop-shadow(0 4px 6px color-mix(in srgb, var(--lib-sombra-base) 18%, transparent));
+}
+.jue-sobre-cuerpo {
+  fill: var(--sobre);
+  stroke: var(--lib-papel-borde);
+  stroke-width: 1.5;
+}
+.jue-sobre-pliegue {
+  fill: none;
+  stroke: color-mix(in srgb, var(--lib-sombra-base) 18%, transparent);
+  stroke-width: 1.2;
+}
+.jue-sobre-solapa {
+  fill: var(--sobre-solapa);
+  stroke: color-mix(in srgb, var(--lib-sombra-base) 15%, transparent);
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+}
+.jue-papel-asoma {
+  background-color: var(--lib-papel-carta);
+  box-shadow: 0 2px 6px color-mix(in srgb, var(--lib-sombra-base) 18%, transparent);
+}
+
+.jue-carta-abierta {
+  background-color: var(--lib-papel-carta);
+  border-radius: 0.5rem;
+  box-shadow:
+    0 4px 10px color-mix(in srgb, var(--lib-sombra-base) 20%, transparent),
+    0 24px 60px color-mix(in srgb, var(--lib-sombra-base) 35%, transparent);
+}
+/* Renglones de carta para los mensajes */
+.jue-carta-mensaje {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 1.6rem,
+    color-mix(in srgb, var(--lib-rosa) 18%, transparent) 1.6rem calc(1.6rem + 1px)
+  );
+}
+.jue-vale {
+  border: 2px dashed var(--lib-dorado);
+  border-radius: 0.75rem;
+  background-color: color-mix(in srgb, var(--lib-dorado-claro) 30%, var(--lib-papel-carta));
+}
+
+/* ---------- Frases del amor ---------- */
+.jue-renglon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem 0.35rem;
+  min-height: 3.5rem;
+  padding: 0.75rem 0.5rem;
+  border-bottom: 2px dashed color-mix(in srgb, var(--lib-dorado) 55%, transparent);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.jue-renglon-bien {
+  border-bottom-style: solid;
+  border-color: var(--lib-salvia);
+  background-color: color-mix(in srgb, var(--lib-salvia) 18%, transparent);
+}
+.jue-ficha {
+  min-height: 2.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 0.6rem;
+  font-family: var(--lib-fuente-texto);
+  font-size: 1.05rem;
+  color: var(--lib-tinta);
+  background-color: var(--lib-papel-alterno);
+  border: 1.5px solid var(--lib-papel-borde);
+  box-shadow: 0 2px 0 var(--lib-papel-borde);
+  -webkit-tap-highlight-color: transparent;
+}
+.jue-ficha:not(:disabled):hover {
+  border-color: var(--lib-rosa);
+}
+.jue-ficha-puesta {
+  background-color: var(--lib-rosa-claro);
+  border-color: color-mix(in srgb, var(--lib-rosa) 60%, transparent);
+}
+.jue-ficha:disabled {
+  cursor: default;
+}
+.jue-hueco {
+  display: inline-block;
+  width: 4.5rem;
+  height: 2.25rem;
+  border-radius: 0.5rem;
+  border: 2px dashed color-mix(in srgb, var(--lib-rosa) 60%, transparent);
+  background-color: color-mix(in srgb, var(--lib-rosa-claro) 40%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jue-carta-giro,
+  .jue-pieza {
+    transition-duration: 0.01ms;
+  }
+}

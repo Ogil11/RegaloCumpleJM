@@ -10,7 +10,7 @@
     "tarjetas": [
       {
         "titulo": "Juegos",
-        "descripcion": "EJEMPLO - Trivia, memoria y cartas sorpresa.",
+        "descripcion": "EJEMPLO - Memorama, quiz, rompecabezas, ruleta, cartas y frases.",
         "ruta": "/juegos"
       },
       {
@@ -25,7 +25,8 @@
       }
     ],
     "juegos": {
-      "titulo": "Juegos"
+      "titulo": "Juegos",
+      "subtitulo": "REEMPLAZAR - Elige un juego y diviértete conmigo."
     },
     "historia": {
       "titulo": "Nuestra historia",
@@ -47,9 +48,18 @@
       "contador": "Llevamos {anios}, {meses} y {dias}",
       "contadorDesde": "desde el {fecha}",
       "unidades": {
-        "anios": ["año", "años"],
-        "meses": ["mes", "meses"],
-        "dias": ["día", "días"]
+        "anios": [
+          "año",
+          "años"
+        ],
+        "meses": [
+          "mes",
+          "meses"
+        ],
+        "dias": [
+          "día",
+          "días"
+        ]
       },
       "verFoto": "Ver foto en grande",
       "fotoAnterior": "Foto anterior",
@@ -64,6 +74,69 @@
       "videoNoEncontrado": "Video no encontrado",
       "sinMomentos": "Todavía no hay momentos en timeline.json.",
       "sinFotos": "Todavía no hay fotos en collage.json."
+    },
+    "juegos": {
+      "menu": "Lista de juegos",
+      "volverMenu": "Volver a los juegos",
+      "jugar": "Jugar",
+      "jugarOtraVez": "Jugar otra vez",
+      "activarSonidos": "Activar sonidos de los juegos",
+      "silenciarSonidos": "Silenciar sonidos de los juegos",
+      "sinJuegos": "Todavía no hay juegos en juegos.json.",
+      "sinContenido": "Este juego todavía no tiene contenido en juegos.json.",
+      "tipoDesconocido": "Tipo de juego desconocido: {tipo}",
+      "memorama": {
+        "intentos": "Intentos: {n}",
+        "parejas": "Parejas: {n} de {total}",
+        "carta": "Carta {n}",
+        "cartaVolteada": "Carta {n}: {alt}",
+        "resumen": "Lo lograste en {n} intentos."
+      },
+      "quiz": {
+        "progreso": "Pregunta {actual} de {total}",
+        "siguiente": "Siguiente",
+        "verResultado": "Ver resultado",
+        "puntaje": "{aciertos} de {total} correctas",
+        "correcta": "¡Correcto!",
+        "incorrecta": "Incorrecto"
+      },
+      "rompecabezas": {
+        "elegirTamano": "Elige el tamaño",
+        "tamano": "{n} × {n}",
+        "ayuda": "Arrastra una pieza sobre otra para cambiarlas de lugar. También puedes tocar dos piezas.",
+        "movimientos": "Movimientos: {n}",
+        "pieza": "Pieza {n}",
+        "mezclar": "Mezclar de nuevo",
+        "cambiarTamano": "Cambiar tamaño",
+        "verModelo": "Ver la foto",
+        "ocultarModelo": "Ocultar la foto"
+      },
+      "ruleta": {
+        "girar": "Girar",
+        "girando": "Girando…",
+        "otraVez": "Girar otra vez",
+        "resultado": "Te tocó:",
+        "ayuda": "Toca el botón para girar la ruleta."
+      },
+      "cartas": {
+        "ayuda": "Toca un sobre para abrirlo.",
+        "abrir": "Abrir sobre: {titulo}",
+        "abierta": "Abierta",
+        "cerrar": "Cerrar",
+        "guardar": "Guardar en el sobre",
+        "progreso": "{n} de {total} abiertas"
+      },
+      "frases": {
+        "progreso": "Frase {actual} de {total}",
+        "ayudaOrdenar": "Toca las palabras en el orden correcto.",
+        "ayudaCompletar": "Toca las palabras que faltan.",
+        "verPista": "Ver pista",
+        "borrar": "Borrar",
+        "comprobar": "Comprobar",
+        "siguiente": "Siguiente frase",
+        "casi": "Casi… revisa el orden e inténtalo otra vez.",
+        "terminar": "Terminar"
+      }
     }
   }
 }
