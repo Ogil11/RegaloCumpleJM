@@ -1,0 +1,15 @@
+# Regalo privado: ningun buscador debe rastrear ni mostrar este sitio.
+User-agent: *
+Disallow: /
+
+# Excepcion: los robots que arman la vista previa al compartir el enlace
+# (WhatsApp, Facebook, Instagram, X/Twitter, Telegram...). No indexan nada;
+# sin esta excepcion algunos no muestran la foto ni el titulo.
+User-agent: facebookexternalhit
+User-agent: Facebot
+User-agent: WhatsApp
+User-agent: Twitterbot
+User-agent: TelegramBot
+User-agent: Slackbot-LinkExpanding
+User-agent: Discordbot
+Allow: /

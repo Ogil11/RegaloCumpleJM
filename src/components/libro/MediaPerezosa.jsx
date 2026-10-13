@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import Imagen, { urlOptimizada } from "../comun/Imagen";
 import { textos } from "./textos";
 
 /**
@@ -22,12 +23,17 @@ export function Marcador({ ruta, etiqueta = textos.reemplazar, className = "" })
   );
 }
 
+/** Ancho que ocupa una foto dentro de una pagina del libro. */
+const SIZES_LIBRO = "(min-width: 768px) 30vw, 85vw";
+
 /**
  * Imagen con carga perezosa.
  * Si `cerca` es false no se monta el <img>, asi las paginas lejanas no
- * descargan nada. Si el archivo no existe, muestra el Marcador.
+ * descargan nada. Las cercanas si se descargan de una vez (aunque esten
+ * ocultas detras de otra hoja), para que al pasar la pagina ya esten.
+ * Si el archivo no existe, muestra el Marcador.
  */
-export function ImagenPerezosa({ src, alt = "", cerca = true, className = "", imgClassName = "" }) {
+export function ImagenPerezosa({ src, alt = "", cerca = true, sizes = SIZES_LIBRO, className = "", imgClassName = "" }) {
   if (!src) {
     return (
       <div className={className}>
@@ -42,11 +48,11 @@ export function ImagenPerezosa({ src, alt = "", cerca = true, className = "", im
   }
 
   // key={src}: si cambia la ruta, la imagen arranca de cero (estado "cargando").
-  return <ImagenCargando key={src} src={src} alt={alt} className={className} imgClassName={imgClassName} />;
+  return <ImagenCargando key={src} src={src} alt={alt} sizes={sizes} className={className} imgClassName={imgClassName} />;
 }
 
 /** El <img> con su estado de carga. Solo lo usa ImagenPerezosa. */
-function ImagenCargando({ src, alt, className, imgClassName }) {
+function ImagenCargando({ src, alt, sizes, className, imgClassName }) {
   const [estado, setEstado] = useState("cargando");
 
   return (
@@ -60,10 +66,10 @@ function ImagenCargando({ src, alt, className, imgClassName }) {
           )}
         </div>
       )}
-      <img
+      <Imagen
         src={src}
+        sizes={sizes}
         alt={alt}
-        loading="lazy"
         decoding="async"
         draggable="false"
         onLoad={() => setEstado("ok")}
@@ -123,7 +129,7 @@ export function VideoPerezoso({ src, poster, cerca = true, activa = true, classN
         <video
           ref={videoRef}
           src={src}
-          poster={poster || undefined}
+          poster={poster ? urlOptimizada(poster, 960) : undefined}
           controls
           playsInline
           preload="none"

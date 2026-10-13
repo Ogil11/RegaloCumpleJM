@@ -35,6 +35,7 @@ export default function PaginaPortada({ pagina, cerca }) {
               src={pagina.foto}
               alt={pagina.alt || pagina.titulo || ""}
               cerca={cerca}
+              sizes="112px"
               className="h-24 w-24 rounded-full border-2 border-[var(--lib-tapa-filete)]/70 shadow-lg sm:h-28 sm:w-28"
             />
           </div>
@@ -68,7 +69,7 @@ export default function PaginaPortada({ pagina, cerca }) {
             onClick={() => acciones?.irSiguiente?.()}
             animate={{ scale: [1, 1.05, 1] }}
             transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-            className="lib-titulo rounded-full border border-[var(--lib-tapa-filete)]/80 bg-[var(--lib-sombra-tapa)]/20 px-4 py-2 text-[10px] uppercase tracking-[0.22em] text-[var(--lib-texto-tapa)] backdrop-blur-sm transition hover:bg-[var(--lib-sombra-tapa)]/35"
+            className="lib-titulo inline-flex min-h-11 items-center rounded-full border border-[var(--lib-tapa-filete)]/80 bg-[var(--lib-sombra-tapa)]/20 px-4 py-2 text-[10px] uppercase tracking-[0.22em] text-[var(--lib-texto-tapa)] backdrop-blur-sm transition hover:bg-[var(--lib-sombra-tapa)]/35"
           >
             {textos.abrirLibro}
           </motion.button>

@@ -171,7 +171,7 @@ function BotonSonido({ silenciado, onAlternar }) {
       aria-pressed={silenciado}
       aria-label={etiqueta}
       title={etiqueta}
-      className="fixed right-[3.75rem] top-3 z-40 flex h-10 w-10 items-center justify-center rounded-full border border-[var(--lib-dorado)]/40 bg-[var(--lib-papel)]/85 text-[var(--lib-tinta)] shadow-sm backdrop-blur-sm transition hover:bg-[var(--lib-papel)]"
+      className="fixed right-[4rem] top-3 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-[var(--lib-dorado)]/40 bg-[var(--lib-papel)]/85 text-[var(--lib-tinta)] shadow-sm backdrop-blur-sm transition hover:bg-[var(--lib-papel)]"
     >
       <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 9h3l5-4v14l-5-4H4z" />

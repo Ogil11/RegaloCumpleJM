@@ -2,7 +2,11 @@ import { useRef, useState } from "react";
 import { AnimatePresence, motion, useInView, useReducedMotion } from "framer-motion";
 import { WashiTape } from "../libro/Adornos";
 import FotoSegura, { Reemplazo } from "../comun/FotoSegura";
+import { urlOptimizada } from "../comun/Imagen";
 import { rellenar, textosHistoria as t } from "../comun/textosHistoria";
+
+/** Ancho de la tarjeta de un momento: media columna en escritorio. */
+const SIZES_HITO = "(min-width: 768px) 440px, 90vw";
 
 /**
  * Fotos y video de un momento de la linea de tiempo.
@@ -25,7 +29,7 @@ export default function MediaHito({ fotos, video, poster, marco, rotacion, onAbr
             aria-label={t.verFoto}
             className="block w-full cursor-zoom-in focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--lib-rosa)]"
           >
-            <FotoSegura src={actual.src} alt={actual.alt} className="aspect-[4/3] w-full bg-[var(--lib-papel-alterno)]" />
+            <FotoSegura src={actual.src} alt={actual.alt} sizes={SIZES_HITO} className="aspect-[4/3] w-full bg-[var(--lib-papel-alterno)]" />
           </button>
         </Marco>
       ) : null}
@@ -92,7 +96,7 @@ function Carrusel({ fotos, indice, setIndice, onAbrir }) {
 
   const desplazamiento = reducir ? 0 : 60;
   const flecha =
-    "absolute top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--lib-papel)]/85 text-[var(--lib-tinta)] shadow-sm transition hover:bg-[var(--lib-papel)] focus-visible:outline-2 focus-visible:outline-[var(--lib-rosa)]";
+    "absolute top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--lib-papel)]/85 text-[var(--lib-tinta)] shadow-sm transition hover:bg-[var(--lib-papel)] focus-visible:outline-2 focus-visible:outline-[var(--lib-rosa)]";
 
   return (
     <div>
@@ -131,7 +135,7 @@ function Carrusel({ fotos, indice, setIndice, onAbrir }) {
               if (!arrastrando.current) onAbrir(indice);
             }}
           >
-            <FotoSegura src={foto.src} alt={foto.alt} className="h-full w-full" />
+            <FotoSegura src={foto.src} alt={foto.alt} sizes={SIZES_HITO} className="h-full w-full" />
           </motion.button>
         </AnimatePresence>
 
@@ -147,7 +151,7 @@ function Carrusel({ fotos, indice, setIndice, onAbrir }) {
         </button>
       </div>
 
-      <div className="flex justify-center gap-1.5 pt-2">
+      <div className="flex flex-wrap justify-center pt-1">
         {fotos.map((f, i) => (
           <button
             key={f.src + i}
@@ -158,7 +162,7 @@ function Carrusel({ fotos, indice, setIndice, onAbrir }) {
               setDireccion(i > indice ? 1 : -1);
               setIndice(i);
             }}
-            className="flex h-5 w-5 items-center justify-center"
+            className="flex h-11 w-11 items-center justify-center"
           >
             <span
               className={`block h-2 rounded-full transition-all ${
@@ -185,10 +189,11 @@ function VideoHito({ src, poster }) {
       ) : cerca ? (
         <video
           src={src}
-          poster={poster || undefined}
+          poster={poster ? urlOptimizada(poster, 960) : undefined}
           controls
           playsInline
-          preload="metadata"
+          // Con portada no hace falta bajar nada hasta que le den play.
+          preload={poster ? "none" : "metadata"}
           onError={() => setError(true)}
           className="h-full w-full object-contain"
         />

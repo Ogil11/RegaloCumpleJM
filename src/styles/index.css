@@ -23,3 +23,107 @@ body {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
+
+/* ---------- Accesibilidad ---------- */
+/* Foco visible en todo lo que se puede usar con teclado. Los botones que
+   ya traen su propio contorno (jue-*, chips) lo conservan. */
+:where(a, button, input, select, textarea, summary, video, [tabindex]):focus-visible {
+  outline: 3px solid var(--lib-rosa);
+  outline-offset: 2px;
+}
+
+/* Si el sistema pide menos movimiento: sin animaciones largas ni scroll
+   suave. framer-motion hace lo mismo con MotionConfig (App.jsx). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Pantalla de entrada ---------- */
+.ent-campo {
+  min-height: 3rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  border: 1.5px solid color-mix(in srgb, var(--lib-dorado) 55%, transparent);
+  background-color: var(--lib-papel);
+  color: var(--lib-tinta);
+  font-family: var(--lib-fuente-texto);
+  font-size: 1.1rem; /* 16px o mas: iPhone no hace zoom al escribir */
+  text-align: center;
+}
+.ent-campo::placeholder {
+  color: var(--lib-tinta-suave);
+  opacity: 0.7;
+}
+.ent-campo[aria-invalid="true"] {
+  border-color: var(--lib-tapa);
+}
+
+.ent-corazon {
+  position: absolute;
+  bottom: -2rem;
+  opacity: 0;
+  animation: ent-subir linear infinite;
+}
+@keyframes ent-subir {
+  0% {
+    transform: translateY(0) rotate(-8deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(-55vh) rotate(8deg);
+  }
+  90% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(-6deg);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ent-corazones {
+    display: none;
+  }
+}
+
+/* ---------- Cargando ---------- */
+/* Aparece tras un instante: si la pantalla llega rapido, ni se ve. */
+.cargando {
+  animation: cargando-aparecer 0.4s ease-out 0.25s both;
+}
+@keyframes cargando-aparecer {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.cargando-latido {
+  animation: cargando-latir 1.3s ease-in-out infinite;
+}
+@keyframes cargando-latir {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.15);
+  }
+  40% {
+    transform: scale(0.96);
+  }
+  60% {
+    transform: scale(1.08);
+  }
+}

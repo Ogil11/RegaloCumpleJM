@@ -6,6 +6,15 @@
   "fotoPortada": "/fotos/ejemplo-portada.jpg",
   "fotoPortadaAlt": "EJEMPLO - Descripción corta de la foto principal",
   "musicaFondo": "/audio/ejemplo-cancion.mp3",
+  "claveAcceso": "",
+  "preguntaAcceso": "EJEMPLO - ¿Cuál es la fecha de nuestro aniversario? (AAAA-MM-DD)",
+  "metadatos": {
+    "titulo": "EJEMPLO - Un regalo para ti",
+    "descripcion": "EJEMPLO - Algo que hice con todo mi amor. Ábrelo cuando tengas un ratito.",
+    "imagen": "/fotos/ejemplo-portada.jpg",
+    "imagenAlt": "EJEMPLO - Descripción corta de la foto que sale al compartir el enlace",
+    "urlSitio": ""
+  },
   "secciones": {
     "tarjetas": [
       {
@@ -40,6 +49,23 @@
     "volverInicio": "Volver al inicio",
     "activarMusica": "Activar música",
     "silenciarMusica": "Silenciar música",
+    "entrada": {
+      "boton": "Entrar",
+      "sugerencia": "Mejor con sonido 🎧"
+    },
+    "acceso": {
+      "etiqueta": "Tu respuesta",
+      "entrar": "Entrar",
+      "error": "Mmm… esa no es. Piénsalo con el corazón e inténtalo otra vez.",
+      "comprobando": "Comprobando…"
+    },
+    "cargando": "Cargando…",
+    "cargandoLibro": "Preparando nuestro libro…",
+    "noEncontrada": {
+      "titulo": "Esta página no existe…",
+      "texto": "…pero lo nuestro sí. Te perdiste un momento, y no pasa nada: todos los caminos me llevan a ti.",
+      "boton": "Volver a nosotros"
+    },
     "historia": {
       "idiomaFechas": "es-CO",
       "navegacion": "Secciones de la historia",

@@ -1,4 +1,4 @@
-# Regalo — base del proyecto
+# Regalo
 
 App web romántica hecha con **React + Vite**, **Tailwind CSS**, **Framer Motion**, **react-router-dom** y **react-pageflip**.
 
@@ -9,6 +9,8 @@ Estado actual:
 - **Nuestra historia (`/historia`)** — terminada: contador de tiempo juntos, línea de tiempo animada y collage de fotos con visor a pantalla completa. Ver `timeline.json` y `collage.json` en el **[capítulo 4](#4-los-archivos-de-contenido-uno-por-uno)**.
 - **Juegos (`/juegos`)** — terminado: menú con 6 minijuegos (memorama, ¿cuánto me conoces?, rompecabezas, ruleta de citas y retos, cartas para abrir y frases del amor), celebración al ganar y sonidos opcionales. Ver `juegos.json` en el **[capítulo 4](#4-los-archivos-de-contenido-uno-por-uno)**.
 - **Música de fondo** — opcional, suena en todas las pantallas y tiene su botón de silencio arriba a la derecha.
+- **Pantalla de entrada** — el nombre y un botón **Entrar** (que además arranca la música). Si pones una `claveAcceso`, primero pide la respuesta.
+- **Listo para publicar** — fotos optimizadas solas al construir, vista previa al compartir el enlace, oculto para buscadores y configurado para Vercel y Netlify. Ver el **[capítulo 10](#10-publicarlo-gratis-paso-a-paso)**.
 
 Todo lo que se ve en pantalla se lee de `src/content/*.json`: los textos (incluidos los de botones y avisos) y las rutas de fotos, videos y música. Los colores y tipografías salen de `src/styles/tema.js`.
 
@@ -45,7 +47,9 @@ un archivo en `public/fotos/ana.jpg` se escribe en el JSON como `/fotos/ana.jpg`
 
 Consejos:
 - Usa nombres **sin espacios ni tildes**: `primer-viaje.jpg`, no `Primer Viaje ñ.jpg`.
-- Formatos recomendados: fotos `.jpg` o `.webp`, video `.mp4`, audio `.mp3`.
+- Formatos recomendados: fotos `.jpg` (o `.png` para dibujos), video `.mp4`, audio `.mp3`.
+- **No hace falta achicar las fotos a mano.** Al construir (`npm run build`), cada `.jpg`/`.png` se convierte sola a `.webp` en tres tamaños (480, 960 y 1600 px de ancho) y cada pantalla descarga el tamaño justo. Tus archivos de `public/` no se tocan y los JSON siguen apuntando al `.jpg`. Aun así, fotos de más de 5 MB hacen el build más lento: si vienen del celular en máxima calidad, está bien bajarlas a unos 2500 px de ancho.
+- **Videos**: no se descargan hasta que se necesitan (al llegar a ellos; en el libro, solo cerca de su página). Ponles siempre `poster`: con portada, el video no baja **nada** hasta que le den play. Intenta que pesen menos de 30 MB (720p alcanza de sobra).
 - Los archivos `.gitkeep` en esas carpetas solo existen para que las carpetas no se borren. **No los toques.**
 
 ---
@@ -106,11 +110,21 @@ Lo usan el **Inicio**, los títulos de **Juegos** e **Historia**, el botón **Vo
 | `fotoPortada` | Foto redonda sobre el nombre en el Inicio. Archivo en `public/fotos/`. Si la dejas como `""` o el archivo no existe, simplemente no sale. |
 | `fotoPortadaAlt` | Descripción corta de esa foto (accesibilidad). |
 | `musicaFondo` | Canción de fondo, en bucle, en todas las pantallas. Archivo en `public/audio/`. Si la dejas como `""` o el archivo no existe, no suena nada y el botón de música no aparece. |
+| `claveAcceso` | Respuesta que hay que escribir para entrar (por ejemplo la fecha de aniversario, `"2023-01-01"`). **Vacía (`""`) = no se pide.** No importan mayúsculas, tildes, espacios ni separadores: `2023/01/01` vale igual que `2023-01-01`. Ver el **[capítulo 9](#9-privacidad)**. |
+| `preguntaAcceso` | La pregunta que sale encima del campo (por ejemplo "¿Cuál es nuestra fecha de aniversario? (AAAA-MM-DD)"). Solo se usa si hay `claveAcceso`. |
+| `metadatos.titulo` | Título de la pestaña del navegador y de la tarjeta al compartir el enlace por WhatsApp, Instagram, etc. |
+| `metadatos.descripcion` | Texto pequeño bajo el título en esa tarjeta. |
+| `metadatos.imagen`, `metadatos.imagenAlt` | Foto de la tarjeta al compartir (archivo en `public/fotos/`) y su descripción. Se recorta sola a 1200×630. Si la dejas vacía se usa `fotoPortada`. |
+| `metadatos.urlSitio` | La dirección final, por ejemplo `"https://para-juli.vercel.app"`. En Vercel y Netlify **puedes dejarla vacía**: se detecta sola. Ponla si usas un dominio propio. |
 | `secciones.tarjetas` | Las 3 tarjetas del Inicio: `titulo`, `descripcion` (línea pequeña, opcional) y `ruta` (no la cambies). |
 | `secciones.juegos.titulo`, `secciones.historia.titulo` | Título grande de cada una de esas pantallas. |
 | `secciones.historia.subtitulo`, `secciones.juegos.subtitulo` | Frase bajo el título de Nuestra historia y de Juegos (opcional). |
 | `secciones.historia.tituloLineaTiempo`, `tituloCollage`, `subtituloCollage` | Títulos de las dos partes de Nuestra historia. |
 | `textosInterfaz` | Textos del botón **Volver al inicio** y del botón de música (lo que lee un lector de pantalla y sale al pasar el mouse). |
+| `textosInterfaz.entrada` | Botón **Entrar** de la pantalla de entrada (`boton`) y la línea pequeña bajo él (`sugerencia`, solo sale si hay música). |
+| `textosInterfaz.acceso` | Textos del campo de la clave: `etiqueta`, `entrar`, `error` (cuando la respuesta no es) y `comprobando`. |
+| `textosInterfaz.cargando`, `cargandoLibro` | Lo que dice el corazón que late mientras carga una pantalla, y mientras cargan las fotos del libro. |
+| `textosInterfaz.noEncontrada` | La página que sale si alguien abre una dirección que no existe: `titulo`, `texto` y `boton`. |
 | `textosInterfaz.historia` | Textos de botones y avisos de **Nuestra historia** (tabla de abajo). |
 | `textosInterfaz.juegos` | Textos de botones, marcadores y avisos de **Juegos**: uno general (`volverMenu`, `jugarOtraVez`, sonidos...) y un bloque por juego (`memorama`, `quiz`, `rompecabezas`, `ruleta`, `cartas`, `frases`). Igual que arriba: no borres las palabras entre llaves (`{n}`, `{total}`, `{actual}`...). |
 
@@ -127,7 +141,7 @@ Las claves de `textosInterfaz.historia`. Cámbialas si quieres otras palabras, p
 | `reemplazar`, `faltaFoto`, `fotoNoEncontrada`, `videoNoEncontrado` | El recuadro que sale cuando falta una foto o un video. |
 | `sinMomentos`, `sinFotos` | Aviso si `timeline.json` o `collage.json` quedan vacíos. |
 
-Sobre la música: los navegadores no dejan que una página suene sola antes de que la toques. Si no arranca al entrar, empezará con el primer clic o tecla. El botón de la nota musical la silencia o la reanuda, y recuerda tu elección.
+Sobre la música: los navegadores no dejan que una página suene sola antes de que la toques. Por eso arranca con el botón **Entrar**. La pantalla de entrada sale una vez por visita: si recargas, no vuelve a salir y la música empieza con el primer toque. El botón de la nota musical la silencia o la reanuda, y recuerda tu elección.
 
 ### `src/content/timeline.json` — la línea de tiempo
 Una entrada por momento importante. Salen en **Nuestra historia** (`/historia`), sobre una línea vertical que se dibuja mientras bajas: en escritorio alternan izquierda y derecha; en celular van todas a un lado. Se **ordenan solas por `fecha`**, así que no importa en qué orden las escribas.
@@ -598,9 +612,13 @@ src/
     Juegos.jsx      → /juegos    (menú de juegos y el juego abierto)
     Historia.jsx    → /historia  (contador, línea de tiempo y collage)
     Libro.jsx       → /libro     (terminado)
+    NoEncontrada.jsx → cualquier otra dirección
   components/
     comun/      ← piezas de toda la app
-      MusicaFondo.jsx     ← música de fondo y su botón de silencio
+      Entrada.jsx         ← pantalla de entrada y clave de acceso
+      MusicaFondo.jsx     ← botón de silencio (musica.js reproduce la canción)
+      Imagen.jsx          ← <img> que usa las versiones .webp optimizadas
+      Cargando.jsx        ← corazón que late mientras carga
       VolverInicio.jsx    ← botón "Volver al inicio"
       BarraSecciones.jsx  ← chips para saltar entre secciones de una página
       Lightbox.jsx        ← visor de fotos a pantalla completa
@@ -660,9 +678,15 @@ src/
     historia.css ← marcos del collage, recorte y visor de fotos
     juegos.css  ← cartas, sobres, piezas, fichas y botones de los juegos
     index.css   ← Tailwind, font-romantica y estilos globales
-  App.jsx       ← las 4 rutas, el comodín y la música de fondo
+  App.jsx       ← entrada, rutas con transición y música de fondo
+  rutas.js      ← carga cada pantalla solo cuando hace falta
   main.jsx      ← arranque de la app (aplica el tema a todo)
+plugins/
+  imagenes.js   ← convierte las fotos a .webp al construir
+  pareja.js     ← título, vista previa al compartir y clave (desde pareja.json)
 index.html
+vercel.json     ← configuración para Vercel
+netlify.toml    ← configuración para Netlify
 ```
 
 ---
@@ -675,7 +699,7 @@ index.html
 | `/juegos` | Juegos — menú con los 6 minijuegos (`/juegos?juego=<id>` abre uno directo) |
 | `/historia` | Nuestra historia — contador, línea de tiempo y collage |
 | `/libro` | Libro digital con efecto de pasar páginas |
-| cualquier otra | Vuelve al Inicio |
+| cualquier otra | Página "no existe" con mensaje romántico y botón para volver (`pareja.json` → `textosInterfaz.noEncontrada`) |
 
 ---
 
@@ -686,3 +710,86 @@ index.html
 - **La app se queda en blanco tras editar un JSON**: casi siempre es una **coma** sobrante o faltante.
   En JSON, el último elemento de una lista **no** lleva coma al final.
 - **Comillas**: todos los textos van entre comillas dobles `"`. Si tu texto lleva una comilla doble dentro, escríbela como `\"`.
+- **Cambié algo y en el celular sigo viendo lo viejo**: espera uno o dos minutos a que termine de publicarse y recarga. Si sigue igual, ábrelo en una pestaña de incógnito.
+- **El enlace compartido no muestra la foto**: WhatsApp y Facebook guardan la vista previa varios días. Pega el enlace en <https://developers.facebook.com/tools/debug/> y pulsa **Volver a extraer** (*Scrape Again*); para WhatsApp, prueba agregando `?v=2` al final del enlace.
+
+---
+
+## 9. Privacidad
+
+- **Buscadores**: el sitio le pide a Google y compañía que no lo muestren de tres formas: la etiqueta `<meta name="robots">` de `index.html`, `public/robots.txt` y una cabecera en `vercel.json` / `netlify.toml`. A los robots que arman la vista previa de WhatsApp, Facebook, X o Telegram sí se les deja pasar, para que el enlace se vea bonito al compartirlo.
+- **Clave de acceso**: pon una respuesta en `pareja.json` → `claveAcceso` y una pregunta en `preguntaAcceso`. Se pide una sola vez en cada navegador; si cambias la clave, se vuelve a pedir. En la versión publicada la respuesta no viaja escrita tal cual, solo su huella.
+- **Lo que la clave NO hace**: es una cerradura simpática, no una caja fuerte. Alguien que sepa programar y tenga el enlace podría ver los textos y las fotos sin escribirla. Lo importante es **no compartir el enlace** con quien no debe verlo, y no subir nada que no quieras que se pueda ver con ese enlace.
+
+---
+
+## 10. Publicarlo gratis, paso a paso
+
+Necesitas una cuenta gratis de **GitHub** (donde se guarda el proyecto) y otra de **Vercel** o **Netlify** (donde se publica). Las dos son gratis y funcionan igual de bien: elige **una**. Ya están configuradas en `vercel.json` y `netlify.toml`, incluida la regla para que `/libro` o `/juegos` funcionen al recargar la página.
+
+### 10.1 Antes de publicar (lista de revisión)
+
+1. Corre `npm run dev` y recorre todo: Inicio, Juegos, Historia y Libro, en el computador y en el celular.
+2. Busca las palabras **REEMPLAZAR** y **EJEMPLO** en `src/content/` (en VS Code: `Ctrl+Shift+F`). No debe quedar ninguna.
+3. Busca los **recuadros rosa a rayas**: son fotos o videos que faltan.
+4. Llena `pareja.json` → `metadatos` (título, descripción y foto de la tarjeta al compartir).
+5. Si quieres clave, llena `claveAcceso` y `preguntaAcceso`, y **pruébala** en `npm run dev`.
+6. Corre `npm run build`: debe terminar con `✓ built`. Si sale un error en rojo, casi siempre es una coma en un JSON (ver **Errores comunes**, capítulo 8).
+
+### 10.2 Subir el proyecto a GitHub (una sola vez)
+
+1. Entra a <https://github.com/new>, ponle un nombre (por ejemplo `regalo`), márcalo como **Private** y pulsa **Create repository**.
+2. En la terminal, dentro de la carpeta del proyecto:
+   ```bash
+   git add -A
+   git commit -m "Regalo listo para publicar"
+   git remote add origin https://github.com/TU-USUARIO/regalo.git
+   git push -u origin main
+   ```
+   Si el proyecto ya estaba en GitHub, basta con `git add -A`, `git commit -m "..."` y `git push`.
+
+`node_modules/` y `dist/` no se suben (están en `.gitignore`): Vercel y Netlify los crean solos.
+
+### 10.3 Opción A: Vercel
+
+1. Entra a <https://vercel.com/signup> y regístrate **con tu cuenta de GitHub** (plan *Hobby*, gratis).
+2. Pulsa **Add New… → Project**, busca tu repositorio y pulsa **Import**. Si no aparece, pulsa **Adjust GitHub App Permissions** y dale acceso.
+3. No cambies nada (detecta Vite y lee `vercel.json`). Pulsa **Deploy**.
+4. En uno o dos minutos te da una dirección como `https://regalo-tu-usuario.vercel.app`. Para elegir una más bonita: **Settings → Domains → Edit**, por ejemplo `para-juli.vercel.app`.
+
+### 10.4 Opción B: Netlify
+
+1. Entra a <https://app.netlify.com/signup> y regístrate **con tu cuenta de GitHub** (plan gratis).
+2. Pulsa **Add new site → Import an existing project → GitHub** y elige tu repositorio.
+3. No cambies nada (lee `netlify.toml`: comando `npm run build`, carpeta `dist`). Pulsa **Deploy**.
+4. Te da una dirección como `https://nombre-raro-123.netlify.app`. Para cambiarla: **Site configuration → Change site name**.
+
+### 10.5 Comprobar que quedó bien
+
+- Abre la dirección en el celular y en el computador.
+- Entra a `/libro` y **recarga**: debe seguir en el libro. Si sale un error 404, revisa que `vercel.json` o `netlify.toml` estén subidos a GitHub.
+- Escribe una dirección inventada (`/hola`): debe salir la página romántica de "no existe".
+- Mándate el enlace por WhatsApp para ver la vista previa con foto y título.
+
+---
+
+## 11. Cambiar fotos y textos después de publicar
+
+Una vez conectado a Vercel o Netlify, **cada vez que subes cambios a GitHub el sitio se vuelve a publicar solo** (tarda uno o dos minutos). La dirección no cambia.
+
+1. Haz el cambio:
+   - **Textos**: edita el JSON de `src/content/` que corresponda (capítulo 4).
+   - **Fotos o videos nuevos**: cópialos a `public/fotos/` o `public/libro/` y escribe su ruta en el JSON. Si **reemplazas** una foto usando el mismo nombre de archivo, no tienes que tocar el JSON.
+   - **Colores o tipografías**: `src/styles/tema.js`.
+2. Pruébalo: `npm run dev`.
+3. Súbelo:
+   ```bash
+   git add -A
+   git commit -m "Nuevas fotos"
+   git push
+   ```
+4. Espera a que en Vercel (**Deployments**) o Netlify (**Deploys**) salga **Ready** / **Published**, y recarga.
+
+¿Sin computador a mano? En github.com puedes abrir un JSON, pulsar el lápiz (**Edit**), cambiar el texto y pulsar **Commit changes**; para fotos, entra a `public/fotos` y usa **Add file → Upload files**. Se publica igual, solo.
+
+Si algo sale mal tras publicar, en Vercel (**Deployments**) o Netlify (**Deploys**) puedes volver a la versión anterior con un clic (**Promote to Production** / **Publish deploy**) mientras lo arreglas.

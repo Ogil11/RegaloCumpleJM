@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { tema } from "../../styles/tema";
 import datos from "../../content/libro.json";
+import pareja from "../../content/pareja.json";
+import Cargando from "../comun/Cargando";
 import Pagina from "./Pagina";
 import { ProveedorLibro } from "./contexto";
 import ControlesLibro from "./ControlesLibro";
@@ -18,6 +20,10 @@ const PROP_DOBLE = PROP * 2;
    pagina, asi que este valor define el salto a modo celular. */
 const MIN_PAGINA = 340;
 const UMBRAL_DOBLE = MIN_PAGINA * 2 + 40; // 720px de bloque
+
+/* Pantalla de carga: nunca mas de TOPE_CARGA ms aunque una foto tarde. */
+const TOPE_CARGA = 8000;
+const MINIMO_CARGA = 450;
 
 /** Deja un numero par de hojas: showCover necesita portada y contraportada. */
 function prepararPaginas(lista) {
@@ -57,6 +63,10 @@ export default function Libro() {
   const [area, setArea] = useState({ w: 0, h: 0 });
   const [paginaActual, setPaginaActual] = useState(0);
   const [orientacionLib, setOrientacionLib] = useState(null);
+  const [iniciado, setIniciado] = useState(false);
+  const [carga, setCarga] = useState({ listas: 0, total: 0, terminada: false });
+  // Con "menos movimiento" la hoja pasa rapido en vez de curvarse despacio.
+  const reducirMovimiento = useReducedMotion();
 
   const { silenciado, alternarSilencio, reproducir } = useSonidoPagina();
 
@@ -149,7 +159,43 @@ export default function Libro() {
     instanciaRef.current = pf;
     setPaginaActual(e.data.page);
     setOrientacionLib(e.data.mode);
+    setIniciado(true);
   }, []);
+
+  /* ---------- Pantalla de carga ----------
+     Espera las fotos de las primeras paginas (las que ya estan montadas
+     por radioCarga) y las tipografias, con un tope por si algo tarda. */
+  useEffect(() => {
+    if (!iniciado || carga.terminada) return undefined;
+    let vivo = true;
+    const imagenes = [...(areaRef.current?.querySelectorAll("img") ?? [])];
+    const pendientes = imagenes.filter((img) => !img.complete);
+    let listas = imagenes.length - pendientes.length;
+    setCarga((c) => ({ ...c, listas, total: imagenes.length }));
+
+    const esperas = pendientes.map(
+      (img) =>
+        new Promise((resolver) => {
+          const fin = () => {
+            listas += 1;
+            if (vivo) setCarga((c) => ({ ...c, listas }));
+            resolver();
+          };
+          img.addEventListener("load", fin, { once: true });
+          img.addEventListener("error", fin, { once: true });
+        })
+    );
+    const fuentes = document.fonts?.ready ?? Promise.resolve();
+    const espera = (ms) => new Promise((resolver) => setTimeout(resolver, ms));
+
+    Promise.all([Promise.race([Promise.all([...esperas, fuentes]), espera(TOPE_CARGA)]), espera(MINIMO_CARGA)]).then(() => {
+      if (vivo) setCarga((c) => ({ ...c, terminada: true }));
+    });
+    return () => {
+      vivo = false;
+    };
+  }, [iniciado, carga.terminada]);
+  const listo = carga.terminada;
   const alCambiarEstado = useCallback(
     (e) => {
       if (e.data === "flipping") reproducir();
@@ -254,7 +300,7 @@ export default function Libro() {
               className="relative"
               style={{ width: anchoLibro }}
               initial={{ opacity: 0, scale: 0.94, y: 18, x: desplazamiento }}
-              animate={{ opacity: 1, scale: 1, y: 0, x: desplazamiento }}
+              animate={listo ? { opacity: 1, scale: 1, y: 0, x: desplazamiento } : { opacity: 0, scale: 0.94, y: 18, x: desplazamiento }}
               transition={{
                 opacity: { duration: 0.6, ease: "easeOut" },
                 scale: { duration: 0.7, ease: "easeOut" },
@@ -346,7 +392,7 @@ export default function Libro() {
                 /* Curvatura, arrastre de esquina y sombra dinamica. */
                 drawShadow
                 maxShadowOpacity={tema.libro.opacidadSombra}
-                flippingTime={tema.libro.tiempoPaso}
+                flippingTime={reducirMovimiento ? 350 : tema.libro.tiempoPaso}
                 showPageCorners
                 useMouseEvents
                 clickEventForward
@@ -366,6 +412,20 @@ export default function Libro() {
             </motion.div>
           ) : null}
 
+          <AnimatePresence>
+            {listo ? null : (
+              <motion.div
+                key="cargando"
+                className="absolute inset-0 z-20 flex flex-col items-center justify-center"
+                initial={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
+                <Cargando texto={pareja.textosInterfaz?.cargandoLibro} className="h-full" />
+                <BarraCarga listas={carga.listas} total={carga.total} />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* ---------- Barra de navegacion ---------- */}
@@ -382,5 +442,22 @@ export default function Libro() {
         />
       </div>
     </ProveedorLibro>
+  );
+}
+
+/** Barrita fina con las fotos ya cargadas. */
+function BarraCarga({ listas, total }) {
+  if (!total) return null;
+  const porcentaje = Math.round((Math.min(listas, total) / total) * 100);
+  return (
+    <div
+      role="progressbar"
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-valuenow={porcentaje}
+      className="absolute bottom-[22%] h-1.5 w-40 overflow-hidden rounded-full bg-[var(--lib-papel)]"
+    >
+      <div className="h-full rounded-full bg-[var(--lib-rosa)] transition-[width] duration-300" style={{ width: `${porcentaje}%` }} />
+    </div>
   );
 }

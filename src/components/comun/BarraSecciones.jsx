@@ -44,7 +44,7 @@ export default function BarraSecciones({ secciones, etiqueta }) {
             type="button"
             onClick={() => saltar(s.id)}
             aria-current={esActiva ? "true" : undefined}
-            className={`relative rounded-full px-4 py-1.5 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-[var(--lib-rosa)] ${
+            className={`relative min-h-11 rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-[var(--lib-rosa)] ${
               esActiva ? "text-[var(--lib-texto-tapa)]" : "text-[var(--lib-tinta-suave)] hover:text-[var(--lib-tinta)]"
             }`}
           >

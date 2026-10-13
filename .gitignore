@@ -1,0 +1,19 @@
+# Dependencias: se instalan con npm install (Vercel y Netlify lo hacen solos)
+node_modules/
+
+# Version construida: la genera npm run build
+dist/
+
+# Configuracion local de Vercel / Netlify
+.vercel/
+.netlify/
+
+# Variables y archivos locales
+.env
+.env.*
+*.local
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini

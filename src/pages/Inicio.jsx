@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import pareja from "../content/pareja.json";
+import Imagen from "../components/comun/Imagen";
+import { precargar, precargarTodasLuego } from "../rutas";
 
 // Todo lo visible sale de pareja.json: nombre, frase, foto y las tarjetas (secciones.tarjetas).
 const tarjetas = pareja.secciones?.tarjetas ?? [];
@@ -21,6 +23,9 @@ export default function Inicio() {
   const [fotoRota, setFotoRota] = useState(false);
   const mostrarFoto = Boolean(pareja.fotoPortada) && !fotoRota;
 
+  // Con el Inicio ya en pantalla, se bajan las otras secciones sin prisa.
+  useEffect(() => precargarTodasLuego(), []);
+
   return (
     <motion.main
       className="mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center justify-center gap-10 px-4 py-16"
@@ -30,8 +35,12 @@ export default function Inicio() {
     >
       <motion.header className="flex flex-col items-center text-center" variants={elemento}>
         {mostrarFoto ? (
-          <img
+          <Imagen
             src={pareja.fotoPortada}
+            sizes="160px"
+            width="160"
+            height="160"
+            decoding="async"
             alt={pareja.fotoPortadaAlt || ""}
             onError={() => setFotoRota(true)}
             className="mb-6 h-32 w-32 rounded-full object-cover shadow-md ring-4 ring-white/80 sm:h-40 sm:w-40"
@@ -53,6 +62,8 @@ export default function Inicio() {
           <motion.div key={tarjeta.ruta} variants={elemento}>
             <Link
               to={tarjeta.ruta}
+              onPointerEnter={() => precargar(tarjeta.ruta)}
+              onFocus={() => precargar(tarjeta.ruta)}
               className="flex h-40 flex-col items-center justify-center gap-2 rounded-2xl bg-white/80 p-6 text-center text-rose-900 shadow-sm ring-1 ring-rose-100 transition hover:-translate-y-1 hover:shadow-md"
             >
               <span className="font-romantica text-xl font-medium">{tarjeta.titulo}</span>

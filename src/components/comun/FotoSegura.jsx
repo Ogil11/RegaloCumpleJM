@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Imagen from "./Imagen";
 import { textosHistoria as t } from "./textosHistoria";
 
 /**
@@ -37,8 +38,11 @@ export function Reemplazo({ ruta, aviso, compacto = false, className = "" }) {
  * el archivo no existe. Nunca muestra una imagen rota.
  * - modo "cubrir": llena su caja (para marcos y mosaicos).
  * - modo "contener": la foto entera a su tamano natural (para el visor).
+ * - sizes: cuanto ocupa en pantalla, para elegir la version justa.
  */
-export default function FotoSegura({ src, alt = "", modo = "cubrir", compacto = false, className = "" }) {
+const SIZES_MOSAICO = "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw";
+
+export default function FotoSegura({ src, alt = "", modo = "cubrir", compacto = false, sizes, className = "" }) {
   if (!src) {
     return (
       <div className={className}>
@@ -47,10 +51,20 @@ export default function FotoSegura({ src, alt = "", modo = "cubrir", compacto = 
     );
   }
   // key={src}: si cambia la ruta, vuelve a empezar en "cargando".
-  return <FotoCargando key={src} src={src} alt={alt} modo={modo} compacto={compacto} className={className} />;
+  return (
+    <FotoCargando
+      key={src}
+      src={src}
+      alt={alt}
+      modo={modo}
+      compacto={compacto}
+      sizes={sizes ?? (modo === "contener" ? "100vw" : SIZES_MOSAICO)}
+      className={className}
+    />
+  );
 }
 
-function FotoCargando({ src, alt, modo, compacto, className }) {
+function FotoCargando({ src, alt, modo, compacto, sizes, className }) {
   const [estado, setEstado] = useState("cargando");
   const contener = modo === "contener";
 
@@ -66,8 +80,9 @@ function FotoCargando({ src, alt, modo, compacto, className }) {
             )}
           </div>
         ) : null}
-        <img
+        <Imagen
           src={src}
+          sizes={sizes}
           alt={alt}
           decoding="async"
           draggable="false"
@@ -94,8 +109,9 @@ function FotoCargando({ src, alt, modo, compacto, className }) {
           )}
         </div>
       ) : null}
-      <img
+      <Imagen
         src={src}
+        sizes={sizes}
         alt={alt}
         loading="lazy"
         decoding="async"

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Corazon, Filigrana } from "../libro/Adornos";
 import { Reemplazo } from "../comun/FotoSegura";
+import Imagen from "../comun/Imagen";
 import { textosJuegos as t } from "./datosJuegos";
 
 /** Tarjeta de "¡Ganaste!": titulo, texto y botones (children). */
@@ -72,8 +73,9 @@ function FotoCargando({ src, alt, etiqueta, className }) {
         </div>
       ) : null}
       {src && estado !== "error" ? (
-        <img
+        <Imagen
           src={src}
+          sizes="(min-width: 640px) 180px, 30vw"
           alt={alt}
           decoding="async"
           draggable="false"

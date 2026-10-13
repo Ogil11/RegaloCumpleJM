@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Reemplazo } from "../comun/FotoSegura";
+import { urlOptimizada } from "../comun/Imagen";
 import { normalizarFoto, rellenar, textosHistoria } from "../comun/textosHistoria";
 import { EsquinasFoto } from "../libro/Adornos";
 import Celebracion from "./Celebracion";
@@ -48,7 +49,9 @@ function mezclar(total) {
  */
 export default function Rompecabezas({ juego }) {
   const foto = normalizarFoto(juego.foto) ?? { src: "", alt: "" };
-  const imagen = useImagen(foto.src);
+  // Version .webp de 960 px (al publicar): nitida en el tablero y liviana.
+  const srcOptimo = urlOptimizada(foto.src, 960);
+  const imagen = useImagen(srcOptimo);
   const validos = (juego.tamanos ?? [3, 4]).map(Number).filter((n) => n >= 2 && n <= 8);
   const tamanos = validos.length ? validos : [3];
   const [tamano, setTamano] = useState(tamanos.length === 1 ? tamanos[0] : null);
@@ -89,7 +92,7 @@ export default function Rompecabezas({ juego }) {
     <Tablero
       key={`${tamano}-${partida}`}
       n={tamano}
-      foto={foto}
+      foto={{ ...foto, optimo: srcOptimo }}
       imagen={imagen}
       dedicatoria={juego.dedicatoria}
       onReiniciar={() => setPartida((p) => p + 1)}
@@ -178,7 +181,7 @@ function Tablero({ n, foto, imagen, dedicatoria, onReiniciar, onCambiarTamano })
         >
           <div className="relative w-full" style={{ aspectRatio: proporcion }}>
             {conFoto ? (
-              <img src={foto.src} alt={foto.alt} className="h-full w-full object-cover" draggable="false" />
+              <img src={foto.optimo} alt={foto.alt} className="h-full w-full object-cover" draggable="false" />
             ) : (
               <Reemplazo ruta={foto.src} aviso={textosHistoria.fotoNoEncontrada} />
             )}
@@ -230,7 +233,7 @@ function Tablero({ n, foto, imagen, dedicatoria, onReiniciar, onCambiarTamano })
       <AnimatePresence>
         {verModelo && conFoto ? (
           <motion.img
-            src={foto.src}
+            src={foto.optimo}
             alt={foto.alt}
             draggable="false"
             className="mb-4 w-32 rounded-sm shadow-md"
@@ -262,7 +265,7 @@ function Tablero({ n, foto, imagen, dedicatoria, onReiniciar, onCambiarTamano })
           ].join(" ");
           const fondo = conFoto
             ? {
-                backgroundImage: `url("${foto.src}")`,
+                backgroundImage: `url("${foto.optimo}")`,
                 backgroundSize: `${n * 100}% ${n * 100}%`,
                 backgroundPosition: `${(col / (n - 1)) * 100}% ${(fila / (n - 1)) * 100}%`,
               }

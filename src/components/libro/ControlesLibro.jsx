@@ -3,7 +3,7 @@ import IndiceLibro from "./IndiceLibro";
 import { textos } from "./textos";
 
 const BOTON =
-  "flex items-center gap-1.5 rounded-full border border-[var(--lib-dorado)]/40 bg-[var(--lib-papel)]/85 px-2.5 py-2 text-xs font-medium text-[var(--lib-tinta)] shadow-sm transition hover:bg-[var(--lib-papel)] disabled:cursor-not-allowed disabled:opacity-40 sm:gap-2 sm:px-3";
+  "flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-full border border-[var(--lib-dorado)]/40 bg-[var(--lib-papel)]/85 px-2.5 py-2 text-xs font-medium text-[var(--lib-tinta)] shadow-sm transition hover:bg-[var(--lib-papel)] disabled:cursor-not-allowed disabled:opacity-40 sm:gap-2 sm:px-3";
 
 function Flecha({ hacia = "izq" }) {
   return (

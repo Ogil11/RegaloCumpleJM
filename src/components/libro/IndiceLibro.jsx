@@ -32,7 +32,7 @@ export default function IndiceLibro({ entradas, paginaActual, onIr }) {
         onClick={() => setAbierto((a) => !a)}
         aria-expanded={abierto}
         aria-haspopup="menu"
-        className="flex items-center gap-2 rounded-full border border-[var(--lib-dorado)]/40 bg-[var(--lib-papel)]/85 px-3 py-2 text-xs font-medium text-[var(--lib-tinta)] shadow-sm transition hover:bg-[var(--lib-papel)]"
+        className="flex min-h-11 items-center gap-2 rounded-full border border-[var(--lib-dorado)]/40 bg-[var(--lib-papel)]/85 px-3 py-2 text-xs font-medium text-[var(--lib-tinta)] shadow-sm transition hover:bg-[var(--lib-papel)]"
       >
         <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8">
           <path d="M4 6h16M4 12h16M4 18h10" strokeLinecap="round" />

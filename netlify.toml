@@ -1,0 +1,29 @@
+# Configuracion para publicar en Netlify (https://app.netlify.com).
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Que ningun buscador lo indexe (ademas de robots.txt y la etiqueta meta).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Referrer-Policy = "same-origin"
+
+# Los .js y .css llevan una huella en el nombre: se pueden guardar para siempre.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Rutas de la app (/libro, /juegos...): al recargar, servir index.html.
+# Netlify solo aplica esta regla si el archivo pedido no existe, asi que
+# las fotos, la musica y los .js se sirven normal.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
