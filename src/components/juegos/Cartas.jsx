@@ -6,6 +6,7 @@ import { Corazon, Filigrana } from "../libro/Adornos";
 import Celebracion from "./Celebracion";
 import { textosJuegos } from "./datosJuegos";
 import { Marcador, Marcadores, SinContenido } from "./PiezasJuego";
+import CorazonNuestro from "../comun/CorazonNuestro";
 import { useSonido } from "./sonidos";
 
 const t = textosJuegos.cartas ?? {};
@@ -227,7 +228,7 @@ function ContenidoCarta({ carta }) {
   if (carta.tipo === "vale") {
     return (
       <div className="jue-vale px-4 py-6 text-center">
-        <Corazon className="mx-auto block h-8 w-8" />
+        <CorazonNuestro className="mx-auto flex h-9 w-9" />
         {carta.titulo ? (
           <h3 className="font-romantica mt-2 text-3xl text-[var(--lib-tapa)]">{carta.titulo}</h3>
         ) : null}

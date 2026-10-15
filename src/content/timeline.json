@@ -1,87 +1,331 @@
 {
-  "_ejemplo": "REEMPLAZAR: estos 8 momentos son de ejemplo. Borra los que no quieras y pon los reales con el mismo formato. Se ordenan solos por fecha. El formato completo está en el README.",
   "momentos": [
     {
       "id": 1,
-      "fecha": "2023-01-01",
-      "titulo": "REEMPLAZAR - El día que nos conocimos",
-      "texto": "REEMPLAZAR - Cuenta en dos o tres líneas qué pasó ese día y qué sentiste.",
+      "fecha": "2025-03-17",
+      "titulo": "Nos reencontramos",
+      "texto": "Después de mucho tiempo sin vernos, la vida nos volvió a cruzar. Todavía no éramos novios.",
       "icono": "estrella",
-      "foto": "/fotos/ejemplo-timeline-1.jpg",
-      "alt": "REEMPLAZAR - Descripción de la foto",
-      "marco": "polaroid",
-      "pie": "REEMPLAZAR - lo que escribirías al reverso"
+      "foto": "/fotos/2025-03-17-reencuentro.jpg",
+      "alt": "Selfie de los dos el día que nos reencontramos",
+      "pie": "donde empezó todo",
+      "marco": "polaroid"
     },
     {
       "id": 2,
-      "fecha": "2023-02-14",
-      "titulo": "REEMPLAZAR - Nuestra primera cita",
-      "texto": "REEMPLAZAR - Este momento no tiene foto: así se ve un hito solo con texto.",
-      "icono": "corazon"
-    },
-    {
-      "id": 3,
-      "fecha": "2023-04-08",
-      "titulo": "REEMPLAZAR - El primer paseo juntos",
-      "texto": "REEMPLAZAR - Este momento tiene varias fotos: salen en un carrusel pequeño.",
+      "fecha": "2025-03-30",
+      "titulo": "La muralla de Cartagena",
+      "texto": "Paseando juntos por la muralla de Cartagena.",
       "icono": "camara",
-      "marco": "cinta",
-      "fotos": [
-        { "src": "/fotos/ejemplo-timeline-3a.jpg", "alt": "REEMPLAZAR - Primera foto", "pie": "REEMPLAZAR - pie de la primera foto" },
-        { "src": "/fotos/ejemplo-timeline-3b.jpg", "alt": "REEMPLAZAR - Segunda foto", "pie": "REEMPLAZAR - pie de la segunda foto" },
-        { "src": "/fotos/ejemplo-timeline-3c.jpg", "alt": "REEMPLAZAR - Tercera foto", "pie": "REEMPLAZAR - pie de la tercera foto" }
-      ]
-    },
-    {
-      "id": 4,
-      "fecha": "2023-06-15",
-      "titulo": "REEMPLAZAR - Nuestro primer viaje",
-      "texto": "REEMPLAZAR - Este momento tiene un video. Pon el .mp4 en public/fotos/.",
-      "icono": "avion",
-      "video": "/fotos/ejemplo-timeline-4.mp4",
-      "poster": "/fotos/ejemplo-timeline-4-portada.jpg"
-    },
-    {
-      "id": 5,
-      "fecha": "2023-12-24",
-      "fechaTexto": "REEMPLAZAR - Navidad 2023",
-      "titulo": "REEMPLAZAR - La primera Navidad",
-      "texto": "REEMPLAZAR - Con \"fechaTexto\" puedes mostrar la fecha como quieras sin perder el orden.",
-      "icono": "regalo",
-      "foto": "/fotos/ejemplo-timeline-5.jpg",
-      "alt": "REEMPLAZAR - Descripción de la foto",
+      "foto": "/fotos/2025-03-30-muralla-cartagena.jpg",
+      "alt": "Los dos abrazados junto a un cañón en la muralla de Cartagena",
       "marco": "cinta"
     },
     {
-      "id": 6,
-      "fecha": "2024-03-10",
-      "titulo": "REEMPLAZAR - Nuestra canción",
-      "texto": "REEMPLAZAR - Otro momento sin foto, con un icono distinto en la línea.",
+      "id": 3,
+      "fecha": "2025-04-30",
+      "titulo": "Juntos en el quinceañero de mi hermana",
+      "texto": "En el quinceañero de mi hermana, bailando juntos.",
       "icono": "musica",
-      "animacion": "rebota"
+      "foto": "/fotos/2025-04-30-quinceanero.jpg",
+      "alt": "Selfie de los dos en el quinceañero de mi hermana",
+      "marco": "polaroid",
+      "video": "/fotos/2025-04-30-bailando.mp4",
+      "poster": "/fotos/2025-04-30-bailando-portada.jpg"
+    },
+    {
+      "id": 4,
+      "fecha": "2025-05-01",
+      "titulo": "Juntos en una cabaña",
+      "texto": "Celebrando el cumpleaños de tu papá.",
+      "icono": "casa",
+      "foto": "/fotos/2025-05-01-cumple-papa.jpg",
+      "alt": "Los dos dándonos un beso sentados en un columpio de madera",
+      "marco": "cinta"
+    },
+    {
+      "id": 5,
+      "fecha": "2025-05-05",
+      "titulo": "El día que te pedí que fueras mi novia",
+      "texto": "Flores, globos y un “Te amo” en la pared. Desde ese día somos novios.",
+      "icono": "anillo",
+      "fotos": [
+        {
+          "src": "/fotos/2025-05-05-novios-beso.jpg",
+          "alt": "Nos besamos frente a los globos de Te amo, ella con el ramo de flores",
+          "pie": "nuestro primer beso de novios"
+        },
+        {
+          "src": "/fotos/2025-05-05-novios-ramo.jpg",
+          "alt": "Jhiret sentada con el ramo de flores frente a los globos de Te amo",
+          "pie": "tu ramo"
+        }
+      ],
+      "marco": "polaroid"
+    },
+    {
+      "id": 6,
+      "fecha": "2025-05-31",
+      "titulo": "Cantando juntos",
+      "texto": "Cantando a todo pulmón, los dos.",
+      "icono": "musica",
+      "video": "/fotos/2025-05-31-cantando.mp4",
+      "poster": "/fotos/2025-05-31-cantando-portada.jpg"
     },
     {
       "id": 7,
-      "fecha": "2024-09-01",
-      "titulo": "REEMPLAZAR - Un fin de semana inolvidable",
-      "texto": "REEMPLAZAR - Dos fotos en carrusel con marco polaroid.",
-      "icono": "casa",
-      "marco": "polaroid",
-      "fotos": [
-        { "src": "/fotos/ejemplo-timeline-7a.jpg", "alt": "REEMPLAZAR - Primera foto", "pie": "REEMPLAZAR - pie de la primera foto" },
-        { "src": "/fotos/ejemplo-timeline-7b.jpg", "alt": "REEMPLAZAR - Segunda foto", "pie": "REEMPLAZAR - pie de la segunda foto" }
-      ]
+      "fecha": "2025-06-14",
+      "titulo": "De fiesta",
+      "texto": "Una tarde de fiesta juntos.",
+      "icono": "estrella",
+      "foto": "/fotos/2025-06-14-fiesta.jpg",
+      "alt": "Selfie de los dos en una fiesta",
+      "marco": "cinta"
     },
     {
       "id": 8,
-      "fecha": "2025-01-01",
-      "titulo": "REEMPLAZAR - Dos años juntos",
-      "texto": "REEMPLAZAR - El último momento de la línea. Puedes añadir todos los que quieras.",
-      "icono": "anillo",
-      "foto": "/fotos/ejemplo-timeline-8.jpg",
-      "alt": "REEMPLAZAR - Descripción de la foto",
+      "fecha": "2025-08-07",
+      "titulo": "Juntos en Las Vegas",
+      "icono": "camara",
+      "fotos": [
+        {
+          "src": "/fotos/2025-08-07-las-vegas-1.jpg",
+          "alt": "Abrazados dándonos un beso"
+        },
+        {
+          "src": "/fotos/2025-08-07-las-vegas-2.jpg",
+          "alt": "Los dos abrazados, de pie, mirando a la cámara"
+        }
+      ],
+      "marco": "polaroid"
+    },
+    {
+      "id": 9,
+      "fecha": "2025-09-11",
+      "titulo": "Mi cumpleaños",
+      "texto": "Un cumpleaños maravilloso contigo a mi lado.",
+      "icono": "regalo",
+      "foto": "/fotos/2025-09-11-mi-cumple-beso.jpg",
+      "alt": "Los dos besándonos; ella con vestido rojo",
+      "marco": "cinta",
+      "video": "/fotos/2025-09-11-mi-cumple.mp4",
+      "poster": "/fotos/2025-09-11-mi-cumple-portada.jpg"
+    },
+    {
+      "id": 10,
+      "fecha": "2025-09-13",
+      "titulo": "Haciendo locuras",
+      "texto": "Porque contigo hasta lo más tonto es divertido.",
+      "icono": "estrella",
+      "video": "/fotos/2025-09-13-divertido.mp4",
+      "poster": "/fotos/2025-09-13-divertido-portada.jpg"
+    },
+    {
+      "id": 11,
+      "fecha": "2025-09-14",
+      "titulo": "El pueblo de mi mamá",
+      "texto": "La primera vez que conociste el pueblo de mi mamá.",
+      "icono": "casa",
+      "foto": "/fotos/2025-09-14-pueblo-mama.jpg",
+      "alt": "Selfie de los dos al aire libre en el pueblo de mi mamá",
+      "marco": "polaroid"
+    },
+    {
+      "id": 12,
+      "fecha": "2025-10-15",
+      "titulo": "Tu cumpleaños",
+      "texto": "Tu cumpleaños del año pasado. Este es el segundo que celebramos juntos.",
+      "icono": "regalo",
+      "fotos": [
+        {
+          "src": "/fotos/2025-10-15-tu-cumple.jpg",
+          "alt": "Jhiret con vestido azul y yo, frente a la pared de globos de su fiesta",
+          "pie": "nos veíamos increíbles"
+        },
+        {
+          "src": "/fotos/2025-10-15-tu-cumple-beso.jpg",
+          "alt": "Nos damos un beso frente al letrero de luces de su fiesta"
+        }
+      ],
+      "marco": "cinta"
+    },
+    {
+      "id": 13,
+      "fecha": "2025-11-25",
+      "titulo": "Paseo a Santa Marta",
+      "texto": "El mar, el cielo y nosotros dos.",
+      "icono": "avion",
+      "fotos": [
+        {
+          "src": "/fotos/2025-11-25-santa-marta-mar.jpg",
+          "alt": "Los dos de espaldas mirando el mar",
+          "pie": "un paisaje increíble"
+        },
+        {
+          "src": "/fotos/2025-11-25-santa-marta-cargada.jpg",
+          "alt": "Yo la cargo en la espalda en la playa"
+        },
+        {
+          "src": "/fotos/2025-11-25-santa-marta.jpg",
+          "alt": "Los dos de pie a la orilla del mar"
+        }
+      ],
       "marco": "polaroid",
-      "pie": "REEMPLAZAR - y lo que falta"
+      "video": "/fotos/2025-11-25-santa-marta-orilla.mp4",
+      "poster": "/fotos/2025-11-25-santa-marta-orilla-portada.jpg"
+    },
+    {
+      "id": 14,
+      "fecha": "2025-12-15",
+      "fechaTexto": "Navidad 2025",
+      "titulo": "Nuestra primera Navidad",
+      "texto": "La primera de muchas.",
+      "icono": "regalo",
+      "foto": "/fotos/2025-12-15-navidad.jpg",
+      "alt": "Selfie de los dos junto al árbol de Navidad",
+      "marco": "cinta"
+    },
+    {
+      "id": 15,
+      "fecha": "2026-01-08",
+      "titulo": "En tu pueblo, vestidos iguales",
+      "texto": "Visitando tu pueblo, combinados.",
+      "icono": "casa",
+      "video": "/fotos/2026-01-08-su-pueblo.mp4",
+      "poster": "/fotos/2026-01-08-su-pueblo-portada.jpg"
+    },
+    {
+      "id": 16,
+      "fecha": "2026-01-10",
+      "titulo": "Ferias en mi pueblo",
+      "texto": "Pasando ferias juntos.",
+      "icono": "estrella",
+      "foto": "/fotos/2026-01-10-ferias.jpg",
+      "alt": "Foto de los dos frente al espejo; ella con sombrero",
+      "marco": "polaroid"
+    },
+    {
+      "id": 17,
+      "fecha": "2026-02-13",
+      "titulo": "Nuestro TikTok",
+      "texto": "Hicimos un TikTok juntos.",
+      "icono": "camara",
+      "video": "/fotos/2026-02-13-tiktok.mp4",
+      "poster": "/fotos/2026-02-13-tiktok-portada.jpg"
+    },
+    {
+      "id": 18,
+      "fecha": "2026-02-15",
+      "titulo": "Carnaval de Barranquilla",
+      "texto": "Enmaicenados y felices en el Carnaval.",
+      "icono": "musica",
+      "fotos": [
+        {
+          "src": "/fotos/2026-02-15-carnaval-beso.jpg",
+          "alt": "Le doy un beso en la frente, los dos con maicena del Carnaval"
+        },
+        {
+          "src": "/fotos/2026-02-15-carnaval-divertida.jpg",
+          "alt": "Selfie divertida con camisas de flores en el Carnaval"
+        }
+      ],
+      "marco": "cinta"
+    },
+    {
+      "id": 19,
+      "fecha": "2026-02-17",
+      "titulo": "Un día de playa",
+      "icono": "camara",
+      "fotos": [
+        {
+          "src": "/fotos/2026-02-17-playa-bonita.jpg",
+          "alt": "Los dos de pie sobre el pasto, con palmeras y cielo azul detrás",
+          "pie": "una foto muy bonita"
+        },
+        {
+          "src": "/fotos/2026-02-17-playa.jpg",
+          "alt": "Selfie de los dos al atardecer"
+        }
+      ],
+      "marco": "polaroid"
+    },
+    {
+      "id": 20,
+      "fecha": "2026-03-01",
+      "titulo": "Cantando otra vez",
+      "icono": "musica",
+      "video": "/fotos/2026-03-01-cantando.mp4",
+      "poster": "/fotos/2026-03-01-cantando-portada.jpg"
+    },
+    {
+      "id": 21,
+      "fecha": "2026-03-21",
+      "titulo": "Concierto de Blessd",
+      "texto": "Cantando juntos en el concierto de Blessd.",
+      "icono": "musica",
+      "foto": "/fotos/2026-03-21-concierto-blessd.jpg",
+      "alt": "Selfie en el concierto; ella me da un beso en la mejilla",
+      "marco": "cinta"
+    },
+    {
+      "id": 22,
+      "fecha": "2026-04-03",
+      "titulo": "Viaje a Usiacurí",
+      "icono": "avion",
+      "fotos": [
+        {
+          "src": "/fotos/2026-04-03-usiacuri-beso.jpg",
+          "alt": "Nos besamos al atardecer en Usiacurí",
+          "pie": "una foto linda"
+        },
+        {
+          "src": "/fotos/2026-04-03-usiacuri.jpg",
+          "alt": "Selfie frente al letrero de Usiacurí"
+        }
+      ],
+      "marco": "polaroid"
+    },
+    {
+      "id": 23,
+      "fecha": "2026-04-25",
+      "titulo": "Día de piscina",
+      "icono": "estrella",
+      "foto": "/fotos/2026-04-25-piscina.jpg",
+      "alt": "Los dos acostados al borde de la piscina, foto desde arriba",
+      "marco": "cinta"
+    },
+    {
+      "id": 24,
+      "fecha": "2026-07-18",
+      "titulo": "Elegantes",
+      "texto": "Los dos bien vestidos. Qué lindos nos vemos.",
+      "icono": "estrella",
+      "foto": "/fotos/2026-07-18-elegantes.jpg",
+      "alt": "Los dos sentados, elegantes; ella con vestido azul",
+      "marco": "polaroid"
+    },
+    {
+      "id": 25,
+      "fecha": "2026-09-11",
+      "titulo": "Mi cumpleaños, otra vez contigo",
+      "texto": "Un año más, y otra vez contigo.",
+      "icono": "regalo",
+      "fotos": [
+        {
+          "src": "/fotos/2026-09-11-mi-cumple-beso.jpg",
+          "alt": "Nos besamos frente a los globos de mi cumpleaños"
+        },
+        {
+          "src": "/fotos/2026-09-11-regalos.jpg",
+          "alt": "Selfie de los dos con los regalos que me diste",
+          "pie": "todos los regalos que me diste"
+        },
+        {
+          "src": "/fotos/2026-09-11-mi-cumple.jpg",
+          "alt": "Selfie de los dos en mi cumpleaños"
+        }
+      ],
+      "marco": "cinta"
     }
   ]
 }

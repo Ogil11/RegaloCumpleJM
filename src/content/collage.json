@@ -1,19 +1,128 @@
 {
-  "_ejemplo": "REEMPLAZAR: estas 12 fotos son de ejemplo. Una entrada por foto, con el mismo formato. Pon \"formaCorazon\": true para que el collage forme un corazón. El formato completo está en el README.",
   "formaCorazon": false,
-  "textoCentro": "REEMPLAZAR - Te amo",
+  "textoCentro": "Te amo",
   "fotos": [
-    { "id": 1, "src": "/fotos/ejemplo-collage-1.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 1", "tamano": "grande", "marco": "polaroid" },
-    { "id": 2, "src": "/fotos/ejemplo-collage-2.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 2", "marco": "cinta" },
-    { "id": 3, "src": "/fotos/ejemplo-collage-3.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 3", "tamano": "alta", "marco": "recorte" },
-    { "id": 4, "src": "/fotos/ejemplo-collage-4.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 4", "marco": "polaroid" },
-    { "id": 5, "src": "/fotos/ejemplo-collage-5.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 5", "tamano": "ancha", "marco": "cinta" },
-    { "id": 6, "src": "/fotos/ejemplo-collage-6.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 6", "marco": "recorte", "rotacion": 4 },
-    { "id": 7, "src": "/fotos/ejemplo-collage-7.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 7", "marco": "polaroid" },
-    { "id": 8, "src": "/fotos/ejemplo-collage-8.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 8", "tamano": "alta", "marco": "cinta" },
-    { "id": 9, "src": "/fotos/ejemplo-collage-9.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 9", "marco": "recorte" },
-    { "id": 10, "src": "/fotos/ejemplo-collage-10.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 10", "tamano": "grande", "marco": "cinta" },
-    { "id": 11, "src": "/fotos/ejemplo-collage-11.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 11", "marco": "polaroid", "rotacion": -4 },
-    { "id": 12, "src": "/fotos/ejemplo-collage-12.jpg", "alt": "REEMPLAZAR - Descripción de la foto", "pie": "REEMPLAZAR - Pie de la foto 12", "tamano": "ancha", "marco": "recorte" }
+    {
+      "id": 1,
+      "src": "/fotos/portada.jpg",
+      "alt": "Selfie de los dos de noche",
+      "pie": "tú y yo",
+      "tamano": "grande",
+      "marco": "polaroid"
+    },
+    {
+      "id": 2,
+      "src": "/fotos/2025-08-15-loca.jpg",
+      "alt": "Ella saca la lengua y yo también",
+      "pie": "fotos locas, parte 1",
+      "marco": "cinta"
+    },
+    {
+      "id": 3,
+      "src": "/fotos/2026-04-03-usiacuri-beso.jpg",
+      "alt": "Nos besamos al atardecer en Usiacurí",
+      "pie": "",
+      "tamano": "alta",
+      "marco": "recorte"
+    },
+    {
+      "id": 4,
+      "src": "/fotos/2025-09-20-divertida.jpg",
+      "alt": "Ella me lame la mejilla",
+      "pie": "Nuestas mejores fotos son así",
+      "marco": "polaroid"
+    },
+    {
+      "id": 5,
+      "src": "/fotos/2026-03-21-concierto-blessd.jpg",
+      "alt": "Selfie en el concierto de Blessd",
+      "pie": "concierto de Blessd",
+      "tamano": "ancha",
+      "marco": "cinta"
+    },
+    {
+      "id": 6,
+      "src": "/fotos/2026-02-17-playa-bonita.jpg",
+      "alt": "Los dos de pie con palmeras detrás",
+      "pie": "",
+      "marco": "recorte",
+      "rotacion": 3
+    },
+    {
+      "id": 7,
+      "src": "/fotos/2025-06-09-divertida.jpg",
+      "alt": "Selfie divertida, ella saca la lengua",
+      "pie": "",
+      "marco": "polaroid"
+    },
+    {
+      "id": 8,
+      "src": "/fotos/2025-10-15-tu-cumple.jpg",
+      "alt": "Jhiret con vestido azul en su cumpleaños",
+      "pie": "tu cumpleaños 2025",
+      "tamano": "alta",
+      "marco": "cinta"
+    },
+    {
+      "id": 9,
+      "src": "/fotos/2026-03-15-divertida.jpg",
+      "alt": "Selfie divertida, los dos sacando la lengua",
+      "pie": "fotos locas, parte 3",
+      "marco": "recorte"
+    },
+    {
+      "id": 10,
+      "src": "/fotos/2025-05-05-novios-beso.jpg",
+      "alt": "Nuestro beso frente a los globos de Te amo",
+      "pie": "5 de mayo de 2025",
+      "tamano": "grande",
+      "marco": "cinta"
+    },
+    {
+      "id": 11,
+      "src": "/fotos/2026-02-15-carnaval-beso.jpg",
+      "alt": "Beso en el Carnaval, con maicena",
+      "pie": "",
+      "marco": "polaroid",
+      "rotacion": -3
+    },
+    {
+      "id": 12,
+      "src": "/fotos/2026-09-11-loca.jpg",
+      "alt": "Ella saca la lengua en mi cumpleaños",
+      "pie": "fotos locas, parte 4",
+      "tamano": "ancha",
+      "marco": "recorte"
+    },
+    {
+      "id": 13,
+      "src": "/fotos/2025-11-25-santa-marta-mar.jpg",
+      "alt": "Los dos mirando el mar en Santa Marta",
+      "pie": "",
+      "marco": "cinta"
+    },
+    {
+      "id": 14,
+      "src": "/fotos/2026-07-18-elegantes.jpg",
+      "alt": "Los dos elegantes",
+      "pie": "",
+      "marco": "polaroid"
+    },
+    {
+      "id": 15,
+      "src": "/fotos/2026-04-25-piscina.jpg",
+      "alt": "Al borde de la piscina",
+      "pie": "",
+      "tamano": "ancha",
+      "marco": "cinta"
+    },
+    {
+      "id": 16,
+      "src": "/fotos/2025-12-15-navidad.jpg",
+      "alt": "Selfie junto al árbol de Navidad",
+      "pie": "primera Navidad",
+      "marco": "recorte",
+      "rotacion": 2
+    }
   ]
 }

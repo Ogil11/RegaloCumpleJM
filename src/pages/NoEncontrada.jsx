@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import pareja from "../content/pareja.json";
-import { Corazon, Filigrana } from "../components/libro/Adornos";
+import { Filigrana } from "../components/libro/Adornos";
+import CorazonNuestro from "../components/comun/CorazonNuestro";
 
 // Textos: pareja.json -> textosInterfaz.noEncontrada.
 const textos = pareja.textosInterfaz?.noEncontrada ?? {};
@@ -15,7 +16,7 @@ export default function NoEncontrada() {
         animate={{ scale: [1, 1.12, 1, 1.08, 1] }}
         transition={{ duration: 1.6, repeat: Infinity, repeatDelay: 0.8, ease: "easeInOut" }}
       >
-        <Corazon className="h-16 w-16" />
+        <CorazonNuestro className="h-20 w-20" />
       </motion.div>
       <h1 className="font-romantica mt-6 text-balance text-4xl text-[var(--lib-tinta)] sm:text-5xl">{textos.titulo}</h1>
       <Filigrana className="mt-4 h-3 w-36" />

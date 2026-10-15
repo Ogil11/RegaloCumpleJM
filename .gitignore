@@ -17,3 +17,6 @@ dist/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Fotos y videos sin ordenar: Claude elige y copia las buenas a public/
+fotos-originales/

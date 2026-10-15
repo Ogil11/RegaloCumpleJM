@@ -6,7 +6,7 @@ import { normalizarFoto, rellenar, textosHistoria } from "../comun/textosHistori
 import { EsquinasFoto } from "../libro/Adornos";
 import Celebracion from "./Celebracion";
 import { barajar, textosJuegos } from "./datosJuegos";
-import { Marcador, Marcadores, MensajeFinal } from "./PiezasJuego";
+import { FotoJuego, Marcador, Marcadores, MensajeFinal } from "./PiezasJuego";
 import { useSonido } from "./sonidos";
 
 const t = textosJuegos.rompecabezas ?? {};
@@ -44,11 +44,15 @@ function mezclar(total) {
 
 /**
  * Rompecabezas: la foto de juegos.json se parte en 3x3 o 4x4.
+ * Con "fotos" (lista) en vez de "foto", primero se elige cual armar.
  * Se arrastra una pieza sobre otra (dedo o mouse) para cambiarlas,
  * o se tocan dos piezas seguidas. Al terminar sale la foto y la dedicatoria.
  */
 export default function Rompecabezas({ juego }) {
-  const foto = normalizarFoto(juego.foto) ?? { src: "", alt: "" };
+  const fotos = (Array.isArray(juego.fotos) ? juego.fotos : [juego.foto]).map((f) => normalizarFoto(f)).filter(Boolean);
+  const variasFotos = fotos.length > 1;
+  const [indiceFoto, setIndiceFoto] = useState(variasFotos ? null : 0);
+  const foto = fotos[indiceFoto ?? 0] ?? { src: "", alt: "" };
   // Version .webp de 960 px (al publicar): nitida en el tablero y liviana.
   const srcOptimo = urlOptimizada(foto.src, 960);
   const imagen = useImagen(srcOptimo);
@@ -56,6 +60,31 @@ export default function Rompecabezas({ juego }) {
   const tamanos = validos.length ? validos : [3];
   const [tamano, setTamano] = useState(tamanos.length === 1 ? tamanos[0] : null);
   const [partida, setPartida] = useState(1);
+
+  if (indiceFoto == null) {
+    return (
+      <div className="text-center">
+        <p className="lib-mano mb-4 text-2xl text-[var(--lib-tinta-suave)]">{t.elegirFoto}</p>
+        <div className="flex flex-wrap justify-center gap-4">
+          {fotos.map((f, i) => (
+            <motion.button
+              key={f.src + i}
+              type="button"
+              onClick={() => setIndiceFoto(i)}
+              aria-label={rellenar(t.armarFoto, { alt: f.alt || i + 1 })}
+              className="jue-tarjeta w-36 overflow-hidden p-2 sm:w-44"
+              whileHover={{ y: -4 }}
+              whileTap={{ scale: 0.96 }}
+            >
+              <span className="block aspect-[3/4] overflow-hidden rounded-[0.9rem]">
+                <FotoJuego src={f.src} alt="" etiqueta={i + 1} />
+              </span>
+            </motion.button>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   if (!tamano) {
     return (
@@ -90,18 +119,19 @@ export default function Rompecabezas({ juego }) {
 
   return (
     <Tablero
-      key={`${tamano}-${partida}`}
+      key={`${indiceFoto}-${tamano}-${partida}`}
       n={tamano}
       foto={{ ...foto, optimo: srcOptimo }}
       imagen={imagen}
       dedicatoria={juego.dedicatoria}
       onReiniciar={() => setPartida((p) => p + 1)}
       onCambiarTamano={tamanos.length > 1 ? () => setTamano(null) : null}
+      onCambiarFoto={variasFotos ? () => setIndiceFoto(null) : null}
     />
   );
 }
 
-function Tablero({ n, foto, imagen, dedicatoria, onReiniciar, onCambiarTamano }) {
+function Tablero({ n, foto, imagen, dedicatoria, onReiniciar, onCambiarTamano, onCambiarFoto }) {
   const { reproducir } = useSonido();
   const total = n * n;
   const [orden, setOrden] = useState(() => mezclar(total));
@@ -198,6 +228,11 @@ function Tablero({ n, foto, imagen, dedicatoria, onReiniciar, onCambiarTamano })
               {t.cambiarTamano}
             </button>
           ) : null}
+          {onCambiarFoto ? (
+            <button type="button" className="jue-boton-sec" onClick={onCambiarFoto}>
+              {t.cambiarFoto}
+            </button>
+          ) : null}
         </MensajeFinal>
         <Celebracion disparo={1} />
       </div>
@@ -220,6 +255,11 @@ function Tablero({ n, foto, imagen, dedicatoria, onReiniciar, onCambiarTamano })
         {onCambiarTamano ? (
           <button type="button" className="jue-chip px-3 py-1" onClick={onCambiarTamano}>
             {t.cambiarTamano}
+          </button>
+        ) : null}
+        {onCambiarFoto ? (
+          <button type="button" className="jue-chip px-3 py-1" onClick={onCambiarFoto}>
+            {t.cambiarFoto}
           </button>
         ) : null}
       </Marcadores>

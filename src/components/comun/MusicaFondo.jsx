@@ -67,6 +67,42 @@ export default function MusicaFondo() {
     else audio.play().catch(() => {});
   }, [silenciada, disponible]);
 
+  /* Mientras suena un video la música se pausa, y vuelve cuando el
+     video se pausa o termina (también al pasar la hoja del libro). */
+  useEffect(() => {
+    const audio = audioMusica();
+    if (!audio || !disponible) return undefined;
+    let pausadaPorVideo = false;
+    const hayVideoSonando = () => [...document.querySelectorAll("video")].some((v) => !v.paused && !v.ended && !v.muted);
+
+    const alDetener = () => {
+      if (!pausadaPorVideo || hayVideoSonando()) return;
+      pausadaPorVideo = false;
+      if (!silenciadaRef.current) audio.play().catch(() => {});
+    };
+    const alReproducir = (e) => {
+      const video = e.target;
+      if (!(video instanceof HTMLVideoElement) || video.muted) return;
+      if (!audio.paused) {
+        audio.pause();
+        pausadaPorVideo = true;
+      }
+      // Escuchado en el propio video: también avisa si se quita de la
+      // página sonando (al cambiar de pantalla).
+      const fin = () => {
+        video.removeEventListener("pause", fin);
+        video.removeEventListener("ended", fin);
+        alDetener();
+      };
+      video.addEventListener("pause", fin);
+      video.addEventListener("ended", fin);
+    };
+
+    // "play" no burbujea: se escucha en la fase de captura.
+    document.addEventListener("play", alReproducir, true);
+    return () => document.removeEventListener("play", alReproducir, true);
+  }, [disponible]);
+
   if (!disponible) return null;
 
   return (

@@ -1,48 +1,48 @@
 {
-  "_ejemplo": "EJEMPLO - REEMPLAZAR: todos los valores de este archivo son de ejemplo.",
-  "nombre": "EJEMPLO - Nombre de ella",
-  "frase": "EJEMPLO - Aquí va la frase que resume lo que sienten. Reemplázala.",
-  "fechaInicio": "2023-01-01",
-  "fotoPortada": "/fotos/ejemplo-portada.jpg",
-  "fotoPortadaAlt": "EJEMPLO - Descripción corta de la foto principal",
-  "musicaFondo": "/audio/ejemplo-cancion.mp3",
+  "nombre": "Jhiret Paola",
+  "frase": "Feliz cumpleaños, mi amor. Todo lo que hay aquí es para ti.",
+  "corazon": "💗",
+  "fechaInicio": "2025-05-05",
+  "fotoPortada": "/fotos/portada.jpg",
+  "fotoPortadaAlt": "Jhiret y yo, juntos y sonriendo",
+  "musicaFondo": "/audio/ella-es-mi-todo.mp3",
   "claveAcceso": "",
-  "preguntaAcceso": "EJEMPLO - ¿Cuál es la fecha de nuestro aniversario? (AAAA-MM-DD)",
+  "preguntaAcceso": "¿Cuál es la fecha de nuestro aniversario? (AAAA-MM-DD)",
   "metadatos": {
-    "titulo": "EJEMPLO - Un regalo para ti",
-    "descripcion": "EJEMPLO - Algo que hice con todo mi amor. Ábrelo cuando tengas un ratito.",
-    "imagen": "/fotos/ejemplo-portada.jpg",
-    "imagenAlt": "EJEMPLO - Descripción corta de la foto que sale al compartir el enlace",
+    "titulo": "Feliz cumpleaños, Jhiret 💗",
+    "descripcion": "Un regalo hecho con todo mi amor. Ábrelo cuando tengas un ratito.",
+    "imagen": "/fotos/portada.jpg",
+    "imagenAlt": "Jhiret y yo, juntos y sonriendo",
     "urlSitio": ""
   },
   "secciones": {
     "tarjetas": [
       {
         "titulo": "Juegos",
-        "descripcion": "EJEMPLO - Memorama, quiz, rompecabezas, ruleta, cartas y frases.",
+        "descripcion": "Memorama, quiz, rompecabezas, ruleta, cartas y frases.",
         "ruta": "/juegos"
       },
       {
         "titulo": "Nuestra historia",
-        "descripcion": "EJEMPLO - Los momentos que nos trajeron hasta aquí.",
+        "descripcion": "Los momentos que nos trajeron hasta aquí.",
         "ruta": "/historia"
       },
       {
         "titulo": "Libro",
-        "descripcion": "EJEMPLO - Un libro para hojear despacio.",
+        "descripcion": "Un libro para hojear despacio.",
         "ruta": "/libro"
       }
     ],
     "juegos": {
       "titulo": "Juegos",
-      "subtitulo": "REEMPLAZAR - Elige un juego y diviértete conmigo."
+      "subtitulo": "Elige un juego y diviértete conmigo."
     },
     "historia": {
       "titulo": "Nuestra historia",
-      "subtitulo": "REEMPLAZAR - Los momentos que nos trajeron hasta aquí.",
+      "subtitulo": "Los momentos que nos trajeron hasta aquí.",
       "tituloLineaTiempo": "Paso a paso",
       "tituloCollage": "Nuestro collage",
-      "subtituloCollage": "REEMPLAZAR - Toca una foto para verla en grande."
+      "subtituloCollage": "Toca una foto para verla en grande."
     }
   },
   "textosInterfaz": {
@@ -135,7 +135,10 @@
         "mezclar": "Mezclar de nuevo",
         "cambiarTamano": "Cambiar tamaño",
         "verModelo": "Ver la foto",
-        "ocultarModelo": "Ocultar la foto"
+        "ocultarModelo": "Ocultar la foto",
+        "elegirFoto": "Elige la foto que quieres armar",
+        "armarFoto": "Armar la foto: {alt}",
+        "cambiarFoto": "Cambiar foto"
       },
       "ruleta": {
         "girar": "Girar",

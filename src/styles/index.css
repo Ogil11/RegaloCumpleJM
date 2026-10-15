@@ -127,3 +127,18 @@ body {
     transform: scale(1.08);
   }
 }
+
+/* ---------- El corazon de pareja.json (CorazonNuestro.jsx) ---------- */
+/* El emoji ocupa la caja que le den (h-10 w-10...), sea cual sea su tamano. */
+.corazon-nuestro {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  container-type: size;
+  line-height: 1;
+  user-select: none;
+}
+.corazon-nuestro > span {
+  font-size: 88cqmin;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}

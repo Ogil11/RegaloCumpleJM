@@ -1,6 +1,5 @@
 {
-  "_ejemplo": "EJEMPLO - REEMPLAZAR TODO. Estas 12 paginas usan los 11 tipos que existen para que veas como queda cada uno. Borra las que no quieras y cambia los textos y las rutas de fotos. El formato de cada tipo esta explicado en el README.",
-  "titulo": "REEMPLAZAR - Titulo del libro",
+  "titulo": "Nuestro libro — Jhiret Paola",
   "textosInterfaz": {
     "abrirLibro": "Abrir el libro",
     "indice": "Índice",
@@ -21,82 +20,86 @@
     {
       "id": 1,
       "tipo": "portada",
-      "etiqueta": "REEMPLAZAR - Feliz cumpleanos",
-      "titulo": "REEMPLAZAR - Nuestra historia",
-      "subtitulo": "REEMPLAZAR - una frase que resuma lo que sientes",
-      "autor": "REEMPLAZAR - de parte de tu nombre",
-      "foto": "/libro/ejemplo-portada.jpg",
-      "alt": "REEMPLAZAR - descripcion de la foto de la portada",
+      "etiqueta": "Feliz cumpleaños",
+      "titulo": "Jhiret Paola",
+      "subtitulo": "nuestra historia, desde el primer día",
+      "autor": "de parte de Andrés",
+      "foto": "/fotos/2026-04-03-usiacuri-beso.jpg",
+      "alt": "Nos besamos al atardecer en Usiacurí",
       "indice": "Portada"
     },
     {
       "id": 2,
       "tipo": "dedicatoria",
-      "titulo": "REEMPLAZAR - Para ti",
-      "texto": "REEMPLAZAR - Escribe aqui la dedicatoria. Es el primer texto que va a leer, asi que que sea corto y directo.\n\nREEMPLAZAR - Un segundo parrafo, si quieres. Separa los parrafos dejando una linea en blanco, como aqui.",
-      "firma": "REEMPLAZAR - tu nombre",
-      "fecha": "REEMPLAZAR - 8 de octubre de 2026",
+      "titulo": "Para ti",
+      "texto": "Feliz cumpleaños, mi amor.\n\nEste libro es un pedacito de todo lo que hemos vivido desde aquel 17 de marzo en que nos volvimos a encontrar. Ojalá al hojearlo sientas una parte de lo que yo siento cada vez que te veo.",
+      "firma": "Andrés",
+      "fecha": "15 de octubre de 2026",
       "indice": "Dedicatoria"
     },
     {
       "id": 3,
       "tipo": "separador",
-      "numero": "REEMPLAZAR - Capitulo 1",
-      "titulo": "REEMPLAZAR - Como empezo todo",
-      "subtitulo": "REEMPLAZAR - el dia que nos conocimos",
-      "indice": "Capitulo 1 - Como empezo todo"
+      "numero": "Capítulo 1",
+      "titulo": "Cómo empezó todo",
+      "subtitulo": "el día que nos volvimos a encontrar",
+      "indice": "Capítulo 1 - Cómo empezó todo"
     },
     {
       "id": 4,
       "tipo": "texto",
-      "titulo": "REEMPLAZAR - El primer dia",
-      "texto": "REEMPLAZAR - Este es un tipo de pagina de texto normal. La primera letra sale grande y en rosa; si no te gusta, pon \"capitular\": false en esta pagina.\n\nREEMPLAZAR - Escribe todo lo que quieras, pero recuerda que la pagina no crece: si el texto no cabe, se corta. Para textos largos usa dos o tres paginas de tipo texto seguidas.\n\nREEMPLAZAR - Tercer parrafo de ejemplo para que veas el espaciado.",
-      "indice": "El primer dia"
+      "titulo": "El reencuentro",
+      "texto": "Hacía mucho tiempo que no nos veíamos. El 17 de marzo de 2025 la vida nos volvió a juntar, y todavía no éramos novios.\n\nDespués vinieron la muralla de Cartagena, el baile en el quinceañero de mi hermana y el cumpleaños de tu papá. Sin darnos cuenta, ya no queríamos separarnos.\n\nHasta que el 5 de mayo, entre flores y globos, te pedí que fueras mi novia.",
+      "indice": "El reencuentro"
     },
     {
       "id": 5,
       "tipo": "foto",
-      "titulo": "REEMPLAZAR - Aquel dia",
-      "foto": "/fotos/ejemplo-1.jpg",
-      "alt": "REEMPLAZAR - descripcion de la foto",
-      "pie": "REEMPLAZAR - lo que escribirias al reverso de la foto",
+      "titulo": "Tu cumpleaños pasado",
+      "foto": "/fotos/2025-10-15-tu-cumple-beso.jpg",
+      "alt": "Nos damos un beso en tu fiesta de cumpleaños",
+      "pie": "el primero que celebramos juntos",
       "rotacion": -2.5
     },
     {
       "id": 6,
       "tipo": "poema",
-      "titulo": "REEMPLAZAR - Titulo del poema",
+      "titulo": "Para Jhiret",
       "versos": [
-        "REEMPLAZAR - cada linea de esta lista es un verso",
-        "REEMPLAZAR - asi controlas exactamente donde corta",
+        "Llegaste otra vez a mi vida",
+        "como quien vuelve a casa,",
+        "y desde entonces cada día",
+        "tiene tu risa y tu calma.",
         "",
-        "REEMPLAZAR - una linea vacia deja un espacio",
-        "REEMPLAZAR - como el de arriba"
+        "Hoy cumples años y yo",
+        "solo le pido al cielo",
+        "seguir a tu lado, mi amor,",
+        "en cada paso y cada vuelo."
       ],
-      "firma": "REEMPLAZAR - tu nombre",
+      "firma": "Andrés",
       "indice": "Poema"
     },
     {
       "id": 7,
       "tipo": "collage",
-      "titulo": "REEMPLAZAR - Un poco de todo",
+      "titulo": "Nuestras locuras",
       "fotos": [
         {
-          "src": "/fotos/ejemplo-2.jpg",
-          "alt": "REEMPLAZAR - descripcion",
-          "pie": "REEMPLAZAR - pie corto",
+          "src": "/fotos/2025-08-15-loca.jpg",
+          "alt": "Sacando la lengua",
+          "pie": "sin filtro",
           "rotacion": -3.5
         },
         {
-          "src": "/fotos/ejemplo-3.jpg",
-          "alt": "REEMPLAZAR - descripcion",
-          "pie": "REEMPLAZAR - pie corto",
+          "src": "/fotos/2026-03-15-divertida.jpg",
+          "alt": "Selfie divertida",
+          "pie": "así somos",
           "rotacion": 2.8
         },
         {
-          "src": "/fotos/ejemplo-4.jpg",
-          "alt": "REEMPLAZAR - descripcion",
-          "pie": "REEMPLAZAR - pie corto",
+          "src": "/fotos/2026-09-11-loca.jpg",
+          "alt": "Haciendo caras en mi cumpleaños",
+          "pie": "y así te quiero",
           "rotacion": -2
         }
       ]
@@ -104,45 +107,45 @@
     {
       "id": 8,
       "tipo": "separador",
-      "numero": "REEMPLAZAR - Capitulo 2",
-      "titulo": "REEMPLAZAR - Lo que quiero decirte",
-      "subtitulo": "REEMPLAZAR - sin filtros",
-      "indice": "Capitulo 2 - Lo que quiero decirte"
+      "numero": "Capítulo 2",
+      "titulo": "Lo que quiero decirte",
+      "subtitulo": "sin filtros",
+      "indice": "Capítulo 2 - Lo que quiero decirte"
     },
     {
       "id": 9,
       "tipo": "carta",
-      "lugar": "REEMPLAZAR - ciudad",
-      "fecha": "REEMPLAZAR - 8 de octubre de 2026",
-      "destinatario": "REEMPLAZAR - Querida ...,",
-      "texto": "REEMPLAZAR - Esta pagina se dibuja como una hoja de carta con renglones y la letra manuscrita del tema.\n\nREEMPLAZAR - Es la pagina para lo que no se dice en voz alta. Separa los parrafos con una linea en blanco.",
-      "firma": "REEMPLAZAR - tu nombre",
+      "lugar": "",
+      "fecha": "15 de octubre de 2026",
+      "destinatario": "Mi Jhiret,",
+      "texto": "Hoy cumples años y solo puedo pensar en la suerte que tengo de tenerte. Contigo he vivido playas, carnavales, conciertos, cumpleaños y una primera Navidad que nunca voy a olvidar.\n\nGracias por cada risa, por cada foto loca y por quererme como me quieres. Te amo, y quiero seguir sumando páginas a esta historia contigo.",
+      "firma": "Andrés",
       "indice": "Carta"
     },
     {
       "id": 10,
-      "tipo": "dibujo",
-      "titulo": "REEMPLAZAR - Te hice un dibujo",
-      "dibujo": "/libro/ejemplo-dibujo.png",
-      "alt": "REEMPLAZAR - descripcion del dibujo",
-      "pie": "REEMPLAZAR - no soy artista, pero es tuyo",
-      "indice": "El dibujo"
+      "tipo": "video",
+      "titulo": "Nose pero este video me gusta full",
+      "video": "/libro/cantando-besitos.mp4",
+      "poster": "/libro/cantando-besitos-portada.jpg",
+      "pie": "mi video favorito",
+      "indice": "Un video nuestro"
     },
     {
       "id": 11,
       "tipo": "video",
-      "titulo": "REEMPLAZAR - Un video para ti",
-      "video": "/libro/ejemplo-video.mp4",
-      "poster": "/libro/ejemplo-video-portada.jpg",
-      "pie": "REEMPLAZAR - dale play",
-      "indice": "El video"
+      "titulo": "El video que me hiciste",
+      "video": "/libro/video-de-ella.mp4",
+      "poster": "/libro/video-de-ella-portada.jpg",
+      "pie": "y ahora cómo te digo que me enamoré",
+      "indice": "Tu video"
     },
     {
       "id": 12,
       "tipo": "contraportada",
-      "texto": "REEMPLAZAR - La frase con la que quieres que cierre el libro.",
-      "firma": "REEMPLAZAR - tu nombre",
-      "fecha": "REEMPLAZAR - 2026"
+      "texto": "Y esto apenas es el comienzo.",
+      "firma": "Andrés",
+      "fecha": "2026"
     }
   ]
 }

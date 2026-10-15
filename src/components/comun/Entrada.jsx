@@ -1,7 +1,8 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import pareja from "../../content/pareja.json";
-import { Corazon, Filigrana } from "../libro/Adornos";
+import { Filigrana } from "../libro/Adornos";
+import CorazonNuestro from "./CorazonNuestro";
 import { normalizarClave, PREFIJO_HUELLA } from "./clave";
 import { iniciarMusica } from "./musica";
 
@@ -97,7 +98,7 @@ export default function Entrada({ onEntrar }) {
         animate="visible"
       >
         <motion.div variants={elemento}>
-          <Corazon className="mb-5 h-10 w-10" />
+          <CorazonNuestro className="mb-5 h-14 w-14" />
         </motion.div>
         <motion.h1 variants={elemento} className="font-romantica text-balance text-4xl text-[var(--lib-tinta)] sm:text-6xl">
           {pareja.nombre}
@@ -216,7 +217,7 @@ function CorazonesFlotantes() {
           className="ent-corazon"
           style={{ left: c.x, width: c.tam, height: c.tam, animationDuration: `${c.dur}s`, animationDelay: `-${c.retraso}s` }}
         >
-          <Corazon className="h-full w-full" />
+          <CorazonNuestro className="h-full w-full" />
         </span>
       ))}
     </div>

@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Corazon, Filigrana } from "../libro/Adornos";
+import { Filigrana } from "../libro/Adornos";
 import { Reemplazo } from "../comun/FotoSegura";
 import Imagen from "../comun/Imagen";
+import CorazonNuestro from "../comun/CorazonNuestro";
 import { textosJuegos as t } from "./datosJuegos";
 
 /** Tarjeta de "¡Ganaste!": titulo, texto y botones (children). */
@@ -22,7 +23,7 @@ export function MensajeFinal({ titulo, texto, children }) {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ type: "spring", stiffness: 220, damping: 20 }}
     >
-      <Corazon className="mx-auto block h-9 w-9" />
+      <CorazonNuestro className="mx-auto flex h-11 w-11" />
       {titulo ? <h3 className="font-romantica mt-2 text-2xl text-[var(--lib-tinta)] sm:text-3xl">{titulo}</h3> : null}
       <Filigrana className="mx-auto mt-2 block h-3 w-28" />
       {texto ? (

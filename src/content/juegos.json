@@ -1,5 +1,4 @@
 {
-  "_ejemplo": "EJEMPLO - REEMPLAZAR: todo lo marcado REEMPLAZAR es de ejemplo. El formato de cada juego está en el README (capítulo 4, juegos.json).",
   "sonidos": {
     "voltear": "/audio/juegos/voltear.mp3",
     "acierto": "/audio/juegos/acierto.mp3",
@@ -14,19 +13,37 @@
       "tipo": "memorama",
       "icono": "cartas",
       "titulo": "Memorama",
-      "descripcion": "REEMPLAZAR - Encuentra las parejas de nuestras fotos.",
-      "instrucciones": "REEMPLAZAR - Voltea dos cartas. Si son la misma foto, se quedan boca arriba.",
+      "descripcion": "Encuentra las parejas de nuestras fotos.",
+      "instrucciones": "Voltea dos cartas. Si son la misma foto, se quedan boca arriba.",
       "fotos": [
-        { "src": "/fotos/memorama-1.jpg", "alt": "REEMPLAZAR - Nuestra primera foto" },
-        { "src": "/fotos/memorama-2.jpg", "alt": "REEMPLAZAR - En la playa" },
-        { "src": "/fotos/memorama-3.jpg", "alt": "REEMPLAZAR - Tu cumpleaños" },
-        { "src": "/fotos/memorama-4.jpg", "alt": "REEMPLAZAR - Ese viaje" },
-        { "src": "/fotos/memorama-5.jpg", "alt": "REEMPLAZAR - Cocinando juntos" },
-        { "src": "/fotos/memorama-6.jpg", "alt": "REEMPLAZAR - Una selfie cualquiera" }
+        {
+          "src": "/fotos/2025-06-14-fiesta.jpg",
+          "alt": "Selfie en una fiesta"
+        },
+        {
+          "src": "/fotos/2025-08-15-loca.jpg",
+          "alt": "Sacando la lengua"
+        },
+        {
+          "src": "/fotos/2025-09-14-pueblo-mama.jpg",
+          "alt": "En el pueblo de mi mamá"
+        },
+        {
+          "src": "/fotos/2025-12-15-navidad.jpg",
+          "alt": "Nuestra primera Navidad"
+        },
+        {
+          "src": "/fotos/2026-02-17-playa.jpg",
+          "alt": "Selfie al atardecer"
+        },
+        {
+          "src": "/fotos/2026-09-11-regalos.jpg",
+          "alt": "Con todos mis regalos"
+        }
       ],
       "victoria": {
-        "titulo": "REEMPLAZAR - ¡Las encontraste todas!",
-        "texto": "REEMPLAZAR - Así como encontraste cada pareja, yo te encontré a ti, y no pienso soltarte."
+        "titulo": "¡Las encontraste todas!",
+        "texto": "Así como encontraste cada pareja, yo te encontré a ti, y no pienso soltarte."
       }
     },
     {
@@ -34,41 +51,163 @@
       "tipo": "quiz",
       "icono": "pregunta",
       "titulo": "¿Cuánto me conoces?",
-      "descripcion": "REEMPLAZAR - Preguntas sobre mí y sobre nosotros.",
+      "descripcion": "Preguntas sobre nosotros.",
       "preguntas": [
         {
-          "pregunta": "REEMPLAZAR - ¿Dónde fue nuestra primera cita?",
-          "opciones": ["REEMPLAZAR - En el cine", "REEMPLAZAR - En un café", "REEMPLAZAR - En el parque"],
+          "pregunta": "¿Dónde nos conocimos por primera vez?",
+          "opciones": [
+            "En el colegio",
+            "En Encanto, en Galán",
+            "En una fiesta",
+            "Por redes sociales"
+          ],
           "respuestaCorrecta": 1,
-          "siAcierta": "REEMPLAZAR - ¡Exacto! Y pediste dos postres.",
-          "siFalla": "REEMPLAZAR - Nooo, fue en el café. Yo estaba nerviosísimo."
+          "siAcierta": "¡Exacto! En Encanto, en Galán. Ahí empezó todo.",
+          "siFalla": "Nooo, fue en Encanto, en Galán. ¡Ahí empezó todo!"
         },
         {
-          "pregunta": "REEMPLAZAR - ¿Cuál es mi comida favorita?",
-          "opciones": ["REEMPLAZAR - Pizza", "REEMPLAZAR - Sushi", "REEMPLAZAR - Arepas", "REEMPLAZAR - Pasta"],
-          "respuestaCorrecta": 2
-        },
-        {
-          "pregunta": "REEMPLAZAR - ¿Qué canción es 'nuestra canción'?",
-          "opciones": ["REEMPLAZAR - Canción A", "REEMPLAZAR - Canción B", "REEMPLAZAR - Canción C"],
+          "pregunta": "¿Dónde fue nuestra primera cita?",
+          "opciones": [
+            "En el cine",
+            "En la playa",
+            "En un restaurante",
+            "En un parque"
+          ],
           "respuestaCorrecta": 0,
-          "siAcierta": "REEMPLAZAR - Sabía que no la ibas a olvidar.",
-          "siFalla": "REEMPLAZAR - ¡Te la voy a cantar hasta que te la aprendas!"
+          "siAcierta": "¡Sí! En el cine.",
+          "siFalla": "Fue en el cine, ¿ya se te olvidó?"
         },
         {
-          "pregunta": "REEMPLAZAR - ¿Qué es lo que más me gusta de ti?",
-          "opciones": ["REEMPLAZAR - Tu risa", "REEMPLAZAR - Tus ojos", "REEMPLAZAR - Cómo me cuidas", "REEMPLAZAR - Todo"],
+          "pregunta": "¿Qué día nos hicimos novios?",
+          "opciones": [
+            "17 de marzo de 2025",
+            "5 de mayo de 2025",
+            "15 de octubre de 2025"
+          ],
+          "respuestaCorrecta": 1,
+          "siAcierta": "¡Exacto! El día de las flores y los globos de “Te amo”.",
+          "siFalla": "Nooo, fue el 5 de mayo de 2025, el día de las flores."
+        },
+        {
+          "pregunta": "¿Cuál es nuestra canción?",
+          "opciones": [
+            "La cajeta – Rafa Pérez",
+            "Tusa – Karol G",
+            "Ella es mi fiesta – Carlos Vives",
+            "Provenza – Karol G"
+          ],
+          "respuestaCorrecta": 0,
+          "siAcierta": "¡Esa es! La cajeta, de Rafa Pérez.",
+          "siFalla": "¡¿Cómo así?! Es La cajeta, de Rafa Pérez."
+        },
+        {
+          "pregunta": "¿Cuántas veces hemos terminado y hemos vuelto?",
+          "opciones": [
+            "Ninguna",
+            "1",
+            "2",
+            "3"
+          ],
+          "respuestaCorrecta": 1,
+          "siAcierta": "Una sola vez… y volvimos, porque lo nuestro es de verdad.",
+          "siFalla": "Fue una sola vez, y volvimos. Y aquí seguimos."
+        },
+        {
+          "pregunta": "¿A qué concierto fuimos juntos?",
+          "opciones": [
+            "Karol G",
+            "Blessd",
+            "Feid",
+            "Ryan Castro"
+          ],
+          "respuestaCorrecta": 1,
+          "siAcierta": "¡Sí! Blessd, el 21 de marzo.",
+          "siFalla": "Fue el de Blessd, ¡cómo se te olvida!"
+        },
+        {
+          "pregunta": "¿A dónde fuimos de paseo en noviembre de 2025?",
+          "opciones": [
+            "Cartagena",
+            "Santa Marta",
+            "San Andrés"
+          ],
+          "respuestaCorrecta": 1,
+          "siAcierta": "¡Sí! Hasta te cargué en la playa.",
+          "siFalla": "Fue a Santa Marta, ¿no te acuerdas que te cargué en la playa?"
+        },
+        {
+          "pregunta": "¿En qué carnaval terminamos enmaicenados?",
+          "opciones": [
+            "Carnaval de Barranquilla",
+            "Carnaval de Pasto",
+            "Carnaval de Río"
+          ],
+          "respuestaCorrecta": 0,
+          "siAcierta": "¡Exacto! Llenos de maicena y felices.",
+          "siFalla": "Fue el de Barranquilla, todavía tengo maicena en el pelo."
+        },
+        {
+          "pregunta": "¿Dónde nos tomamos la foto del beso al atardecer?",
+          "opciones": [
+            "En Santa Marta",
+            "En Usiacurí",
+            "En Cartagena"
+          ],
+          "respuestaCorrecta": 1,
+          "siAcierta": "¡Sí! En Usiacurí, una de mis fotos favoritas.",
+          "siFalla": "Fue en Usiacurí, ¡esa foto quedó hermosa!"
+        },
+        {
+          "pregunta": "¿Qué día es mi cumpleaños?",
+          "opciones": [
+            "11 de septiembre",
+            "15 de octubre",
+            "5 de mayo",
+            "25 de noviembre"
+          ],
+          "respuestaCorrecta": 0,
+          "siAcierta": "¡Bien! El 11 de septiembre.",
+          "siFalla": "Es el 11 de septiembre… el 15 de octubre es el tuyo."
+        },
+        {
+          "pregunta": "¿Qué es lo que más me gusta de ti?",
+          "opciones": [
+            "Tu risa",
+            "Tus ojos",
+            "Cómo me cuidas",
+            "Todo"
+          ],
           "respuestaCorrecta": 3,
-          "siAcierta": "REEMPLAZAR - Era pregunta con trampa: la respuesta siempre es todo.",
-          "siFalla": "REEMPLAZAR - Casi, pero la respuesta correcta es TODO."
+          "siAcierta": "Era pregunta con trampa: la respuesta siempre es todo.",
+          "siFalla": "Casi, pero la respuesta correcta es TODO."
         }
       ],
-      "frasesAcierto": ["REEMPLAZAR - ¡Bien!", "REEMPLAZAR - ¡Me conoces demasiado!", "REEMPLAZAR - ¡Correctísimo!"],
-      "frasesFallo": ["REEMPLAZAR - Uy, casi…", "REEMPLAZAR - ¡Te voy a poner tarea!", "REEMPLAZAR - Esa no era, pero te perdono."],
+      "frasesAcierto": [
+        "¡Bien!",
+        "¡Me conoces demasiado!",
+        "¡Correctísimo!"
+      ],
+      "frasesFallo": [
+        "Uy, casi…",
+        "¡Te voy a poner tarea!",
+        "Esa no era, pero te perdono."
+      ],
       "resultados": [
-        { "desde": 0, "titulo": "REEMPLAZAR - Hay que estudiar más", "texto": "REEMPLAZAR - Tendremos que tener muchas más citas para que me conozcas mejor. Qué castigo tan bonito." },
-        { "desde": 50, "titulo": "REEMPLAZAR - ¡Nada mal!", "texto": "REEMPLAZAR - Me conoces bastante bien. Lo que falta lo aprendemos juntos." },
-        { "desde": 100, "titulo": "REEMPLAZAR - ¡Perfecto!", "texto": "REEMPLAZAR - Me conoces mejor que yo mismo. Te amo." }
+        {
+          "desde": 0,
+          "titulo": "Hay que estudiar más",
+          "texto": "Tendremos que tener muchas más citas para que me conozcas mejor. Qué castigo tan bonito."
+        },
+        {
+          "desde": 50,
+          "titulo": "¡Nada mal!",
+          "texto": "Me conoces bastante bien. Lo que falta lo aprendemos juntos."
+        },
+        {
+          "desde": 100,
+          "titulo": "¡Perfecto!",
+          "texto": "Me conoces mejor que yo mismo. Te amo."
+        }
       ]
     },
     {
@@ -76,12 +215,28 @@
       "tipo": "rompecabezas",
       "icono": "rompecabezas",
       "titulo": "Rompecabezas",
-      "descripcion": "REEMPLAZAR - Arma nuestra foto pieza por pieza.",
-      "foto": { "src": "/fotos/rompecabezas.jpg", "alt": "REEMPLAZAR - Nosotros dos" },
-      "tamanos": [3, 4],
+      "descripcion": "Elige una de nuestras fotos y ármala pieza por pieza.",
+      "fotos": [
+        {
+          "src": "/fotos/rompecabezas.jpg",
+          "alt": "Jhiret con su ramo de flores frente a los globos de Te amo"
+        },
+        {
+          "src": "/fotos/2025-10-15-tu-cumple-beso.jpg",
+          "alt": "Nuestro beso en tu fiesta de cumpleaños"
+        },
+        {
+          "src": "/fotos/2026-04-03-usiacuri-beso.jpg",
+          "alt": "Nuestro beso al atardecer en Usiacurí"
+        }
+      ],
+      "tamanos": [
+        3,
+        4
+      ],
       "dedicatoria": {
-        "titulo": "REEMPLAZAR - ¡Completo!",
-        "texto": "REEMPLAZAR - Contigo todas las piezas encajan."
+        "titulo": "¡Completo!",
+        "texto": "Contigo todas las piezas encajan."
       }
     },
     {
@@ -89,21 +244,77 @@
       "tipo": "ruleta",
       "icono": "ruleta",
       "titulo": "Ruleta de citas y retos",
-      "descripcion": "REEMPLAZAR - Gira y deja que la suerte decida.",
+      "descripcion": "Gira y deja que la suerte decida.",
       "categorias": {
         "cita": "Cita",
         "reto": "Reto",
         "pregunta": "Pregunta"
       },
       "opciones": [
-        { "tipo": "cita", "texto": "REEMPLAZAR - Picnic en el parque con lo que haya en la nevera." },
-        { "tipo": "reto", "texto": "REEMPLAZAR - Bailar nuestra canción en la sala, ahora mismo." },
-        { "tipo": "pregunta", "texto": "REEMPLAZAR - ¿Cuál es tu recuerdo favorito de nosotros?" },
-        { "tipo": "cita", "texto": "REEMPLAZAR - Noche de películas con palomitas caseras." },
-        { "tipo": "reto", "texto": "REEMPLAZAR - Escribirme un poema de cuatro líneas." },
-        { "tipo": "pregunta", "texto": "REEMPLAZAR - ¿A qué lugar del mundo te gustaría ir conmigo?" },
-        { "tipo": "cita", "texto": "REEMPLAZAR - Cocinar juntos una receta que nunca hayamos probado." },
-        { "tipo": "reto", "texto": "REEMPLAZAR - Darme tres besos en lugares distintos." }
+        {
+          "tipo": "cita",
+          "texto": "Ir por un helado."
+        },
+        {
+          "tipo": "reto",
+          "texto": "Darme tres besos en lugares distintos."
+        },
+        {
+          "tipo": "cita",
+          "texto": "Comprarte tu dulce favorito."
+        },
+        {
+          "tipo": "pregunta",
+          "texto": "¿Cuál es tu recuerdo favorito de nosotros?"
+        },
+        {
+          "tipo": "cita",
+          "texto": "Ir a comer a un restaurante que tú elijas."
+        },
+        {
+          "tipo": "reto",
+          "texto": "Bailar La cajeta conmigo, ahora mismo."
+        },
+        {
+          "tipo": "cita",
+          "texto": "Ir a un lugar que tú elijas."
+        },
+        {
+          "tipo": "pregunta",
+          "texto": "¿A qué lugar del mundo te gustaría ir conmigo?"
+        },
+        {
+          "tipo": "cita",
+          "texto": "Ir a cine y tú escoges la película."
+        },
+        {
+          "tipo": "reto",
+          "texto": "Tomarnos la foto más loca que se nos ocurra."
+        },
+        {
+          "tipo": "cita",
+          "texto": "Noche de películas con palomitas."
+        },
+        {
+          "tipo": "pregunta",
+          "texto": "¿Qué fue lo primero que te gustó de mí?"
+        },
+        {
+          "tipo": "cita",
+          "texto": "Ir a ver el atardecer juntos."
+        },
+        {
+          "tipo": "reto",
+          "texto": "Darme un abrazo de un minuto entero."
+        },
+        {
+          "tipo": "cita",
+          "texto": "Comer hamburguesas o perros calientes."
+        },
+        {
+          "tipo": "cita",
+          "texto": "Un día de playa juntos."
+        }
       ]
     },
     {
@@ -111,45 +322,45 @@
       "tipo": "cartas",
       "icono": "sobre",
       "titulo": "Cartas para abrir",
-      "descripcion": "REEMPLAZAR - Sobres con mensajes, poemas y vales.",
+      "descripcion": "Sobres con mensajes, poemas y vales.",
       "cartas": [
         {
-          "sobre": "REEMPLAZAR - Ábrela cuando estés triste",
+          "sobre": "Ábrela cuando estés triste",
           "tipo": "mensaje",
-          "titulo": "REEMPLAZAR - Para ti",
-          "texto": "REEMPLAZAR - Si estás leyendo esto, quiero que sepas que todo va a estar bien. Estoy aquí.",
-          "firma": "REEMPLAZAR - Con amor, yo"
+          "titulo": "Para ti",
+          "texto": "Si estás leyendo esto, quiero que sepas que todo va a estar bien. Estoy aquí.",
+          "firma": "Con amor, Andrés"
         },
         {
-          "sobre": "REEMPLAZAR - Un poema",
+          "sobre": "Un poema",
           "tipo": "poema",
-          "titulo": "REEMPLAZAR - Tu nombre",
-          "texto": "REEMPLAZAR - Escribí tu nombre en el aire,\nen la arena y en el mar;\npero donde mejor se queda\nes en mi forma de amar."
+          "titulo": "Tu nombre",
+          "texto": "Escribí tu nombre en el aire,\nen la arena y en el mar;\npero donde mejor se queda\nes en mi forma de amar."
         },
         {
-          "sobre": "REEMPLAZAR - Vale",
+          "sobre": "Vale",
           "tipo": "vale",
-          "titulo": "REEMPLAZAR - Vale por un masaje",
-          "texto": "REEMPLAZAR - Canjeable cualquier día, sin fecha de vencimiento.",
-          "firma": "REEMPLAZAR - Firmado: tu masajista personal"
+          "titulo": "Vale por un masaje",
+          "texto": "Canjeable cualquier día, sin fecha de vencimiento.",
+          "firma": "Firmado: tu masajista personal"
         },
         {
-          "sobre": "REEMPLAZAR - Vale",
+          "sobre": "Vale",
           "tipo": "vale",
-          "titulo": "REEMPLAZAR - Vale por una cena",
-          "texto": "REEMPLAZAR - Tú eliges el lugar, yo invito."
+          "titulo": "Vale por una cena",
+          "texto": "Tú eliges el lugar, yo invito."
         },
         {
-          "sobre": "REEMPLAZAR - Para cuando me extrañes",
+          "sobre": "Para cuando me extrañes",
           "tipo": "mensaje",
-          "titulo": "REEMPLAZAR - Hola, mi amor",
-          "texto": "REEMPLAZAR - Cierra los ojos un momento. ¿Sientes eso? Es un abrazo que te mandé desde donde esté."
+          "titulo": "Hola, mi amor",
+          "texto": "Cierra los ojos un momento. ¿Sientes eso? Es un abrazo que te mandé desde donde esté."
         },
         {
-          "sobre": "REEMPLAZAR - Vale",
+          "sobre": "Vale",
           "tipo": "vale",
-          "titulo": "REEMPLAZAR - Vale por un día sin quejas",
-          "texto": "REEMPLAZAR - Todo lo que quieras hacer, lo hacemos con una sonrisa."
+          "titulo": "Vale por un día sin quejas",
+          "texto": "Todo lo que quieras hacer, lo hacemos con una sonrisa."
         }
       ]
     },
@@ -158,31 +369,100 @@
       "tipo": "frases",
       "icono": "pluma",
       "titulo": "Frases del amor",
-      "descripcion": "REEMPLAZAR - Ordena y completa nuestras frases.",
+      "descripcion": "Ordena y completa nuestras frases.",
       "frases": [
         {
           "modo": "ordenar",
           "frase": "Eres mi lugar favorito en el mundo",
-          "pista": "REEMPLAZAR - Te lo dije en nuestro primer viaje.",
-          "mensaje": "REEMPLAZAR - Y lo sigues siendo."
+          "pista": "Empieza con «Eres».",
+          "mensaje": "Y lo sigues siendo."
         },
         {
           "modo": "completar",
           "frase": "Contigo hasta el fin del mundo",
-          "huecos": ["Contigo", "mundo"],
-          "distractores": ["Siempre", "cielo", "mar"],
-          "pista": "REEMPLAZAR - Lo escribimos en la arena.",
-          "mensaje": "REEMPLAZAR - Y un poquito más allá."
+          "huecos": [
+            "Contigo",
+            "mundo"
+          ],
+          "distractores": [
+            "Siempre",
+            "cielo",
+            "mar"
+          ],
+          "pista": "¿Hasta dónde iría contigo?",
+          "mensaje": "Y un poquito más allá."
         },
         {
           "modo": "ordenar",
           "frase": "Te elegiría otra vez en cada vida",
-          "mensaje": "REEMPLAZAR - Sin dudarlo ni un segundo."
+          "mensaje": "Sin dudarlo ni un segundo."
+        },
+        {
+          "modo": "completar",
+          "frase": "Tu sonrisa es mi parte favorita del día",
+          "huecos": [
+            "sonrisa",
+            "favorita"
+          ],
+          "distractores": [
+            "mirada",
+            "bonita",
+            "noche"
+          ],
+          "pista": "Lo que más me gusta ver cuando te veo.",
+          "mensaje": "Por eso siempre te hago reír."
+        },
+        {
+          "modo": "ordenar",
+          "frase": "Contigo todo es más bonito",
+          "mensaje": "Hasta los días normales."
+        },
+        {
+          "modo": "completar",
+          "frase": "Eres lo mejor que me ha pasado",
+          "huecos": [
+            "mejor",
+            "pasado"
+          ],
+          "distractores": [
+            "peor",
+            "dado",
+            "bonito"
+          ],
+          "pista": "Tú eres lo ___ que me ha ___.",
+          "mensaje": "Y lo digo en serio."
+        },
+        {
+          "modo": "ordenar",
+          "frase": "Te amo más que ayer",
+          "pista": "Cada día un poquito más.",
+          "mensaje": "Y menos que mañana."
+        },
+        {
+          "modo": "completar",
+          "frase": "Feliz cumpleaños al amor de mi vida",
+          "huecos": [
+            "cumpleaños",
+            "amor"
+          ],
+          "distractores": [
+            "Navidad",
+            "sol",
+            "día"
+          ],
+          "pista": "Hoy es 15 de octubre.",
+          "mensaje": "Que cumplas muchos más a mi lado."
+        },
+        {
+          "modo": "ordenar",
+          "frase": "Quiero bailar La cajeta contigo siempre",
+          "pista": "Nuestra canción.",
+          "mensaje": "Esa canción ya es nuestra."
         }
       ],
       "victoria": {
-        "titulo": "REEMPLAZAR - ¡Todas completas!",
-        "texto": "REEMPLAZAR - Cada palabra es verdad. Te amo."
+        "titulo": "¡Todas completas!",
+        "texto": "Cada palabra es verdad. Te amo."
       }
     }
   ]

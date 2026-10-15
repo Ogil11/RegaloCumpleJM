@@ -1,5 +1,5 @@
 import pareja from "../../content/pareja.json";
-import { Corazon } from "../libro/Adornos";
+import CorazonNuestro from "./CorazonNuestro";
 
 /**
  * Corazon que late mientras llega una pantalla. Aparece con un pequeno
@@ -9,7 +9,7 @@ import { Corazon } from "../libro/Adornos";
 export default function Cargando({ texto = pareja.textosInterfaz?.cargando, className = "min-h-[100dvh]" }) {
   return (
     <div role="status" className={`cargando flex w-full flex-col items-center justify-center gap-4 ${className}`}>
-      <Corazon className="cargando-latido h-12 w-12" />
+      <CorazonNuestro className="cargando-latido h-14 w-14" />
       {texto ? <p className="lib-mano text-2xl text-[var(--lib-tinta-suave)]">{texto}</p> : null}
     </div>
   );

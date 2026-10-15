@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import pareja from "../content/pareja.json";
 import Imagen from "../components/comun/Imagen";
+import CorazonNuestro from "../components/comun/CorazonNuestro";
 import { precargar, precargarTodasLuego } from "../rutas";
 
 // Todo lo visible sale de pareja.json: nombre, frase, foto y las tarjetas (secciones.tarjetas).
@@ -52,6 +53,7 @@ export default function Inicio() {
         <p className="mt-4 max-w-xl text-balance text-rose-700/80">
           {pareja.frase}
         </p>
+        <CorazonNuestro className="cargando-latido mt-5 h-10 w-10" />
       </motion.header>
 
       <motion.nav

@@ -36,7 +36,7 @@ async function listarImagenes(dir, base = dir) {
   for (const entrada of await readdir(dir, { withFileTypes: true })) {
     const completo = path.join(dir, entrada.name);
     if (entrada.isDirectory()) salida.push(...(await listarImagenes(completo, base)));
-    else if (EXTENSIONES.has(path.extname(entrada.name).toLowerCase())) {
+    else if (EXTENSIONES.has(path.extname(entrada.name).toLowerCase()) && !entrada.name.startsWith("apple-touch-icon")) {
       salida.push({ completo, ruta: "/" + path.relative(base, completo).split(path.sep).join("/") });
     }
   }

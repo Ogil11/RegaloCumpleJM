@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { tema } from "../../styles/tema";
+import CorazonNuestro, { corazonPareja } from "../comun/CorazonNuestro";
 
 const COLORES = [
   "var(--lib-rosa)",
@@ -64,7 +65,9 @@ function Lluvia() {
           }
           transition={{ duration: reducir ? 1.6 : p.duracion, delay: p.retraso, ease: "easeIn" }}
         >
-          {p.corazon ? (
+          {p.corazon && corazonPareja ? (
+            <CorazonNuestro className="h-full w-full" />
+          ) : p.corazon ? (
             <svg viewBox="0 0 24 24" className="h-full w-full">
               <path d={CORAZON} fill={p.color} />
             </svg>

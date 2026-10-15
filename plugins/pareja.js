@@ -127,8 +127,11 @@ export default function datosPareja() {
         config.logger.info(`\n  Vista previa al compartir: falta public${imagenOrigen}; el enlace se compartira sin foto.`);
       }
 
+      // Si ya hay un apple-touch-icon.png en public/ (por ejemplo dibujado a
+      // partir de un emoji, que el servidor no sabe pintar), se usa ese.
       const favicon = path.join(config.publicDir, "favicon.svg");
-      if (existsSync(favicon)) {
+      const iconoPropio = existsSync(path.join(config.publicDir, "apple-touch-icon.png"));
+      if (existsSync(favicon) && !iconoPropio) {
         // Fondo solido: iOS no admite transparencia en el icono.
         const icono = await sharp(favicon, { density: 600 }).resize(140, 140).png().toBuffer();
         const datos = await sharp({ create: { width: 180, height: 180, channels: 4, background: tema.colores.papel } })
